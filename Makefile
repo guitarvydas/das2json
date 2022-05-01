@@ -7,7 +7,9 @@ NODEMODULES=\
 # change this for your own environment
 TOOLS=.
 
-all: $(NODEMODULES) tools topbuildscript.py
+all: testbench.json
+
+main_all: $(NODEMODULES) tools topbuildscript.py
 	./topbuildscript.py
 
 bootstrap : $(NODEMODULES) tools bootstrap_helloworld.json topbuildscript.py

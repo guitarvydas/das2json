@@ -9,12 +9,15 @@ das2fdir=$root/das2f
 
 
 # Layer 1. Infer low-hanging fruit information.
-echo '** layer 1 **' 1>&2
-
+echo '** layer 1 a **' 1>&2
 ${das2fdir}/layerkind ${das2fdir} 1>&2 # <<>>fb.pl
+echo '** layer 1 b **' 1>&2
 ${das2fdir}/layername ${das2fdir} 1>&2 # <<>>fb.pl
+echo '** layer 1 c **' 1>&2
 ${das2fdir}/layercolor ${das2fdir} 1>&2 # <<>>fb.pl
+echo '** layer 1 d **' 1>&2
 ${das2fdir}/layerboundingbox ${das2fdir} 1>&2 # <<>>fb.pl
+echo '** layer 1 e **' 1>&2
 
 # # Layer 2. Names, port directions
 echo '** layer 2 **' 1>&2
