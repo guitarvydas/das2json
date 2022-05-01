@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# d2py.py
+# buildscript.py
 # cell_6
 import mpos
 import dispatcher
@@ -8,7 +8,7 @@ import tools
 import build
 import clean
 
-class _d2py (mpos.Container):
+class _buildscript (mpos.Container):
 
     def __init__ (self, dispatcher, parent, idInParent):
         super ().__init__ (dispatcher, parent, idInParent)

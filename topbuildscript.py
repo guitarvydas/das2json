@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import dispatcher
-import d2py
+import buildscript
 disp = dispatcher.Dispatcher ()
-top = d2py._d2py (disp, None, '')
+top = buildscript._buildscript (disp, None, '')
 top.kickstart ()
 disp.dispatch ()
