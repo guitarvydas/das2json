@@ -16,7 +16,10 @@ diagram {
   string= quote notDQ* quote
   notDQ = ~quote any
   attributeValue = number | string
-  number =   quote digit+ quote -- qouted
-           |       digit+       -- raw 
+  number =
+    | quote minus digit+ quote -- mqouted
+    | quote digit+ quote -- qouted
+    |       digit+       -- raw 
   quote = "\""
+  minus = "-"
 }

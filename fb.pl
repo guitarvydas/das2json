@@ -236,17 +236,17 @@ diagram_fact(x, cell_19, 970).
 diagram_fact(x, cell_6, 120).
 diagram_fact(x, cell_7, 590).
 diagram_fact(x, cell_9, 900).
-diagram_fact(y, cell_10, "-40").
-diagram_fact(y, cell_11, "-60").
-diagram_fact(y, cell_13, "-20").
-diagram_fact(y, cell_14, "-60").
-diagram_fact(y, cell_16, "-40").
+diagram_fact(y, cell_10, -40).
+diagram_fact(y, cell_11, -60).
+diagram_fact(y, cell_13, -20).
+diagram_fact(y, cell_14, -60).
+diagram_fact(y, cell_16, -40).
 diagram_fact(y, cell_17, 10).
-diagram_fact(y, cell_18, "-20").
-diagram_fact(y, cell_19, "-40").
-diagram_fact(y, cell_6, "-170").
-diagram_fact(y, cell_7, "-125").
-diagram_fact(y, cell_9, "-40").
+diagram_fact(y, cell_18, -20).
+diagram_fact(y, cell_19, -40).
+diagram_fact(y, cell_6, -170).
+diagram_fact(y, cell_7, -125).
+diagram_fact(y, cell_9, -40).
 das_fact(kind,cell_10,ellipse).
 das_fact(kind,cell_11,rectangle).
 das_fact(kind,cell_12,edge).
@@ -290,6 +290,50 @@ das_fact(color,cell_6,"-").
 das_fact(color,cell_7,"-").
 das_fact(color,cell_8,"-").
 das_fact(color,cell_9,"yellow").
+das_fact(bbL,cell_10,570).
+  das_fact(bbT,cell_10,-40).
+  das_fact(bbR,cell_10,610).
+  das_fact(bbB,cell_10,0).
+das_fact(bbL,cell_11,150).
+  das_fact(bbT,cell_11,-60).
+  das_fact(bbR,cell_11,270).
+  das_fact(bbB,cell_11,60).
+das_fact(bbL,cell_13,250).
+  das_fact(bbT,cell_13,-20).
+  das_fact(bbR,cell_13,290).
+  das_fact(bbB,cell_13,20).
+das_fact(bbL,cell_14,350).
+  das_fact(bbT,cell_14,-60).
+  das_fact(bbR,cell_14,470).
+  das_fact(bbB,cell_14,60).
+das_fact(bbL,cell_16,450).
+  das_fact(bbT,cell_16,-40).
+  das_fact(bbR,cell_16,490).
+  das_fact(bbB,cell_16,0).
+das_fact(bbL,cell_17,450).
+  das_fact(bbT,cell_17,10).
+  das_fact(bbR,cell_17,490).
+  das_fact(bbB,cell_17,50).
+das_fact(bbL,cell_18,330).
+  das_fact(bbT,cell_18,-20).
+  das_fact(bbR,cell_18,370).
+  das_fact(bbB,cell_18,20).
+das_fact(bbL,cell_19,970).
+  das_fact(bbT,cell_19,-40).
+  das_fact(bbR,cell_19,1010).
+  das_fact(bbB,cell_19,0).
+das_fact(bbL,cell_6,120).
+  das_fact(bbT,cell_6,-170).
+  das_fact(bbR,cell_6,990).
+  das_fact(bbB,cell_6,140).
+das_fact(bbL,cell_7,590).
+  das_fact(bbT,cell_7,-125).
+  das_fact(bbR,cell_7,920).
+  das_fact(bbB,cell_7,100).
+das_fact(bbL,cell_9,900).
+  das_fact(bbT,cell_9,-40).
+  das_fact(bbR,cell_9,940).
+  das_fact(bbB,cell_9,0).
 das_fact(direction,cell_10,input).
 das_fact(direction,cell_13,output).
 das_fact(direction,cell_16,output).
@@ -297,3 +341,51 @@ das_fact(direction,cell_17,output).
 das_fact(direction,cell_18,input).
 das_fact(direction,cell_19,output).
 das_fact(direction,cell_9,output).
+das_fact(contains,cell_6,cell_10).
+das_fact(contains,cell_6,cell_11).
+das_fact(contains,cell_6,cell_13).
+das_fact(contains,cell_6,cell_14).
+das_fact(contains,cell_6,cell_16).
+das_fact(contains,cell_6,cell_17).
+das_fact(contains,cell_6,cell_18).
+das_fact(contains,cell_6,cell_7).
+das_fact(contains,cell_6,cell_9).
+das_fact(contains,cell_11,cell_13).
+das_fact(contains,cell_14,cell_16).
+das_fact(contains,cell_14,cell_17).
+das_fact(contains,cell_14,cell_18).
+das_fact(contains,cell_6,cell_19).
+das_fact(contains,cell_7,cell_10).
+das_fact(contains,cell_7,cell_9).
+das_fact(indirect_contains,cell_6,cell_13).
+das_fact(indirect_contains,cell_6,cell_16).
+das_fact(indirect_contains,cell_6,cell_17).
+das_fact(indirect_contains,cell_6,cell_18).
+das_fact(indirect_contains,cell_6,cell_10).
+das_fact(indirect_contains,cell_6,cell_9).
+das_fact(direct_contains,cell_11,cell_13).
+das_fact(direct_contains,cell_14,cell_16).
+das_fact(direct_contains,cell_14,cell_17).
+das_fact(direct_contains,cell_14,cell_18).
+das_fact(direct_contains,cell_6,cell_11).
+das_fact(direct_contains,cell_6,cell_14).
+das_fact(direct_contains,cell_6,cell_19).
+das_fact(direct_contains,cell_6,cell_7).
+das_fact(direct_contains,cell_7,cell_10).
+das_fact(direct_contains,cell_7,cell_9).
+das_fact(direct_contains,cell_6,cell_12).
+das_fact(direct_contains,cell_6,cell_15).
+das_fact(direct_contains,cell_6,cell_8).
+das_fact(direct_contains,cell_6,cell_8).
+das_fact(connection, cell_6, cell_12).
+das_fact(sender, cell_12, sender{component:"HTML Button",port:"click"}).
+das_fact(receiver, cell_12, receiver{component:"Phrase Faker",port:"go"}).
+das_fact(connection, cell_6, cell_15).
+das_fact(sender, cell_15, sender{component:"Phrase Faker",port:"short phrase"}).
+das_fact(receiver, cell_15, receiver{component:"Order Taker",port:"phrase"}).
+das_fact(connection, cell_6, cell_8).
+das_fact(sender, cell_8, sender{component:"Order Taker",port:"food order"}).
+das_fact(receiver, cell_8, receiver{component:"Test Bench",port:"food order"}).
+das_fact(connection, cell_6, cell_8).
+das_fact(sender, cell_8, sender{component:"Order Taker",port:"food order"}).
+das_fact(receiver, cell_8, receiver{component:"Test Bench",port:"food order"}).
