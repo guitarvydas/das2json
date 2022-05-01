@@ -7,7 +7,8 @@ NODEMODULES=\
 # change this for your own environment
 TOOLS=.
 
-all: $(NODEMODULES) tools helloworld.json topbuildscript.py
+all: $(NODEMODULES) tools topbuildscript.py
+	./topbuildscript.py
 
 bootstrap : $(NODEMODULES) tools bootstrap_helloworld.json topbuildscript.py
 
@@ -48,7 +49,6 @@ topbuildscript.py : buildscript.json transpile2py.bash pyemit.py
 	./transpile2py.bash buildscript.drawio buildscript.json
 	mv top.py topbuildscript.py
 	chmod a+x topbuildscript.py
-	./topbuildscript.py
 
 clean:
 	(cd ./dr ; make clean)
