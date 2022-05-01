@@ -32,6 +32,10 @@ helloworld.json : tools helloworld.drawio
 	./generate.bash $(TOOLS) helloworld.drawio
 	mv out.json helloworld.json
 
+testbench.json : tools testbench.drawio
+	./generate.bash $(TOOLS) testbench.drawio
+	mv out.json testbench.json
+
 bootstrap_helloworld.json : tools helloworld.drawio
 	./generate.bash $(TOOLS) helloworld.drawio
 	mv out.json helloworld.json
