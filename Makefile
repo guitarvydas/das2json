@@ -9,6 +9,8 @@ TOOLS=.
 
 all: $(NODEMODULES) tools helloworld.json topbuildscript.py
 
+bootstrap : $(NODEMODULES) tools bootstrap_helloworld.json topbuildscript.py
+
 ~/node_modules/ohm-js:
 	npm install ohm-js
 ~/node_modules/yargs:
@@ -26,6 +28,10 @@ tools:
 	(cd ./das2j ; make)
 
 helloworld.json : tools helloworld.drawio
+	./generate.bash $(TOOLS) helloworld.drawio
+	mv out.json helloworld.json
+
+bootstrap_helloworld.json : tools helloworld.drawio
 	./generate.bash $(TOOLS) helloworld.drawio
 	mv out.json helloworld.json
 
