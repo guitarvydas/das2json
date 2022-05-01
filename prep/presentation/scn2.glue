@@ -1,0 +1,18 @@
+Main [@octothorpe @Statement] = [[${octothorpe}${Statement}]]
+octothorpe [c] = [[]]
+Statement_var [s] = [[${s}]]
+Statement_ident [s] = [[${s}]]
+Statement_display [s] = [[${s}]]
+Statement_other [s] = [[${s}]]
+
+VarStatement [kvar ident] = [[]]
+DisplayStatement [kdisplay @Comma_ident ident] = [[debug_print (${Comma_ident}${ident})\n]]
+
+Comma_ident [ident kcomma] = [[${ident}${kcomma}]]
+
+ident [c @cs] = [[${c}${cs}]]
+idFirst [c] = [[${c}]]
+idRest [c] = [[${c}]]
+
+separator [c] = [[${c}]]
+nl [c] = [[${c}]]

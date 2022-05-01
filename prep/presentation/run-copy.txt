@@ -1,0 +1,9 @@
+$ ./run.bash
+f
+zi(d,e)
+--ident-macro <<p,q>>--
+--anything-macro <<r,s>>--
+--anything-macro <<+-*/((()))%(())$>>--g
+--ident-macro <<a,b>>--h
+
+$ 

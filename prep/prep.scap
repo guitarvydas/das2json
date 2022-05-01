@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScappleDocument Version="1.2" ID="B7BD899A-DE9E-447B-A133-5A8E3F74C7E8">
+    <Notes>
+        <Note ID="0" FontSize="12.0" Position="63.0,103.0" Width="41.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.751286 0.937851 0.984426</Fill>
+            </Appearance>
+            <String>prep</String>
+            <ConnectedNoteIDs>1-2, 6</ConnectedNoteIDs>
+        </Note>
+        <Note ID="1" FontSize="12.0" Position="190.0,66.0" Width="145.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.751286 0.937851 0.984426</Fill>
+            </Appearance>
+            <String>multiple Ohm grammars</String>
+            <ConnectedNoteIDs>0, 3</ConnectedNoteIDs>
+        </Note>
+        <Note ID="2" FontSize="12.0" Position="193.0,115.0" Width="83.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.751286 0.937851 0.984426</Fill>
+            </Appearance>
+            <String>presentation</String>
+            <ConnectedNoteIDs>0</ConnectedNoteIDs>
+        </Note>
+        <Note ID="3" FontSize="12.0" Position="377.459961,66.418427" Width="200.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.751286 0.937851 0.984426</Fill>
+            </Appearance>
+            <String>multiple glue specs / glue inheritance</String>
+            <ConnectedNoteIDs>1, 4</ConnectedNoteIDs>
+        </Note>
+        <Note ID="4" FontSize="12.0" Position="492.0,114.0" Width="191.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.751286 0.937851 0.984426</Fill>
+            </Appearance>
+            <String>try out glue inheritance on slread</String>
+            <ConnectedNoteIDs>3</ConnectedNoteIDs>
+        </Note>
+        <Note ID="6" FontSize="12.0" Position="200.0,180.0" Width="120.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.751286 0.937851 0.984426</Fill>
+            </Appearance>
+            <String>prep2 creates { … }</String>
+            <ConnectedNoteIDs>0</ConnectedNoteIDs>
+        </Note>
+        <Note ID="7" FontSize="12.0" Position="205.0,250.0" Width="78.0">
+            <Appearance>
+                <Alignment>Left</Alignment>
+                <Border Weight="1"></Border>
+                <Fill>0.751286 0.937851 0.984426</Fill>
+            </Appearance>
+            <String>slread edits</String>
+        </Note>
+    </Notes>
+    <BackgroundShapes></BackgroundShapes>
+    <AutoFit>0-2, 4, 6-7</AutoFit>
+    <NoteStyles>
+        <Style Name="Bubble (Blue)" ID="7F1B076A-47E3-4690-A242-765D5266FECD" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.668962 0.810287 0.895092</BorderColor>
+            <FillColor>0.743291 0.900319 0.994547</FillColor>
+        </Style>
+        <Style Name="Bubble (Green)" ID="059C506C-FDE1-4322-84CA-23840708E4EF" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.669404 0.885265 0.567007</BorderColor>
+            <FillColor>0.743783 0.983628 0.630008</FillColor>
+        </Style>
+        <Style Name="Bubble (Pink)" ID="F1C52A1B-0521-4A70-A4FD-2FA81C146ED4" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.894547 0.707772 0.715904</BorderColor>
+            <FillColor>0.989115 0.814114 0.999483</FillColor>
+        </Style>
+        <Style Name="Bubble (Red)" ID="4D30AF07-95F5-4FDC-8A4B-A9A9781AD293" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.894547 0.707772 0.715904</BorderColor>
+            <FillColor>0.993942 0.786413 0.795449</FillColor>
+        </Style>
+        <Style Name="Bubble (Yellow)" ID="2467BAB1-76A4-45CC-8B91-983D83472D98" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="No" AffectNoteBody="Yes" AffectFade="No">
+            <BorderThickness>1</BorderThickness>
+            <BorderColor>0.877748 0.828289 0.562126</BorderColor>
+            <FillColor>0.975275 0.920321 0.624585</FillColor>
+        </Style>
+        <Style Name="Red Text" ID="01B543FA-5518-4B71-895D-32DF85B3854E" AffectFontStyle="No" AffectAlignment="No" AffectTextColor="Yes" AffectNoteBody="No" AffectFade="No">
+            <TextColor>0.985954 0.0 0.02694</TextColor>
+        </Style>
+        <Style Name="Title Text" ID="574846AB-360E-4434-9628-7B9C5F74AAC0" AffectFontStyle="Yes" AffectAlignment="Yes" AffectTextColor="No" AffectNoteBody="No" AffectFade="No">
+            <FontSize>28.0</FontSize>
+            <IsBold>Yes</IsBold>
+        </Style>
+    </NoteStyles>
+    <UISettings>
+        <BackgroundColor>0.999763 0.988395 0.949915</BackgroundColor>
+        <DefaultFont>Helvetica</DefaultFont>
+        <NoteXPadding>8.0</NoteXPadding>
+    </UISettings>
+    <PrintSettings PaperSize="612.0,792.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="na-letter" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+</ScappleDocument>

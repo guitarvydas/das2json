@@ -1,0 +1,15 @@
+  Main [@octothorpe commentToNL @statement]
+    = [[${octothorpe}${commentToNL}${statement}]]
+  octothorpe [kOctothorpe] = [[]]
+  commentToNL [line] = [[]]
+  Statement  [line] = [[${line}]]
+
+  VarStatement [kvar ident nl] = [[]]
+
+  ident [identFirst @identRest] = [[${identFirst}${identRest}]]
+  idFirst [c] = [[${c}]]
+  idRest [c] = [[${c}]]
+
+  line [@nonNLchar nl] = [[${nonNLchar}${nl}]]
+  nl [kNL] = [[${kNL}]]
+  nonNLchar [any] = [[${any}]]

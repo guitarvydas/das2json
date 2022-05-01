@@ -1,0 +1,94 @@
+{
+  "main": {
+    "id": "bd129097a3cfca1c",
+    "type": "split",
+    "children": [
+      {
+        "id": "9d75bbb87c716b92",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "presentation/PREP - Macros Beyond Lisp.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "74f1d8def754425a",
+    "type": "split",
+    "children": [
+      {
+        "id": "51ba7f941a230272",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5ef66209456e93dd",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "3095462d62ec9eaf",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "38ae9c63f84a3b50",
+    "type": "split",
+    "children": [
+      {
+        "id": "eece3b36f46b7d0e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d4a5b343fb0fb9ba",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "presentation/PREP - Macros Beyond Lisp.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "9d75bbb87c716b92",
+  "lastOpenFiles": [
+    "presentation/PREP - Macros Beyond Lisp.md"
+  ]
+}

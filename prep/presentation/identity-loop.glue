@@ -1,0 +1,20 @@
+main [@spaces kloop stuff] = [[${spaces}${kloop} ${stuff}]]
+
+stuff [@findMacros] = [[${findMacros}]]
+findMacros_macro [m]     = [[${m}]]
+findMacros_ident [ident] = [[${ident}]]
+findMacros_any   [any]   = [[${any}]]
+
+ExitWhenMacro [tExit tWhen klp @anystuff krp] = [[${tExit} ${tWhen} ${klp} ${anystuff} ${krp}]]
+
+anystuff_nested [klp @anystuff krp] = [[${klp}${anystuff}${krp}]]
+anystuff_flat [any] = [[${any}]]
+
+ident [identFirst @identRest] = [[${identFirst}${identRest}]]
+identFirst [c] = [[${c}]]
+identRest [c] = [[${c}]]
+
+NonemptyListOf [ident @commas @idents] = [[${ident}${commas}${idents}]]
+
+
+

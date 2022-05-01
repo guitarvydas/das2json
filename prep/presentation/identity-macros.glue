@@ -1,0 +1,20 @@
+start [@findMacros] = [[${findMacros}]]
+
+findMacros_macro [macro] = [[${macro}]]
+findMacros_ident [ident] = [[${ident}]]
+findMacros_any   [any]   = [[${any}]]
+
+Macro_ident [name klp CommaSeparatedIdents krp] = [[${name}${klp}${CommaSeparatedIdents}${krp}]]
+Macro_anything [name klp @anystuff krp] = [[${name}${klp}${anystuff}${krp}]]
+
+anystuff_nested [klp @anystuff krp] = [[${klp}${anystuff}${krp}]]
+anystuff_flat [any] = [[${any}]]
+
+ident [identFirst @identRest] = [[${identFirst}${identRest}]]
+identFirst [c] = [[${c}]]
+identRest [c] = [[${c}]]
+
+tAnythingMacro [name] = [[${name}]]
+tIdentMacro [name] = [[${name}]]
+
+NonemptyListOf [ident @commas @idents] = [[${ident}${commas}${idents}]]

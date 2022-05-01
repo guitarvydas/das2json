@@ -1,0 +1,4 @@
+test5 {
+main = ruleany+
+ruleany = any
+}

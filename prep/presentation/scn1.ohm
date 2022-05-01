@@ -1,0 +1,19 @@
+Scn1 {
+  Main = octothorpe+ commentToNL Statement+
+  octothorpe = "#"
+  commentToNL = line
+  Statement 
+    = VarStatement
+    | line
+
+  VarStatement = "var" ident #(nl)
+
+  ident = idFirst idRest*
+  idFirst = "A" .. "Z" | "a" .. "z" | "_"
+  idRest = "0" .. "9" | idFirst
+  line = nonNLchar* nl
+  nl = "\n"
+  nonNLchar = ~nl any
+}
+
+

@@ -1,0 +1,26 @@
+G {
+  start = findMacros*
+  findMacros =
+    | applySyntactic<Macro> -- macro
+    | ident                 -- ident               
+    | any                   -- any
+
+  Macro = 
+    | tIdentMacro "(" ListOf<ident, ","> ")" -- ident
+    | tAnythingMacro "(" anystuff* ")"       -- anything
+
+  anystuff =
+    | "(" anystuff* ")" -- nested
+    | ~"(" ~")" any     -- flat
+
+
+  
+  ident = identFirst identRest*
+  identFirst = "A" .. "Z" | "a" .. "z" | "_" 
+  identRest = "0" .. "9" | identFirst
+
+  tAnythingMacro = "m" ~identRest
+  tIdentMacro = "i" ~identRest
+
+}
+

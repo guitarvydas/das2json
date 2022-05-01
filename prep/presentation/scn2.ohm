@@ -1,0 +1,28 @@
+Scn2 {
+  Main = octothorpe+ comment macro*
+
+  macro
+    = applySyntactic<Statement>
+    | token
+    
+  Statement 
+    = VarStatement     -- var
+    | DisplayStatement -- display
+
+  VarStatement = "var" ident
+  DisplayStatement = "display" Comma_ident* ident
+
+  Comma_ident = ident ","
+
+  ident = idFirst idRest*
+  idFirst = "A" .. "Z" | "a" .. "z" | "_"
+  idRest = "0" .. "9" | idFirst
+
+  tVar = "var"
+
+  comment = notNL* nl
+
+  octothorpe = "#"
+  nl = "\n"
+  separator = ~idFirst ~octothorpe any
+}

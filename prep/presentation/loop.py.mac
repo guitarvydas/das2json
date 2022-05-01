@@ -1,0 +1,10 @@
+def test (x):
+    print (x)
+    loop
+      x = x + 1
+      print (f'top of loop {x}')
+      print (x)
+      exit when (x > 10)
+      print ('loop again')
+    end loop
+    print x

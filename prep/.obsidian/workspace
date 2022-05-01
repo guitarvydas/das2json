@@ -1,0 +1,102 @@
+{
+  "main": {
+    "id": "26fb1cf3f524af2c",
+    "type": "split",
+    "children": [
+      {
+        "id": "22e3770923c39989",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "README.md",
+            "mode": "preview",
+            "source": true
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "278abee87520da80",
+    "type": "split",
+    "children": [
+      {
+        "id": "9e0a1d7d117b5429",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "62b0e89c366ea8fa",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "cbd821931439c340",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4e7f31bd7007f7cf",
+    "type": "split",
+    "children": [
+      {
+        "id": "7d3f250be7413209",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "733258d667a32220",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "22e3770923c39989",
+  "lastOpenFiles": [
+    "README.md",
+    "presentation/Example 1.md",
+    "presentation/Syntax is Cheap.md",
+    "doc/Test1.md",
+    "doc/Test Implicitforall.md",
+    "doc/Test Forall.md",
+    "video1.mp4",
+    "presentation/PREP Syntax - Command Line.md",
+    "presentation/PREP - Macros Beyond Lisp.md",
+    "presentation/drawio-grammar.svg"
+  ]
+}

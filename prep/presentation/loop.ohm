@@ -1,0 +1,26 @@
+loop {
+  main = space* "loop" stuff
+
+  stuff = findMacros*
+  findMacros =
+    | applySyntactic<ExitWhenMacro> -- macro
+    | ident                         -- ident               
+    | ~"end" any                    -- any
+
+  ExitWhenMacro = 
+    | tExit tWhen "(" #(anystuff*) ")"
+
+  anystuff =
+    | "(" anystuff* ")" -- nested
+    | ~"(" ~")" any     -- flat
+
+  keyword = "loop" | "end" | "exit" | "when"
+  ident = ~keyword identFirst identRest*
+  identFirst = "A" .. "Z" | "a" .. "z" | "_" 
+  identRest = "0" .. "9" | identFirst
+
+  tExit = "exit" ~identRest
+  tWhen = "when" ~identRest
+}
+
+
