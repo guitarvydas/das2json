@@ -4,16 +4,21 @@
       "children": [],
       "connections": [],
       "id":"cell_13",
-      "inputs": ["otin" ],
+      "inputs": ["ot 2 in" ],
       "name":"Order 2 Taker",
-      "outputs": ["ot food order" ],
+      "outputs": ["ot 2 out" ],
       "synccode":""
     }
   ],
   [
     {
       "children": ["Order 2 Taker", "Order Taker" ],
-      "connections": [],
+      "connections": [
+	{
+	  "receivers": [ {"receiver": {"component":"Order 2 Taker", "port":"ot 2 in"}} ],
+	  "senders": [ {"sender": {"component":"Order Taker", "port":"ot 1 out"}} ]
+	}
+      ],
       "id":"cell_6",
       "inputs": ["tbjunk" ],
       "name":"Test Bench",
@@ -26,9 +31,9 @@
       "children": [],
       "connections": [],
       "id":"cell_7",
-      "inputs": ["otjunk" ],
+      "inputs": ["ot 1 in" ],
       "name":"Order Taker",
-      "outputs": ["ot food order" ],
+      "outputs": ["ot 1 out" ],
       "synccode":""
     }
   ]

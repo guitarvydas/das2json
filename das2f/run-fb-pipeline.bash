@@ -55,6 +55,14 @@ ${das2fdir}/layer6 ${das2fdir} 1>&2 #<<>>fb.pl
 # echo '** layer edge containment 3 **' 1>&2
 # ${das2fdir}/layeredgecontainment3 ${das2fdir} 1>&2 #<<>>fb.pl
 
+# echo '** layer edge containment **' 1>&2
+temp=temp_${RANDOM}
+temp2=temp2_${RANDOM}
+${das2fdir}/edgecontainment.bash ${das2fdir} >${temp} #<<>>fb.pl
+### move result into fb.pl (without overwrite problems)
+cat fb.pl $temp >$temp2
+mv $temp2 fb.pl
+rm -f $temp
 
 
 # Layer Synccode.
