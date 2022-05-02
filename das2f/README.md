@@ -1,86 +1,11 @@
-an edge goes from one port to another
+DaS to Factbase.
 
-an edge is contained in a component if (any of the below):
-1. both ports are directly contained in the component (i.e. by direct children, edge from child to child)
-2. an edge goes from a Container's input port to the input port of a child(s)
-3. an edge goes from a Child to the output port of a Container
-4. an edge goes from a Container's input directly to its own output (infrequently occurring edge case)
+DaS is Diagrams to Syntax.
 
-Care must be taken not to claim ownership of edges that are wholly-owned by children (or their children, or, ...)
+Factbase is currently implemented as a file full of PROLOG facts. (It could be implemented using maps or something else, or miniKanren, or, ...).  The salient feature is that we store atomic facts in a factbase, then use code snippets to walk the factbase like barnacles. The code creates new facts (molecules created from atoms) and shoves them back into the factbase (pruning facts from a factbase is only an optimization, not a requirement).
 
-- contains_edge1
-- contains_edge2
-- contains_edge3
+This was originally written using a bunch of small queries, written as .md files then converted into PROLOG->JavaScript pipelines (`layer_*.md` -> `layer*query.bash`).
 
-desired algorithm:
-for every item with kind=edge => Edge
-  Edge.source => SourceName
-  Edge.target => TargetName
-  normalizeName (SourceName) => Source  ## normalize name in case there are synonyms
-  normalizeName (TargetName) => Target  ## ''
-  case
-	child-to-child-edge: Parent ≣ (either Source or Target).parent
-	child-to-parent-edge: Parent ≣ Target.parent
-	parent-to-child-edge: Parent ≣ Target.parent
-    self-to-self-edge: Parent ≣ self
-	else fail-match
-  end case
+I'm iterating the logic (AKA debugging :-).  Currently, there is something wrong with the way that edge containment is detected.  See my working notes in `EDGECONTAINMENT.md`.
 
-normalizeName(X) ≣ if X has a synonym, then the normalizedName is the longer name, else the normalizedName is X
-
-edge (E) {
-  child-to-child-edge (normalizedName (E.source) => X, normalizedName (E.target) => Y) ≣ X.parent = Y.parent
-  child-to-parent-edge (normalizedName (E.source) => Child, normalizedName (E.target) => Parent) ≣ Child.parent = Parent
-  parent-to-child-edge (normalizedName (E.source) => Parent, normalizedName (E.target) => Child) ≣ Child.parent = Parent
-  self-to-self-edge (normalizedName (E.source) => Self, normalizedName (E.target) => Self) ≣ success.
-}
-
----
-contains_edge1:
-
-## query
-    das_fact(kind,Edge,edge)
-    das_fact(kind,Parent,rectangle)
-    diagram_fact(source,Edge,SourceLongID)
-	diagram_fact(synonym,Source,SourceLongID)
-	das_fact(direct_contains,Rect,Source)
-	das_fact(direct_contains,Parent,Rect)
-## display
-das_fact(direct_contains,${Parent},${Edge}).
-
-reading:
-for every item with kind=edge => "Edge"
-  Parent == kind(
----
-contains_edge2:
-
-## query
-    das_fact(kind,Edge,edge)
-    diagram_fact(source,Edge,SourceLongID)
-	diagram_fact(synonym,Source,SourceLongID)
-    diagram_fact(target,Edge,TargetLongID)
-	diagram_fact(synonym,Target,TargetLongID)
-	(das_fact(direction,Source,input) ; das_fact(direction,Source,pervasiveinput))
-	(das_fact(direction,Target,input) ; das_fact(direction,Target,pervasiveinput))
-    das_fact(kind,Parent,rectangle)
-	das_fact(direct_contains,Parent,Source)
-## display
-das_fact(direct_contains,${Parent},${Edge}).
-  
----
-contains_edge3:
-## query
-    das_fact(kind,Edge,edge)
-    diagram_fact(source,Edge,SourceLongID)
-	diagram_fact(synonym,Source,SourceLongID)
-    diagram_fact(target,Edge,TargetLongID)
-	diagram_fact(synonym,Target,TargetLongID)
-	(das_fact(direction,Source,output) ; das_fact(direction,Source,pervasiveoutput))
-	(das_fact(direction,Target,output) ; das_fact(direction,Target,pervasiveoutput))
-    das_fact(kind,Parent,rectangle)
-	das_fact(direct_contains,Parent,Target)
-## display
-das_fact(direct_contains,${Parent},${Edge}).
-  
-
-
+[It is *never* possible to figure it all out only by "thinking about it" (that is called "Waterfall development"), although some people can go further than I could. At some point, iteration is necessary. If only, to step upwards and to create a better notation for the problem, then solving the problem at a higher level and solving even more interesting problems that become apparent when the lower levels are elided...]
