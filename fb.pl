@@ -29,6 +29,10 @@ diagram_fact(cell, cell_9, "").
 diagram_fact(diagram, diagram_1, "").
 diagram_fact(edge, cell_9, 1).
 diagram_fact(edgeStyle, cell_9, "orthogonalEdgeStyle").
+diagram_fact(entryDx, cell_9, 0).
+diagram_fact(entryDy, cell_9, 0).
+diagram_fact(entryX, cell_9, 0).
+diagram_fact(entryY, cell_9, 0.5).
 diagram_fact(exitDx, cell_9, 0).
 diagram_fact(exitDy, cell_9, 0).
 diagram_fact(exitX, cell_9, 1).
@@ -116,8 +120,8 @@ diagram_fact(synonym, cell_5, id_1).
 diagram_fact(synonym, cell_6, id_TovHJiwwyZonmQ_bTznv__1).
 diagram_fact(synonym, cell_7, id_TovHJiwwyZonmQ_bTznv__2).
 diagram_fact(synonym, cell_8, id_TovHJiwwyZonmQ_bTznv__7).
-diagram_fact(synonym, cell_9, h_4wld_b__OjQW8SCtmzr__1).
-diagram_fact(target, cell_9, id_8fRTBHWT1LMxwT7S_JYk__15).
+diagram_fact(synonym, cell_9, id_WpZKIZtrqF__owTEDIemc__1).
+diagram_fact(target, cell_9, id_8fRTBHWT1LMxwT7S_JYk__17).
 diagram_fact(value, cell_10, "tbjunk").
 diagram_fact(value, cell_11, "otjunk").
 diagram_fact(value, cell_12, "tbo1").
@@ -277,4 +281,4 @@ das_fact(direct_contains,cell_7,cell_8).
 das_fact(direct_contains,cell_6,cell_9).
 das_fact(connection, cell_6, cell_9).
 das_fact(sender, cell_9, sender{component:"Test Bench",port:"tbjunk"}).
-das_fact(receiver, cell_9, receiver{component:"Order Taker",port:"otjunk"}).
+das_fact(receiver, cell_9, receiver{component:"Test Bench",port:"tbo1"}).
