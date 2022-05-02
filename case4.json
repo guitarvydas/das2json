@@ -3,7 +3,7 @@
     {
       "children": [],
       "connections": [],
-      "id":"cell_12",
+      "id":"cell_13",
       "inputs": ["otin" ],
       "name":"Order 2 Taker",
       "outputs": ["ot food order" ],
@@ -13,40 +13,7 @@
   [
     {
       "children": ["Order 2 Taker", "Order Taker" ],
-      "connections": [
-	{
-	  "receivers": [ {"receiver": {"component":"Test Bench", "port":"tbo1"}} ],
-	  "senders": [ {"sender": {"component":"Order 2 Taker", "port":"ot food order"}} ]
-	},
-	{
-	  "receivers": [ {"receiver": {"component":"Test Bench", "port":"tbo1"}} ],
-	  "senders": [ {"sender": {"component":"Order 2 Taker", "port":"ot food order"}} ]
-	},
-	{
-	  "receivers": [ {"receiver": {"component":"Test Bench", "port":"tbo1"}} ],
-	  "senders": [ {"sender": {"component":"Order 2 Taker", "port":"ot food order"}} ]
-	},
-	{
-	  "receivers": [ {"receiver": {"component":"Test Bench", "port":"tbo1"}} ],
-	  "senders": [ {"sender": {"component":"Order 2 Taker", "port":"ot food order"}} ]
-	},
-	{
-	  "receivers": [ {"receiver": {"component":"Test Bench", "port":"tbo1"}} ],
-	  "senders": [ {"sender": {"component":"Order 2 Taker", "port":"ot food order"}} ]
-	},
-	{
-	  "receivers": [ {"receiver": {"component":"Test Bench", "port":"tbo1"}} ],
-	  "senders": [ {"sender": {"component":"Order 2 Taker", "port":"ot food order"}} ]
-	},
-	{
-	  "receivers": [ {"receiver": {"component":"Test Bench", "port":"tbo1"}} ],
-	  "senders": [ {"sender": {"component":"Order 2 Taker", "port":"ot food order"}} ]
-	},
-	{
-	  "receivers": [ {"receiver": {"component":"Test Bench", "port":"tbo1"}} ],
-	  "senders": [ {"sender": {"component":"Order 2 Taker", "port":"ot food order"}} ]
-	}
-      ],
+      "connections": [],
       "id":"cell_6",
       "inputs": ["tbjunk" ],
       "name":"Test Bench",

@@ -1,23 +1,12 @@
 [
   [
     {
-      "children": [],
-      "connections": [],
-      "id":"cell_13",
-      "inputs": ["otin" ],
-      "name":"Order 2 Taker",
-      "outputs": ["ot food order" ],
-      "synccode":""
-    }
-  ],
-  [
-    {
-      "children": ["Order 2 Taker", "Order Taker" ],
+      "children": ["Order Taker" ],
       "connections": [],
       "id":"cell_6",
       "inputs": ["tbjunk" ],
       "name":"Test Bench",
-      "outputs": ["tbo1" ],
+      "outputs": ["tbo1", "tb food order" ],
       "synccode":""
     }
   ],
