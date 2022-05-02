@@ -13,7 +13,12 @@
   [
     {
       "children": ["Order 2 Taker", "Order Taker" ],
-      "connections": [],
+      "connections": [
+	{
+	  "receivers": [ {"receiver": {"component":"Order Taker", "port":"otjunk"}} ],
+	  "senders": [ {"sender": {"component":"Test Bench", "port":"tbjunk"}} ]
+	}
+      ],
       "id":"cell_6",
       "inputs": ["tbjunk" ],
       "name":"Test Bench",

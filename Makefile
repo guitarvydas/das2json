@@ -7,7 +7,7 @@ NODEMODULES=\
 # change this for your own environment
 TOOLS=.
 
-all: case2.json
+all: case3.json
 #all: testbench.json
 
 main_all: $(NODEMODULES) tools topbuildscript.py
