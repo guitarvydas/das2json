@@ -1,0 +1,24 @@
+[
+  [
+    {
+      "children": ["Order Taker" ],
+      "connections": [],
+      "id":"cell_6",
+      "inputs": ["tbjunk" ],
+      "name":"Test Bench",
+      "outputs": ["tbo1", "tb food order" ],
+      "synccode":""
+    }
+  ],
+  [
+    {
+      "children": [],
+      "connections": [],
+      "id":"cell_7",
+      "inputs": ["otjunk" ],
+      "name":"Order Taker",
+      "outputs": ["ot food order" ],
+      "synccode":""
+    }
+  ]
+]

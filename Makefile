@@ -7,7 +7,8 @@ NODEMODULES=\
 # change this for your own environment
 TOOLS=.
 
-all: testbench.json
+all: case4.json
+#all: testbench.json
 
 main_all: $(NODEMODULES) tools topbuildscript.py
 	./topbuildscript.py
@@ -37,6 +38,10 @@ helloworld.json : tools helloworld.drawio
 testbench.json : tools testbench.drawio
 	./generate.bash $(TOOLS) testbench.drawio
 	mv out.json testbench.json
+
+case4.json : tools case4.drawio
+	./generate.bash $(TOOLS) case4.drawio
+	mv out.json case4.json
 
 bootstrap_helloworld.json : tools helloworld.drawio
 	./generate.bash $(TOOLS) helloworld.drawio
