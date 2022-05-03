@@ -42,9 +42,11 @@ tagname := (
 	   ) 
 }
 
-ASC <: LeafAndContainer {
+ASCLC <: LeafAndContainer {
   PTag<tname> = dq? tname dq? ":"
   TaggedJObject :=
+    | EmptyChildrenObject -- emptychildren
+    | EmptyConnectionsObject -- emptyconnections
     | ChildrenObject -- children
     | ConnectionsObject -- connections
     | IDObject -- id
@@ -52,8 +54,12 @@ ASC <: LeafAndContainer {
     | OutputsObject -- outputs
     | NameObject -- name
     | SynccodeObject -- synccode
+    | ComponentObject -- component
+    | PortObject -- port
     | Tag JObject -- generic
 
+EmptyChildrenObject = PTag<"children"> "[]"
+EmptyConnectionsObject = PTag<"connections"> "[]"
 ChildrenObject = PTag<"children"> JObject
 ConnectionsObject = PTag<"connections"> JObject
 IDObject = PTag<"id"> JObject
@@ -61,4 +67,11 @@ InputsObject = PTag<"inputs"> JObject
 OutputsObject = PTag<"outputs"> JObject
 NameObject = PTag<"name"> JObject
 SynccodeObject = PTag<"synccode"> JObject
+ComponentObject = PTag<"component"> JObject
+PortObject = PTag<"port"> JObject
 }
+
+ASCpairs <: ASCLC {
+Pair = "{" ComponentObject PortObject "}"
+}
+
