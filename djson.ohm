@@ -29,7 +29,8 @@ Main := ArrayOfComponents
 ArrayOfComponents = "[" Component* "]"
 Component = ArrayOfSingleComponent
 ArrayOfSingleComponent = "[" SingleComponent "]"
-SingleComponent = Container | Leaf
-Container = NestedJObject
-Leaf = NestedJObject
+SingleComponent = Leaf | Container
+Container = ComponentDescriptor
+Leaf = ComponentDescriptor
+ComponentDescriptor = NestedJObject
 }
