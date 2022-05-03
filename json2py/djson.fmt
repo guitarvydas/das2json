@@ -26,7 +26,7 @@ NestedJObject [lb @o rb] = [[${lb}${o}${rb}]]
 Main [ArrayOfComponents] = [[${ArrayOfComponents}]]
 ArrayOfComponents [lb @Component rb] = [[${lb}${Components}${rb}]]
 Component [ArrayOfSingleComponent] = [[${ArrayOfSingleComponent}]]
-ArrayOfSingleComponent [lb SingleComponent rb  = [[${lb}${SingleComponent}${rb}]]
+ArrayOfSingleComponent [lb SingleComponent rb]  = [[${lb}${SingleComponent}${rb}]]
 SingleComponent [x] = [[${x}]]
 Container [ComponentDescriptor] = [[${ComponentDescriptor}]]
 Leaf [ComponentDescriptor] = [[${ComponentDescriptor}]]
@@ -60,15 +60,14 @@ SynccodeObject [PTag Object] = [[${PTag}${Object}]]
 ComponentObject [PTag Object] = [[${PTag}${Object}]]
 PortObject [PTag Object] = [[${PTag}${Object}]]
 
-Pair = "{" ComponentObject PortObject "}"
+Pair [lb ComponentObject PortObject rb] = [[${lb}${ComponentObject}${PortObject}${rb}]]
 
-ASCconnection <: ASCpairs {
-Connection = "{" PTag<"receivers"> ReceiverArray PTag<"senders"> SenderArray "}"
-ReceiverArray = "[" Receiver+ "]"
-SenderArray = "[" Sender "]"
-Receiver = "{" PTag<"receiver"> Pair "}"
-Sender = "{" PTag<"sender"> Pair "}"
+Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${lb}${PTagreceivers}${ReceiverArray}${PTagsenders}${SenderArray}${rb}]]
+ReceiverArray [lb @Receivers rb] = [[${lb}${Receivers}${rb}]]
+SenderArray [lb Sender rb] = [[${lb}${Sender}${rb}]]
+Receiver [lb PTagreceiver Pair rb] = [[${lb}${PTagreceiver}${Pair}${rb}]]
+Sender [lb PTagsender Pair rb] = [[${lb}${PTagsender}${Pair}${rb}]]
 
-SingleComponent := Leaf | Container
-Leaf := "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
-Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
+SingleComponent [x] = [[${x}]]
+Leaf [lb @x rb] = [[${lb}${x}${rb}]]
+Container [lb @x rb] = [[${lb}${x}${rb}]]
