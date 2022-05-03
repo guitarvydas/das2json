@@ -4,23 +4,22 @@ JObject = JArray | NestedJObject+ | string | number | true | false
 JArray = "[" JObject* "]"
 NestedJObject = "{" TaggedJObject+ "}"
 
-Tag = dq? name dq? ":"
-TaggedJObject = Tag JObject
+  Tag = dq? name dq? ":"
+  TaggedJObject = Tag JObject
 
-	  COLON = ":"
-	  dq = "\""
+    COLON = ":"
+    dq = "\""
 
-	  string = dq (~dq any)* dq
+    string = dq (~dq any)* dq
 
-	  spaces += ","
+    spaces += ","
 
-name = nameFirst nameRest*
-nameFirst = "A" .. "Z" | "a" .. "z" | "_"
-nameRest = digit | nameFirst
+    name = nameFirst nameRest*
+    nameFirst = "A" .. "Z" | "a" .. "z" | "_"
+    nameRest = digit | nameFirst
 
-number = digit+
-true = "true"
-false = "false"
+    number = digit+
+    true = "true"
+    false = "false"
 
 }
-

@@ -1,74 +1,35 @@
 djson {
-Main = "[" ComponentList "]"
-ComponentList =
-  | Component ComponentList -- rec
-  | Component               -- bottom
-Component = Leaf | Container
+Main = JObject
+JObject = JArray | NestedJObject+ | string | number | true | false
+JArray = "[" JObject* "]"
+NestedJObject = "{" TaggedJObject+ "}"
 
-  ///
+  Tag = dq? name dq? ":"
+  TaggedJObject = Tag JObject
 
-  Leaf = "[" "{" EmptyChildren EmptyConnections Id Inputs NameField Outputs Synccode "}" "]"
+    COLON = ":"
+    dq = "\""
 
-  Container = "[" "{" Children Connections Id Inputs NameField Outputs Synccode "}" "]"
+    string = dq (~dq any)* dq
 
-  ///
+    spaces += ","
 
-    EmptyChildren = CHILDREN EmptyList
-    EmptyConnections = CONNECTIONS EmptyList
-    Id = ID string
-    Inputs = INPUTS "[" NameList "]"
-    Outputs = OUTPUTS "[" NameList "]"
-    Synccode = SYNCCODE string
-    Children = CHILDREN "[" NameList "]"
-    NameField = NAME string
+    name = nameFirst nameRest*
+    nameFirst = "A" .. "Z" | "a" .. "z" | "_"
+    nameRest = digit | nameFirst
 
-    Connections = CONNECTIONS "[" ConnectionList "]"
-    ConnectionList =
-      | Connection ConnectionList -- rec
-      | Connection                -- bottom
+    number = digit+
+    true = "true"
+    false = "false"
 
-    Connection = "{" Receivers Senders "}"
-
-    ///
-      Receivers= RECEIVERS "[" ReceiverList "]"
-      ReceiverList =
-        | Receiver ReceiverList -- rec
-	| Receiver              -- bottom
-      Receiver = "{" RECEIVER Pair "}"
-      Senders = Sender
-      Sender = "{" SENDER Pair "}"
-
-      Pair = "{" COMPONENT Name PORT Name "}"
-      
-      EmptyList = "[]"
-
-      CHILDREN = dq "children" dq COLON
-      CONNECTIONS = dq "connections" dq COLON
-      ID = dq "id" dq COLON
-      INPUTS = dq "inputs" dq COLON
-      OUTPUTS = dq "outputs" dq COLON
-      NAME = dq "name" dq COLON
-      SYNCCODE = dq "synccode" dq COLON
-      RECEIVERS = dq "receivers" dq COLON
-      SENDERS = dq "senders" dq COLON
-      RECEIVER = dq "receiver" dq COLON
-      SENDER = dq "sender" dq COLON
-      COMPONENT = dq "component" dq COLON
-      PORT = dq "port" dq COLON
-
-      ///
-
-        Name = string
-	NameList = NonEmptyNameList?
-	NonEmptyNameList =
-	  | Name NameList -- rec
-          | Name          -- bottom
-
-	  COLON = ":"
-	  dq = "\""
-
-	  string = dq (~dq any)* dq
-
-	  spaces += ","
 }
 
+LeafAndContainer <: djson {
+Main := ArrayOfComponents
+ArrayOfComponents = "[" Component* "]"
+Component = ArrayOfSingleComponent
+ArrayOfSingleComponent = "[" SingleComponent "]"
+SingleComponent = Container | Leaf
+Container = NestedJObject
+Leaf = NestedJObject
+}
