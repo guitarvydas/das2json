@@ -88,3 +88,6 @@ SingleComponent := Leaf | Container
 Leaf := "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
 Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
 }
+
+ASC2py <: ASCLOCO {
+}
