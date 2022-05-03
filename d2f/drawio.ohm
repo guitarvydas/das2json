@@ -8,5 +8,6 @@ string= "\"" notDQ* "\""
 notDQ = ~"\"" any
 encodedChar = ~"<" any		   
 attributeValue = number | string
-number = digit+
+number = minus? digit+
+minus = "-"
 }
