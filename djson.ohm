@@ -47,8 +47,18 @@ ASC <: LeafAndContainer {
   TaggedJObject :=
     | ChildrenObject -- children
     | ConnectionsObject -- connections
+    | IDObject -- id
+    | InputsObject -- inputs
+    | OutputsObject -- outputs
+    | NameObject -- name
+    | SynccodeObject -- synccode
     | Tag JObject -- generic
 
 ChildrenObject = PTag<"children"> JObject
 ConnectionsObject = PTag<"connections"> JObject
+IDObject = PTag<"id"> JObject
+InputsObject = PTag<"inputs"> JObject
+OutputsObject = PTag<"outputs"> JObject
+NameObject = PTag<"name"> JObject
+SynccodeObject = PTag<"synccode"> JObject
 }
