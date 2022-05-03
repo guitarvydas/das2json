@@ -43,5 +43,12 @@ tagname := (
 }
 
 ASC <: LeafAndContainer {
+  PTag<tname> = dq? tname dq? ":"
+  TaggedJObject :=
+    | ChildrenObject -- children
+    | ConnectionsObject -- connections
+    | Tag JObject -- generic
 
+ChildrenObject = PTag<"children"> JObject
+ConnectionsObject = PTag<"connections"> JObject
 }
