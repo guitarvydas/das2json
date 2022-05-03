@@ -75,3 +75,14 @@ ASCpairs <: ASCLC {
 Pair = "{" ComponentObject PortObject "}"
 }
 
+ASCconnection <: ASCpairs {
+Connection = "{" PTag<"receivers"> ReceiverArray PTag<"senders"> SenderArray "}"
+ReceiverArray = "[" Receiver+ "]"
+SenderArray = "[" Sender "]"
+Receiver = "{" PTag<"receiver"> Pair "}"
+Sender = "{" PTag<"sender"> Pair "}"
+}
+
+ASCLOCO <: ASCconnection {
+LeafObject = EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject
+}
