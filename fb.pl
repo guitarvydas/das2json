@@ -410,44 +410,44 @@ diagram_fact(width, cell_31, 270).
 diagram_fact(width, cell_6, 1190).
 diagram_fact(width, cell_7, 330).
 diagram_fact(width, cell_9, 40).
-diagram_fact(x, cell_11, 570).
-diagram_fact(x, cell_12, -180).
-diagram_fact(x, cell_14, -10).
-diagram_fact(x, cell_15, 90).
-diagram_fact(x, cell_17, 450).
-diagram_fact(x, cell_19, 450).
-diagram_fact(x, cell_20, 70).
-diagram_fact(x, cell_21, 970).
-diagram_fact(x, cell_22, 670).
-diagram_fact(x, cell_24, 770).
-diagram_fact(x, cell_25, 650).
-diagram_fact(x, cell_27, 770).
-diagram_fact(x, cell_28, 680).
-diagram_fact(x, cell_29, 730).
-diagram_fact(x, cell_30, -160).
-diagram_fact(x, cell_31, 145).
-diagram_fact(x, cell_6, -200).
-diagram_fact(x, cell_7, 590).
-diagram_fact(x, cell_9, 900).
-diagram_fact(y, cell_11, -40).
-diagram_fact(y, cell_12, -65).
-diagram_fact(y, cell_14, -25).
-diagram_fact(y, cell_15, -60).
-diagram_fact(y, cell_17, -40).
-diagram_fact(y, cell_19, 10).
-diagram_fact(y, cell_20, -25).
-diagram_fact(y, cell_21, -40).
-diagram_fact(y, cell_22, -90).
-diagram_fact(y, cell_24, -65).
-diagram_fact(y, cell_25, -40).
-diagram_fact(y, cell_27, -15).
-diagram_fact(y, cell_28, 40).
-diagram_fact(y, cell_29, 40).
-diagram_fact(y, cell_30, -25).
-diagram_fact(y, cell_31, -25).
-diagram_fact(y, cell_6, -170).
-diagram_fact(y, cell_7, -125).
-diagram_fact(y, cell_9, -40).
+diagram_fact(x, cell_11, 810).
+diagram_fact(x, cell_12, 60).
+diagram_fact(x, cell_14, 230).
+diagram_fact(x, cell_15, 330).
+diagram_fact(x, cell_17, 690).
+diagram_fact(x, cell_19, 690).
+diagram_fact(x, cell_20, 310).
+diagram_fact(x, cell_21, 1210).
+diagram_fact(x, cell_22, 910).
+diagram_fact(x, cell_24, 1010).
+diagram_fact(x, cell_25, 890).
+diagram_fact(x, cell_27, 1010).
+diagram_fact(x, cell_28, 920).
+diagram_fact(x, cell_29, 970).
+diagram_fact(x, cell_30, 80).
+diagram_fact(x, cell_31, 385).
+diagram_fact(x, cell_6, 40).
+diagram_fact(x, cell_7, 830).
+diagram_fact(x, cell_9, 1140).
+diagram_fact(y, cell_11, -650).
+diagram_fact(y, cell_12, -675).
+diagram_fact(y, cell_14, -635).
+diagram_fact(y, cell_15, -670).
+diagram_fact(y, cell_17, -650).
+diagram_fact(y, cell_19, -600).
+diagram_fact(y, cell_20, -635).
+diagram_fact(y, cell_21, -650).
+diagram_fact(y, cell_22, -700).
+diagram_fact(y, cell_24, -675).
+diagram_fact(y, cell_25, -650).
+diagram_fact(y, cell_27, -625).
+diagram_fact(y, cell_28, -570).
+diagram_fact(y, cell_29, -570).
+diagram_fact(y, cell_30, -635).
+diagram_fact(y, cell_31, -635).
+diagram_fact(y, cell_6, -780).
+diagram_fact(y, cell_7, -735).
+diagram_fact(y, cell_9, -650).
 das_fact(kind,cell_10,edge).
 das_fact(kind,cell_11,ellipse).
 das_fact(kind,cell_12,rectangle).
@@ -523,82 +523,82 @@ das_fact(color,cell_6,"-").
 das_fact(color,cell_7,"-").
 das_fact(color,cell_8,"-").
 das_fact(color,cell_9,"yellow").
-das_fact(bbL,cell_11,570).
-  das_fact(bbT,cell_11,-40).
-  das_fact(bbR,cell_11,610).
-  das_fact(bbB,cell_11,0).
-das_fact(bbL,cell_12,-180).
-  das_fact(bbT,cell_12,-65).
-  das_fact(bbR,cell_12,10).
-  das_fact(bbB,cell_12,45).
-das_fact(bbL,cell_14,-10).
-  das_fact(bbT,cell_14,-25).
-  das_fact(bbR,cell_14,30).
-  das_fact(bbB,cell_14,15).
-das_fact(bbL,cell_15,90).
-  das_fact(bbT,cell_15,-60).
-  das_fact(bbR,cell_15,470).
-  das_fact(bbB,cell_15,60).
-das_fact(bbL,cell_17,450).
-  das_fact(bbT,cell_17,-40).
-  das_fact(bbR,cell_17,490).
-  das_fact(bbB,cell_17,0).
-das_fact(bbL,cell_19,450).
-  das_fact(bbT,cell_19,10).
-  das_fact(bbR,cell_19,490).
-  das_fact(bbB,cell_19,50).
-das_fact(bbL,cell_20,70).
-  das_fact(bbT,cell_20,-25).
-  das_fact(bbR,cell_20,110).
-  das_fact(bbB,cell_20,15).
-das_fact(bbL,cell_21,970).
-  das_fact(bbT,cell_21,-40).
-  das_fact(bbR,cell_21,1010).
-  das_fact(bbB,cell_21,0).
-das_fact(bbL,cell_22,670).
-  das_fact(bbT,cell_22,-90).
-  das_fact(bbR,cell_22,790).
-  das_fact(bbB,cell_22,60).
-das_fact(bbL,cell_24,770).
-  das_fact(bbT,cell_24,-65).
-  das_fact(bbR,cell_24,810).
-  das_fact(bbB,cell_24,-25).
-das_fact(bbL,cell_25,650).
-  das_fact(bbT,cell_25,-40).
-  das_fact(bbR,cell_25,690).
-  das_fact(bbB,cell_25,0).
-das_fact(bbL,cell_27,770).
-  das_fact(bbT,cell_27,-15).
-  das_fact(bbR,cell_27,810).
-  das_fact(bbB,cell_27,25).
-das_fact(bbL,cell_28,680).
-  das_fact(bbT,cell_28,40).
-  das_fact(bbR,cell_28,720).
-  das_fact(bbB,cell_28,80).
-das_fact(bbL,cell_29,730).
-  das_fact(bbT,cell_29,40).
-  das_fact(bbR,cell_29,770).
-  das_fact(bbB,cell_29,80).
-das_fact(bbL,cell_30,-160).
-  das_fact(bbT,cell_30,-25).
-  das_fact(bbR,cell_30,-20).
-  das_fact(bbB,cell_30,15).
-das_fact(bbL,cell_31,145).
-  das_fact(bbT,cell_31,-25).
-  das_fact(bbR,cell_31,415).
-  das_fact(bbB,cell_31,35).
-das_fact(bbL,cell_6,-200).
-  das_fact(bbT,cell_6,-170).
-  das_fact(bbR,cell_6,990).
-  das_fact(bbB,cell_6,140).
-das_fact(bbL,cell_7,590).
-  das_fact(bbT,cell_7,-125).
-  das_fact(bbR,cell_7,920).
-  das_fact(bbB,cell_7,100).
-das_fact(bbL,cell_9,900).
-  das_fact(bbT,cell_9,-40).
-  das_fact(bbR,cell_9,940).
-  das_fact(bbB,cell_9,0).
+das_fact(bbL,cell_11,810).
+  das_fact(bbT,cell_11,-650).
+  das_fact(bbR,cell_11,850).
+  das_fact(bbB,cell_11,-610).
+das_fact(bbL,cell_12,60).
+  das_fact(bbT,cell_12,-675).
+  das_fact(bbR,cell_12,250).
+  das_fact(bbB,cell_12,-565).
+das_fact(bbL,cell_14,230).
+  das_fact(bbT,cell_14,-635).
+  das_fact(bbR,cell_14,270).
+  das_fact(bbB,cell_14,-595).
+das_fact(bbL,cell_15,330).
+  das_fact(bbT,cell_15,-670).
+  das_fact(bbR,cell_15,710).
+  das_fact(bbB,cell_15,-550).
+das_fact(bbL,cell_17,690).
+  das_fact(bbT,cell_17,-650).
+  das_fact(bbR,cell_17,730).
+  das_fact(bbB,cell_17,-610).
+das_fact(bbL,cell_19,690).
+  das_fact(bbT,cell_19,-600).
+  das_fact(bbR,cell_19,730).
+  das_fact(bbB,cell_19,-560).
+das_fact(bbL,cell_20,310).
+  das_fact(bbT,cell_20,-635).
+  das_fact(bbR,cell_20,350).
+  das_fact(bbB,cell_20,-595).
+das_fact(bbL,cell_21,1210).
+  das_fact(bbT,cell_21,-650).
+  das_fact(bbR,cell_21,1250).
+  das_fact(bbB,cell_21,-610).
+das_fact(bbL,cell_22,910).
+  das_fact(bbT,cell_22,-700).
+  das_fact(bbR,cell_22,1030).
+  das_fact(bbB,cell_22,-550).
+das_fact(bbL,cell_24,1010).
+  das_fact(bbT,cell_24,-675).
+  das_fact(bbR,cell_24,1050).
+  das_fact(bbB,cell_24,-635).
+das_fact(bbL,cell_25,890).
+  das_fact(bbT,cell_25,-650).
+  das_fact(bbR,cell_25,930).
+  das_fact(bbB,cell_25,-610).
+das_fact(bbL,cell_27,1010).
+  das_fact(bbT,cell_27,-625).
+  das_fact(bbR,cell_27,1050).
+  das_fact(bbB,cell_27,-585).
+das_fact(bbL,cell_28,920).
+  das_fact(bbT,cell_28,-570).
+  das_fact(bbR,cell_28,960).
+  das_fact(bbB,cell_28,-530).
+das_fact(bbL,cell_29,970).
+  das_fact(bbT,cell_29,-570).
+  das_fact(bbR,cell_29,1010).
+  das_fact(bbB,cell_29,-530).
+das_fact(bbL,cell_30,80).
+  das_fact(bbT,cell_30,-635).
+  das_fact(bbR,cell_30,220).
+  das_fact(bbB,cell_30,-595).
+das_fact(bbL,cell_31,385).
+  das_fact(bbT,cell_31,-635).
+  das_fact(bbR,cell_31,655).
+  das_fact(bbB,cell_31,-575).
+das_fact(bbL,cell_6,40).
+  das_fact(bbT,cell_6,-780).
+  das_fact(bbR,cell_6,1230).
+  das_fact(bbB,cell_6,-470).
+das_fact(bbL,cell_7,830).
+  das_fact(bbT,cell_7,-735).
+  das_fact(bbR,cell_7,1160).
+  das_fact(bbB,cell_7,-510).
+das_fact(bbL,cell_9,1140).
+  das_fact(bbT,cell_9,-650).
+  das_fact(bbR,cell_9,1180).
+  das_fact(bbB,cell_9,-610).
 das_fact(direction,cell_11,input).
 das_fact(direction,cell_14,output).
 das_fact(direction,cell_17,output).
