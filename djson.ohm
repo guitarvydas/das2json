@@ -4,8 +4,9 @@ JObject = JArray | NestedJObject+ | string | number | true | false
 JArray = "[" JObject* "]"
 NestedJObject = "{" TaggedJObject+ "}"
 
-  Tag = dq? name dq? ":"
+  Tag = dq? tagname dq? ":"
   TaggedJObject = Tag JObject
+  tagname = name
 
     COLON = ":"
     dq = "\""
@@ -33,4 +34,14 @@ SingleComponent = Leaf | Container
 Container = ComponentDescriptor
 Leaf = ComponentDescriptor
 ComponentDescriptor = NestedJObject
+tagname := (
+             "children" | "connections" | "id" | "inputs" | "outputs" | "name" 
+	   | "synccode"
+	   | "receivers" | "senders" | "receiver" | "sender"
+	   | "component" | "port"
+	   ) 
+}
+
+ASC <: LeafAndContainer {
+
 }
