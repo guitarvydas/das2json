@@ -58,8 +58,11 @@ ${support.popContext ()}
   string [q1 @cs q2] = [[${q1}${cs}${q2}]]
   notDQ [c] = [[${c}]]
   attributeValue [ns] = [[${ns}]]
+  number_mqouted [q1 m n q2] = [[-${n}]]
   number_qouted [q1 n q2] = [[${n}]]
   number_raw [n] = [[${n}]]
   quote [c] = [[${c}]]
   numeric [@whole @fractional] = [[${whole}${fractional}]]
   fractional [kdot @digits] = [[${kdot}${digits}]]
+  minus [c] = [[${c}]]
+  

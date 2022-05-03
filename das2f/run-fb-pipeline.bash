@@ -9,12 +9,15 @@ das2fdir=$root/das2f
 
 
 # Layer 1. Infer low-hanging fruit information.
-echo '** layer 1 **' 1>&2
-
+echo '** layer 1 a **' 1>&2
 ${das2fdir}/layerkind ${das2fdir} 1>&2 # <<>>fb.pl
+echo '** layer 1 b **' 1>&2
 ${das2fdir}/layername ${das2fdir} 1>&2 # <<>>fb.pl
+echo '** layer 1 c **' 1>&2
 ${das2fdir}/layercolor ${das2fdir} 1>&2 # <<>>fb.pl
+echo '** layer 1 d **' 1>&2
 ${das2fdir}/layerboundingbox ${das2fdir} 1>&2 # <<>>fb.pl
+echo '** layer 1 e **' 1>&2
 
 # # Layer 2. Names, port directions
 echo '** layer 2 **' 1>&2
@@ -40,17 +43,26 @@ ${das2fdir}/layer5 ${das2fdir} 1>&2 #<<>>fb.pl
 echo '** layer 6 - direct containment **' 1>&2
 ${das2fdir}/layer6 ${das2fdir} 1>&2 #<<>>fb.pl
 
-# Layer edge containment 1
-echo '** layer edge containment 1 **' 1>&2
-${das2fdir}/layeredgecontainment1 ${das2fdir} 1>&2 #<<>>fb.pl
+## hmm, this code has a bug (probably #1)
+# # Layer edge containment 1
+# echo '** layer edge containment 1 **' 1>&2
+# ${das2fdir}/layeredgecontainment1 ${das2fdir} 1>&2 #<<>>fb.pl
 
-# Layer edge containment 2
-echo '** layer edge containment 2 **' 1>&2
-${das2fdir}/layeredgecontainment2 ${das2fdir} 1>&2 #<<>>fb.pl
-# Layer edge containment 3
-echo '** layer edge containment 3 **' 1>&2
-${das2fdir}/layeredgecontainment3 ${das2fdir} 1>&2 #<<>>fb.pl
+# # Layer edge containment 2
+# echo '** layer edge containment 2 **' 1>&2
+# ${das2fdir}/layeredgecontainment2 ${das2fdir} 1>&2 #<<>>fb.pl
+# # Layer edge containment 3
+# echo '** layer edge containment 3 **' 1>&2
+# ${das2fdir}/layeredgecontainment3 ${das2fdir} 1>&2 #<<>>fb.pl
 
+# echo '** layer edge containment **' 1>&2
+temp=temp_${RANDOM}
+temp2=temp2_${RANDOM}
+${das2fdir}/edgecontainment.bash ${das2fdir} >${temp} #<<>>fb.pl
+### move result into fb.pl (without overwrite problems)
+cat fb.pl $temp >$temp2
+mv $temp2 fb.pl
+rm -f $temp
 
 
 # Layer Synccode.

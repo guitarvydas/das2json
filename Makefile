@@ -7,7 +7,12 @@ NODEMODULES=\
 # change this for your own environment
 TOOLS=.
 
-all: $(NODEMODULES) tools helloworld.py topd2py.py
+all: testbench.json
+
+main_all: $(NODEMODULES) tools topbuildscript.py
+	./topbuildscript.py
+
+bootstrap : $(NODEMODULES) tools bootstrap_helloworld.json topbuildscript.py
 
 ~/node_modules/ohm-js:
 	npm install ohm-js
@@ -29,20 +34,44 @@ helloworld.json : tools helloworld.drawio
 	./generate.bash $(TOOLS) helloworld.drawio
 	mv out.json helloworld.json
 
-helloworld.py : helloworld.json
-	./transpile2py.bash helloworld.drawio helloworld.json
-	chmod a+x top.py
-	./top.py
+testbench.json : tools testbench.drawio
+	./generate.bash $(TOOLS) testbench.drawio
+	mv out.json testbench.json
 
-d2py.json : tools d2py.drawio
-	./generate.bash $(TOOLS) d2py.drawio
-	mv out.json d2py.json
+case4.json : tools case4.drawio
+	./generate.bash $(TOOLS) case4.drawio
+	mv out.json case4.json
 
-topd2py.py : d2py.json transpile2py.bash pyemit.py
-	./transpile2py.bash d2py.drawio d2py.json
-	mv top.py topd2py.py
-	chmod a+x topd2py.py
-	./topd2py.py
+case0.json : tools case0.drawio
+	./generate.bash $(TOOLS) case0.drawio
+	mv out.json case0.json
+case1.json : tools case1.drawio
+	./generate.bash $(TOOLS) case1.drawio
+	mv out.json case1.json
+case2.json : tools case2.drawio
+	./generate.bash $(TOOLS) case2.drawio
+	mv out.json case2.json
+case3.json : tools case3.drawio
+	./generate.bash $(TOOLS) case3.drawio
+	mv out.json case3.json
+
+bootstrap_helloworld.json : tools helloworld.drawio
+	./generate.bash $(TOOLS) helloworld.drawio
+	mv out.json helloworld.json
+
+# helloworld.py : helloworld.json
+# 	./transpile2py.bash helloworld.drawio helloworld.json
+# 	chmod a+x top.py
+# 	./top.py
+
+buildscript.json : tools buildscript.drawio
+	./generate.bash $(TOOLS) buildscript.drawio
+	mv out.json buildscript.json
+
+topbuildscript.py : buildscript.json transpile2py.bash pyemit.py
+	./transpile2py.bash buildscript.drawio buildscript.json
+	mv top.py topbuildscript.py
+	chmod a+x topbuildscript.py
 
 clean:
 	(cd ./dr ; make clean)

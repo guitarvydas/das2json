@@ -20,9 +20,12 @@ diagram {
   string= quote notDQ* quote
   notDQ = ~quote any
   attributeValue = number | string
-  number =   quote numeric quote -- qouted
-           |       numeric       -- raw 
+  number =
+    | quote minus  numeric quote -- mqouted
+    | quote numeric quote -- qouted
+    |       numeric       -- raw 
   quote = "\""
   numeric = digit+ fractional?
   fractional = "." digit+
+  minus = "-"
 }
