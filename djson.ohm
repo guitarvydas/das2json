@@ -1,0 +1,74 @@
+djson {
+Main = "[" ComponentList "]"
+ComponentList =
+  | Component ComponentList -- rec
+  | Component               -- bottom
+Component = Leaf | Container
+
+  ///
+
+  Leaf = "[" "{" EmptyChildren EmptyConnections Id Inputs NameField Outputs Synccode "}" "]"
+
+  Container = "[" "{" Children Connections Id Inputs NameField Outputs Synccode "}" "]"
+
+  ///
+
+    EmptyChildren = CHILDREN EmptyList
+    EmptyConnections = CONNECTIONS EmptyList
+    Id = ID string
+    Inputs = INPUTS "[" NameList "]"
+    Outputs = OUTPUTS "[" NameList "]"
+    Synccode = SYNCCODE string
+    Children = CHILDREN "[" NameList "]"
+    NameField = NAME string
+
+    Connections = CONNECTIONS "[" ConnectionList "]"
+    ConnectionList =
+      | Connection ConnectionList -- rec
+      | Connection                -- bottom
+
+    Connection = "{" Receivers Senders "}"
+
+    ///
+      Receivers= RECEIVERS "[" ReceiverList "]"
+      ReceiverList =
+        | Receiver ReceiverList -- rec
+	| Receiver              -- bottom
+      Receiver = "{" RECEIVER Pair "}"
+      Senders = Sender
+      Sender = "{" SENDER Pair "}"
+
+      Pair = "{" COMPONENT Name PORT Name "}"
+      
+      EmptyList = "[]"
+
+      CHILDREN = dq "children" dq COLON
+      CONNECTIONS = dq "connections" dq COLON
+      ID = dq "id" dq COLON
+      INPUTS = dq "inputs" dq COLON
+      OUTPUTS = dq "outputs" dq COLON
+      NAME = dq "name" dq COLON
+      SYNCCODE = dq "synccode" dq COLON
+      RECEIVERS = dq "receivers" dq COLON
+      SENDERS = dq "senders" dq COLON
+      RECEIVER = dq "receiver" dq COLON
+      SENDER = dq "sender" dq COLON
+      COMPONENT = dq "component" dq COLON
+      PORT = dq "port" dq COLON
+
+      ///
+
+        Name = string
+	NameList = NonEmptyNameList?
+	NonEmptyNameList =
+	  | Name NameList -- rec
+          | Name          -- bottom
+
+	  COLON = ":"
+	  dq = "\""
+
+	  string = dq (~dq any)* dq
+
+	  spaces += ","
+}
+
