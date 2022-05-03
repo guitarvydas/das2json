@@ -1,0 +1,27 @@
+Main [@sharps kdesign krule Predicate s]
+  = [[(${Predicate} -> (format (user_error, "${s}", []), abort))\n]]
+
+Predicate_rulecall [ident klpar actuals krpar] = [[niy.${ident}${klpar}${actuals}${krpar}]]
+Predicate_eqstring [ident keq s] = [[(${ident} = ${s})]]
+Predicate_eqident [ident keq ident] = [[niy.${ident}${keq}${ident}]]
+
+
+actuals_parenthesized [klpar actuals krpar] = [[${klpar}${actuals}${krpar}]]
+actuals_raw [@notPAREN] = [[${notPAREN}]]
+
+
+line [@notNL nl] = [[${notNL}]]
+
+  ident [c @cs] = [[${c}${cs}]]
+  firstChar [c] = [[${c}]]
+  restChar [c] = [[${c}]]
+  nl [c] = [[${c}]]
+  sharp [c] = [[${c}]]
+  notNL [c] = [[${c}]]
+  ws [c] = [[${c}]]
+
+  string [kdq @notDQ kdq2] = [[${kdq}${notDQ}${kdq2}]]
+  dq [c] = [[${c}]]
+  notDQ [c] = [[${c}]]
+
+  notPAREN [c] = [[${c}]]

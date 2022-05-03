@@ -1,1 +1,74 @@
 string [dq1 @cs dq2] = [[STR]]
+
+JObject [x] = [[${x}]]
+JArray [lb @o rb] = [[${lb}${o}${rb}]]
+NestedJObject [lb @o rb] = [[${lb}${o}${rb}]]
+
+  Tag [@dq1 tagname @dq2 kcolon] = [[${dq1}${tagname}${dq2}${kcolon}]]
+  TaggedJObject [Tag JObject ] = [[${Tag}${JObject}]]
+  tagname [name] = [[${name}]]
+
+    COLON [c] = [[${c}]]
+    dq  [c] = [[${c}]]
+
+    string [dq1 @cs dq2] = [[${dq1}${cs}${dq2}]]
+
+    space [c] = [[${c}]]
+
+    name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
+    nameFirst [c] = [[${c}]]
+    nameRest [c] = [[${c}]]
+
+    number [@digits] = [[${digits}]]
+    true [k] = [[${k}]]
+    false [k] = [[${k}]]
+
+Main [ArrayOfComponents] = [[${ArrayOfComponents}]]
+ArrayOfComponents [lb @Component rb] = [[${lb}${Components}${rb}]]
+Component [ArrayOfSingleComponent] = [[${ArrayOfSingleComponent}]]
+ArrayOfSingleComponent [lb SingleComponent rb  = [[${lb}${SingleComponent}${rb}]]
+SingleComponent [x] = [[${x}]]
+Container [ComponentDescriptor] = [[${ComponentDescriptor}]]
+Leaf [ComponentDescriptor] = [[${ComponentDescriptor}]]
+ComponentDescriptor [NestedJObject] = [[${NestedJObject}]]
+tagname [k] = [[${k}]]
+
+  PTag [@dq1 tname @dq2 kcolon] = [[${dq1}${tname}${dq2}${kcolon}]]
+
+  TaggedJObject_emptychildren [x] = [[${x}]]
+  TaggedJObject_emptyconnections [x] = [[${x}]]
+  TaggedJObject_children [x] = [[${x}]]
+  TaggedJObject_connections [x] = [[${x}]]
+  TaggedJObject_id [x] = [[${x}]]
+  TaggedJObject_inputs [x] = [[${x}]]
+  TaggedJObject_outputs [x] = [[${x}]]
+  TaggedJObject_name [x] = [[${x}]]
+  TaggedJObject_synccode [x] = [[${x}]]
+  TaggedJObject_component [x] = [[${x}]]
+  TaggedJObject_port [x] = [[${x}]]
+  TaggedJObject_generic [x] = [[${x}]]
+
+EmptyChildrenObject [PTag Object] = [[${PTag}${Object}]]
+EmptyConnectionsObject [PTag Object] = [[${PTag}${Object}]]
+ChildrenObject [PTag Object] = [[${PTag}${Object}]]
+ConnectionsObject [PTag Object] = [[${PTag}${Object}]]
+IDObject [PTag Object] = [[${PTag}${Object}]]
+InputsObject [PTag Object] = [[${PTag}${Object}]]
+OutputsObject [PTag Object] = [[${PTag}${Object}]]
+NameObject [PTag Object] = [[${PTag}${Object}]]
+SynccodeObject [PTag Object] = [[${PTag}${Object}]]
+ComponentObject [PTag Object] = [[${PTag}${Object}]]
+PortObject [PTag Object] = [[${PTag}${Object}]]
+
+Pair = "{" ComponentObject PortObject "}"
+
+ASCconnection <: ASCpairs {
+Connection = "{" PTag<"receivers"> ReceiverArray PTag<"senders"> SenderArray "}"
+ReceiverArray = "[" Receiver+ "]"
+SenderArray = "[" Sender "]"
+Receiver = "{" PTag<"receiver"> Pair "}"
+Sender = "{" PTag<"sender"> Pair "}"
+
+SingleComponent := Leaf | Container
+Leaf := "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
+Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"

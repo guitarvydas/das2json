@@ -1,0 +1,28 @@
+designrule {
+  Main = sharp+ "design" "rule" Predicate line sharp+ "display" line+
+
+  Predicate
+    = ident "(" actuals ")" -- rulecall
+    | ident "is" string      -- eqstring
+    | ident "is" ident       -- eqident
+
+  actuals =   "(" actuals ")" -- parenthesized
+            | notPAREN+         -- raw
+
+  
+    line = ~sharp notNL* nl
+
+    ident = firstChar restChar*
+    firstChar = "A" .. "Z" | "a" .. "z" | "_"
+    restChar = "0" .. "9" | firstChar
+    nl = "\n"
+    sharp = "#"
+    notNL = ~nl any
+    ws = " " | "\t"
+
+    string = dq notDQ* dq
+    dq = "\""
+    notDQ = ~dq any
+
+    notPAREN = ~"(" ~")" any
+}

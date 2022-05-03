@@ -13,7 +13,7 @@ NestedJObject = "{" TaggedJObject+ "}"
 
     string = dq (~dq any)* dq
 
-    spaces += ","
+    space += ","
 
     name = nameFirst nameRest*
     nameFirst = "A" .. "Z" | "a" .. "z" | "_"
