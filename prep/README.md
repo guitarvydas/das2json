@@ -9,6 +9,7 @@ pre 're-begin' 're-terminate' ohm-spec glue-spec <in >out
 pre 're-begin' 're-terminate' ohm-spec glue-spec --input=in
 
 pre 're-begin' 're-terminate' ohm-spec glue-spec --support=fname [...]
+pre 're-begin' 're-terminate' ohm-spec glue-spec --fmt=fname [...]
 
 pre 're-begin' 're-terminate' ohm-spec glue-spec --stop=1 [...]
 

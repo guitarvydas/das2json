@@ -28,3 +28,13 @@ exports.decode = function (s) {
 	.replace (/<pre(^>]*/, '');
     return decodeURIComponent (code7);
 }
+
+var comp = {};
+exports.set = function (field, v) {
+    comp[field] = v;
+    return "";
+}
+exports.get = function (field) {
+    return comp[field];
+}
+

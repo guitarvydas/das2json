@@ -16,6 +16,7 @@ var traceDepth;
 
 var ohm = require ('ohm-js');
 var support;
+var fmt;
 
 const glueGrammar =
       String.raw`
@@ -395,6 +396,12 @@ function pre (allchars) {
 	support = require (argv.support);
 	if (support.setArgv) {
 	    support.setArgv (argv);
+	}
+    }
+    if (argv.fmt) {
+	fmt = require (argv.fmt);
+	if (fmt.setArgv) {
+	    fmt.setArgv (argv);
 	}
     }
     if (argv.trace) {
