@@ -41,7 +41,7 @@ exports.decode = function (s) {
 }
 
 var comp = {};
-exports.put = function (field, v) {
+function put (field, v) {
     if (comp[field]) {
 	comp[field].push (v);
     } else {
@@ -49,6 +49,7 @@ exports.put = function (field, v) {
     }
     return "";
 }
+exports.put = put;
 exports.get = function (field) {
     return comp[field].pop ();
 }
@@ -63,4 +64,12 @@ var counter = 0;
 exports.gensym = function () {
     counter += 1;
     return counter.toString ();
+}
+function getsym  () {
+    return counter.toString ();
+}
+
+exports.formatChildMapEntry = function (n) {
+    put ("children", `'${n}':child${getsym ()}, `);
+    return '';
 }

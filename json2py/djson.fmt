@@ -30,6 +30,7 @@ class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
 	${fmt.get ("inputs")}
 	${fmt.get ("outputs")}
         ${fmt.get ("instances")}
+        self.children = \{${fmt.get ("children")}\}
     def react (self, inputMessage):
         ${fmt.get ("synccode")}
         return super ().react (inputMessage)
@@ -92,5 +93,5 @@ ListableName [s] = [[${s}, ]]
 ArrayOfConnections [lb @Connections rb] = [[A${Connections}B ]]
 
 ArrayOfChildNames [lb @ChildNames rb] = [[^^ ${ChildNames} ^^]]
-ChildName [n] = [[${fmt.put ("instances", 'child' + fmt.gensym () + ' = ' + n + '._' + n)}]]
+ChildName [n] = [[${fmt.put ("instances", 'child' + fmt.gensym () + ' = ' + n + '._' + n + ' (dispatcher, self, ' + n + ')\n')})}${fmt.formatChildMapEntry (n)}]]
 childString [s] = [[${fmt.pythonize (s)}]]
