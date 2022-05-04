@@ -83,7 +83,10 @@ SingleComponent [x] = [[${x}]]
 Leaf [lb @x rb] = [[${x}]]
 Container [lb @x rb] = [[${x}]]
 
-ArrayOfNames [lb anames rb] = [[${anames}]]
+ArrayOfNames [lb @anames rb] = [[${anames}]]
 ListOfNames_rec [name more] = [[${name}${more}]]
 ListOfNames_bottom [name] = [[${name}]]
 ListableName [s] = [[${s}, ]]
+
+ArrayOfConnections [lb @Connection rb] = [[${lb}${Connection}${rb}]]
+
