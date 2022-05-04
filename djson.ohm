@@ -97,8 +97,14 @@ ListOfNames =
   | ListableName ListOfNames -- rec
   | string             -- bottom
 ListableName = string
+
 ArrayOfConnections = "[" Connection* "]"
+
 }
 
 ASC2py <: ASCLOCO {
+ChildrenObject := PTag<"children"> ArrayOfChildNames
+ArrayOfChildNames = "[" ChildName* "]"
+ChildName = childString
+childString = string
 }

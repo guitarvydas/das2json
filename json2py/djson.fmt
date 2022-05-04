@@ -29,6 +29,7 @@ class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
         super ().__init__ (dispatcher, parent, idInParent)
 	${fmt.get ("inputs")}
 	${fmt.get ("outputs")}
+        ${fmt.get ("instances")}
     def react (self, inputMessage):
         ${fmt.get ("synccode")}
         return super ().react (inputMessage)
@@ -61,11 +62,11 @@ tagname [k] = [[${k}]]
 
 EmptyChildrenObject [PTag Object] = [[]]
 EmptyConnectionsObject [PTag Object] = [[]]
-ChildrenObject [PTag Object] = [[${Object}]]
+ChildrenObject [PTag Object] = [[]]
 ConnectionsObject [PTag Object] = [[${Object}]]
 IDObject [PTag Object] = [[]]
-InputsObject [PTag Object] = [[${fmt.put ("inputs", 'self.inputs = [' + Object + '];')}]]
-OutputsObject [PTag Object] = [[${fmt.put ("outputs", 'self.outputs = [' + Object + '];')}]]
+InputsObject [PTag Object] = [[${fmt.put ("inputs", 'self.inputs = [' + Object + ']')}]]
+OutputsObject [PTag Object] = [[${fmt.put ("outputs", 'self.outputs = [' + Object + ']')}]]
 NameObject [PTag Object] = [[${fmt.put ("name", Object)}]]
 SynccodeObject [PTag Object] = [[${fmt.put ("synccode", fmt.decode (Object))}]]
 ComponentObject [PTag Object] = [[${Object}]]
@@ -88,5 +89,8 @@ ListOfNames_rec [name more] = [[${name}${more}]]
 ListOfNames_bottom [name] = [[${name}]]
 ListableName [s] = [[${s}, ]]
 
-ArrayOfConnections [lb @Connection rb] = [[${lb}${Connection}${rb}]]
+ArrayOfConnections [lb @Connections rb] = [[A${Connections}B ]]
 
+ArrayOfChildNames [lb @ChildNames rb] = [[^^ ${ChildNames} ^^]]
+ChildName [n] = [[${fmt.put ("instances", 'child' + fmt.gensym () + ' = ' + n + '._' + n)}]]
+childString [s] = [[${fmt.pythonize (s)}]]

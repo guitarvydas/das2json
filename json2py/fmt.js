@@ -52,10 +52,15 @@ exports.put = function (field, v) {
 exports.get = function (field) {
     return comp[field].pop ();
 }
-exports.aget = function (field) {
-    return pythonize (comp[field]);
-}
 
 exports.pythonize = function (s) {
-    return s.replace (/ /g, "_");
+    return s
+	.replace (/ /g, "_")
+	.replace (/"/g, "")
+}
+
+var counter = 0;
+exports.gensym = function () {
+    counter += 1;
+    return counter.toString ();
 }
