@@ -25,7 +25,7 @@ NestedJObject [lb @o rb] = [[${o}]]
 Main [ArrayOfComponents] = [[${ArrayOfComponents}]]
 ArrayOfComponents [lb @Components rb] = [[${Components}]]
 Component [ArrayOfSingleComponent] = [[${ArrayOfSingleComponent}]]
-ArrayOfSingleComponent [lb @SingleComponent rb]  = [[U ${SingleComponent} V]]
+ArrayOfSingleComponent [lb @SingleComponent rb]  = [[${SingleComponent}]]
 
 ComponentDescriptor [NestedJObject] = [[${NestedJObject}]]
 tagname [k] = [[${k}]]
@@ -67,7 +67,7 @@ SenderArray [lb Sender rb] = [[${Sender}]]
 Receiver [lb PTagreceiver Pair rb] = [[${Pair}]]
 Sender [lb PTagsender Pair rb] = [[${Pair}]]
 
-SingleComponent [x] = {{console.log ("SINGLE"); fmt.reset ();}}[[${console.log ("SINGLE UP")}
+SingleComponent [x] = {{fmt.reset ();}}[[
 class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
 
     def __init__ (self, dispatcher, parent, idInParent):
@@ -81,7 +81,7 @@ class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
         return super ().react (inputMessage)
 ]]
 
-Leaf [lb @x rb] = [[${console.log("LEAF")}${x}]]
+Leaf [lb @x rb] = [[${x}]]
 Container [lb @x rb] = [[${x}]]
 
 ArrayOfNames [lb @anames rb] = [[${anames}]]
