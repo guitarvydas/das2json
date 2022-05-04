@@ -22,25 +22,11 @@ NestedJObject [lb @o rb] = [[${o}]]
     true [k] = [[${k}]]
     false [k] = [[${k}]]
 
-Main [ArrayOfComponents] = [[${ArrayOfComponents}
-class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
-
-    def __init__ (self, dispatcher, parent, idInParent):
-        super ().__init__ (dispatcher, parent, idInParent)
-	${fmt.get ("inputs")}
-	${fmt.get ("outputs")}
-        ${fmt.get ("instances")}
-        self.children = \{${fmt.get ("children")}\}
-    def react (self, inputMessage):
-        ${fmt.get ("synccode")}
-        return super ().react (inputMessage)
-]]
+Main [ArrayOfComponents] = [[${ArrayOfComponents}]]
 ArrayOfComponents [lb @Components rb] = [[${Components}]]
 Component [ArrayOfSingleComponent] = [[${ArrayOfSingleComponent}]]
-ArrayOfSingleComponent [lb SingleComponent rb]  = [[${SingleComponent}]]
-SingleComponent [x] = {{fmt.reset ();}[[${x}]]
-Container [ComponentDescriptor] = [[${ComponentDescriptor}]]
-Leaf [ComponentDescriptor] = [[${ComponentDescriptor}]]
+ArrayOfSingleComponent [lb @SingleComponent rb]  = [[U ${SingleComponent} V]]
+
 ComponentDescriptor [NestedJObject] = [[${NestedJObject}]]
 tagname [k] = [[${k}]]
 
@@ -81,8 +67,21 @@ SenderArray [lb Sender rb] = [[${Sender}]]
 Receiver [lb PTagreceiver Pair rb] = [[${Pair}]]
 Sender [lb PTagsender Pair rb] = [[${Pair}]]
 
-SingleComponent [x] = [[${x}]]
-Leaf [lb @x rb] = [[${x}]]
+SingleComponent [x] = {{console.log ("SINGLE"); fmt.reset ();}}[[${console.log ("SINGLE UP")}
+class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
+
+    def __init__ (self, dispatcher, parent, idInParent):
+        super ().__init__ (dispatcher, parent, idInParent)
+	${fmt.aget ("inputs", ', ')}
+	${fmt.aget ("outputs", ', ')}
+        ${fmt.aget ("instances", '\n        ')}
+        self.children = \{${fmt.aget ("children", ", ")}\}
+    def react (self, inputMessage):
+        ${fmt.get ("synccode")}
+        return super ().react (inputMessage)
+]]
+
+Leaf [lb @x rb] = [[${console.log("LEAF")}${x}]]
 Container [lb @x rb] = [[${x}]]
 
 ArrayOfNames [lb @anames rb] = [[${anames}]]
@@ -92,6 +91,7 @@ ListableName [s] = [[${s}, ]]
 
 ArrayOfConnections [lb @Connections rb] = [[A${Connections}B ]]
 
-ArrayOfChildNames [lb @ChildNames rb] = [[^^ ${ChildNames} ^^]]
-ChildName [n] = [[${fmt.put ("instances", 'child' + fmt.gensym () + ' = ' + n + '._' + n + ' (dispatcher, self, ' + n + ')\n')})}${fmt.formatChildMapEntry (n)}]]
-childString [s] = [[${fmt.pythonize (s)}]]
+ArrayOfChildNames [lb ChildNames rb] = [[^^ ${ChildNames} ^^]]
+
+ChildName [n] = [[${fmt.put ("instances", 'child' + fmt.gensym () + ' = ' + n + '._' + n + ' (dispatcher, self, ' + n + ')')})}${fmt.formatChildMapEntry (n)}${fmt.pythonize (n)}]]
+ChildNameList [first @rest] = [[${first}${rest}]]

@@ -41,6 +41,8 @@ exports.decode = function (s) {
 }
 
 var comp = {};
+exports.reset = function () { comp = {}; }
+
 function put (field, v) {
     if (comp[field]) {
 	comp[field].push (v);
@@ -52,6 +54,14 @@ function put (field, v) {
 exports.put = put;
 exports.get = function (field) {
     return comp[field].pop ();
+}
+exports.aget = function (field, prefix) {
+    var r = comp[field];
+    if (r) {
+	return comp[field].join (prefix);
+    } else {
+	return "";
+    }
 }
 
 exports.pythonize = function (s) {
@@ -70,6 +80,6 @@ function getsym  () {
 }
 
 exports.formatChildMapEntry = function (n) {
-    put ("children", `'${n}':child${getsym ()}, `);
+    put ("children", `${n}:child${getsym ()}`);
     return '';
 }
