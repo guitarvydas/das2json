@@ -34,6 +34,7 @@ exports.decode = function (s) {
 	.replace (/<\/span>/g, '\n')
 	.replace (/<br\/>/g, '\n')
 	.replace (/<br>/g, '\n')
+	.replace (/"/g, '')
 	.replace (/&quot;/g, '"')
     ;
     return decodeURIComponent (code7);

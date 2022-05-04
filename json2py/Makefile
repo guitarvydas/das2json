@@ -2,7 +2,8 @@ grammar=../djson.ohm
 prep=../prep/prep
 format=djson.fmt
 #src=../testbench.json
-src=testbench1.json
+#src=testbench1.json
+src=testbench2.json
 here=`pwd`
 
 all:

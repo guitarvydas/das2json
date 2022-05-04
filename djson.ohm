@@ -60,11 +60,11 @@ ASCLC <: LeafAndContainer {
 
 EmptyChildrenObject = PTag<"children"> "[]"
 EmptyConnectionsObject = PTag<"connections"> "[]"
-ChildrenObject = PTag<"children"> JObject
-ConnectionsObject = PTag<"connections"> JObject
+ChildrenObject = PTag<"children"> JArray
+ConnectionsObject = PTag<"connections"> JArray
 IDObject = PTag<"id"> JObject
-InputsObject = PTag<"inputs"> JObject
-OutputsObject = PTag<"outputs"> JObject
+InputsObject = PTag<"inputs"> JArray
+OutputsObject = PTag<"outputs"> JArray
 NameObject = PTag<"name"> JObject
 SynccodeObject = PTag<"synccode"> JObject
 ComponentObject = PTag<"component"> JObject

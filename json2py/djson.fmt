@@ -10,7 +10,7 @@ NestedJObject [lb @o rb] = [[${o}]]
     COLON [c] = [[${c}]]
     dq  [c] = [[${c}]]
 
-    string [dq1 @cs dq2] = [[${cs}]]
+    string [dq1 @cs dq2] = [["${cs}"]]
 
     space [c] = [[]]
 
