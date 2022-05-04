@@ -22,7 +22,12 @@ NestedJObject [lb @o rb] = [[${o}]]
     true [k] = [[${k}]]
     false [k] = [[${k}]]
 
-Main [ArrayOfComponents] = [[${ArrayOfComponents}]]
+Main [ArrayOfComponents] = [[${ArrayOfComponents}
+class _${fmt.get ("name")} (mpos.Leaf):
+
+    def __init__ (self, dispatcher, parent, idInParent):
+        super ().__init__ (dispatcher, parent, idInParent)
+]]
 ArrayOfComponents [lb @Components rb] = [[${Components}]]
 Component [ArrayOfSingleComponent] = [[${ArrayOfSingleComponent}]]
 ArrayOfSingleComponent [lb SingleComponent rb]  = [[${SingleComponent}]]
@@ -54,10 +59,10 @@ EmptyConnectionsObject [PTag Object] = [[]]
 ChildrenObject [PTag Object] = [[${Object}]]
 ConnectionsObject [PTag Object] = [[${Object}]]
 IDObject [PTag Object] = [[]]
-InputsObject [PTag Object] = [[${fmt.set ("inputs", Object)}]]
-OutputsObject [PTag Object] = [[${fmt.set ("outputs", Object)}]]
-NameObject [PTag Object] = [[${fmt.set ("name", Object)}]]
-SynccodeObject [PTag Object] = [[${fmt.set ("synccode", Object)}]]
+InputsObject [PTag Object] = [[${fmt.put ("inputs", Object)}]]
+OutputsObject [PTag Object] = [[${fmt.put ("outputs", Object)}]]
+NameObject [PTag Object] = [[${fmt.put ("name", Object)}]]
+SynccodeObject [PTag Object] = [[${fmt.put ("synccode", Object)}]]
 ComponentObject [PTag Object] = [[${Object}]]
 PortObject [PTag Object] = [[${Object}]]
 
