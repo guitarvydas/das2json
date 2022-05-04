@@ -23,9 +23,9 @@
 //   return codefinal
     
 exports.decode = function (s) {
-    var code = decodeURIComponent (s.toString ());
+    var code = decodeURIComponent (s);
     var code7 = code
-	.replace (/<pre(^>]*/g, '')
+	.replace (/<pre[^>]*/g, '')
 	.replace (/<\/pre>/g, '')
 	.replace (/<div>([^<]*)<\/div>/g, '\1\n')
 	.replace (/<p ([^>]*)>/g, '')
@@ -34,6 +34,7 @@ exports.decode = function (s) {
 	.replace (/<\/span>/g, '\n')
 	.replace (/<br\/>/g, '\n')
 	.replace (/<br>/g, '\n')
+	.replace (/&quot;/g, '"')
     ;
     return decodeURIComponent (code7);
 }
@@ -48,12 +49,12 @@ exports.put = function (field, v) {
     return "";
 }
 exports.get = function (field) {
-    return pythonize (comp[field].pop ());
+    return comp[field].pop ();
 }
 exports.aget = function (field) {
     return pythonize (comp[field]);
 }
 
-function pythonize (s) {
+exports.pythonize = function (s) {
     return s.replace (/ /g, "_");
 }

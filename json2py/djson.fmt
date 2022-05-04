@@ -23,10 +23,15 @@ NestedJObject [lb @o rb] = [[${o}]]
     false [k] = [[${k}]]
 
 Main [ArrayOfComponents] = [[${ArrayOfComponents}
-class _${fmt.get ("name")} (mpos.Leaf):
+class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
 
     def __init__ (self, dispatcher, parent, idInParent):
         super ().__init__ (dispatcher, parent, idInParent)
+	${fmt.get ("inputs")}
+	${fmt.get ("outputs")}
+    def react (self, inputMessage):
+        ${fmt.get ("synccode")}
+        return super ().react (inputMessage)
 ]]
 ArrayOfComponents [lb @Components rb] = [[${Components}]]
 Component [ArrayOfSingleComponent] = [[${ArrayOfSingleComponent}]]
@@ -59,10 +64,10 @@ EmptyConnectionsObject [PTag Object] = [[]]
 ChildrenObject [PTag Object] = [[${Object}]]
 ConnectionsObject [PTag Object] = [[${Object}]]
 IDObject [PTag Object] = [[]]
-InputsObject [PTag Object] = [[${fmt.put ("inputs", Object)}]]
-OutputsObject [PTag Object] = [[${fmt.put ("outputs", Object)}]]
+InputsObject [PTag Object] = [[${fmt.put ("inputs", 'self.inputs = [' + Object + '];')}]]
+OutputsObject [PTag Object] = [[${fmt.put ("outputs", 'self.outputs = [' + Object + '];')}]]
 NameObject [PTag Object] = [[${fmt.put ("name", Object)}]]
-SynccodeObject [PTag Object] = [[${fmt.put ("synccode", Object)}]]
+SynccodeObject [PTag Object] = [[${fmt.put ("synccode", fmt.decode (Object))}]]
 ComponentObject [PTag Object] = [[${Object}]]
 PortObject [PTag Object] = [[${Object}]]
 
