@@ -87,6 +87,16 @@ ASCLOCO <: ASCconnection {
 SingleComponent := Leaf | Container
 Leaf := "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
 Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
+
+ChildrenObject := PTag<"children"> ArrayOfNames
+ConnectionsObject := PTag<"connections"> ArrayOfNames
+InputsObject := PTag<"inputs"> ArrayOfNames
+OutputsObject := PTag<"outputs"> ArrayOfNames
+ArrayOfNames = "[" ListOfNames "]"
+ListOfNames = 
+  | ListableName ListOfNames -- rec
+  | string             -- bottom
+ListableName = string
 }
 
 ASC2py <: ASCLOCO {
