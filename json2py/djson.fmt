@@ -4,13 +4,13 @@ JObject [x] = [[${x}]]
 JArray [lb @o rb] = [[${o}]]
 NestedJObject [lb @o rb] = [[${o}]]
 
-  Tag [@dq1 tagname @dq2 kcolon] = [[${dq1}${tagname}${dq2}${kcolon}]]
+  Tag [@dq1 tagname @dq2 kcolon] = [[]]
   tagname [name] = [[${name}]]
 
     COLON [c] = [[${c}]]
     dq  [c] = [[${c}]]
 
-    string [dq1 @cs dq2] = [[${dq1}${cs}${dq2}]]
+    string [dq1 @cs dq2] = [[${cs}]]
 
     space [c] = [[]]
 
@@ -34,7 +34,7 @@ tagname [k] = [[${k}]]
 
   PTag [@dq1 tname @dq2 kcolon] = [[${tname}]]
 
-  TaggedJObject [x] = [[\nC${x}]]
+  TaggedJObject [x] = [[${x}]]
   
   TaggedJObject_emptychildren [x] = [[${x}]]
   TaggedJObject_emptyconnections [x] = [[${x}]]
@@ -63,7 +63,7 @@ PortObject [PTag Object] = [[${Object}]]
 
 Pair [lb ComponentObject PortObject rb] = [[${ComponentObject}${PortObject}]]
 
-Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${PTagreceivers}${ReceiverArray}${PTagsenders}${SenderArray}]]
+Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${ReceiverArray}, ${SenderArray}]]
 ReceiverArray [lb @Receivers rb] = [[${Receivers}]]
 SenderArray [lb Sender rb] = [[${Sender}]]
 Receiver [lb PTagreceiver Pair rb] = [[${Pair}]]

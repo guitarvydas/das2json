@@ -7,4 +7,4 @@ here=`pwd`
 
 all:
 
-	${prep} "." '$$' ${grammar} ${format} --stop=1 --fmt=${here}/fmt.js --grammarname=ASC2py <${src}
+	${prep} "." '$$' ${grammar} ${format} --stop=1 --fmt=${here}/fmt.js --grammarname=ASC2py --trace <${src}

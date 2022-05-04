@@ -13,6 +13,8 @@ pre 're-begin' 're-terminate' ohm-spec glue-spec --fmt=fname [...]
 
 pre 're-begin' 're-terminate' ohm-spec glue-spec --stop=1 [...]
 
+pre 're-begin' 're-terminate' ohm-spec glue-spec --trace [...]
+
 pre 're-begin' 're-terminate' ohm-spec glue-spec --grammarname=<name of grammar> [...]
 
 Expansion is recursive except when --stop is specified. When --stop is specified, an internal counter is initialized to 0 and counts upward +1 for every expansion cycle. Expansion terminates when (counter >= stop). 

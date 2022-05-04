@@ -419,6 +419,7 @@ function pre (allchars) {
 
 function main () {
     argv = require('yargs/yargs')(process.argv.slice(2)).argv;
+    console.log (argv);
     var fname;
     if (argv.input) {
 	fname = argv.input;
@@ -435,6 +436,12 @@ function main () {
 	viewGeneratedCode = true;
     } else {
 	viewGeneratedCode = false;
+    }
+    if (argv.trace) {
+	tracing = true;
+	traceDepth = 0;
+    } else {
+	tracing = false;
     }
     var allchars = fs.readFileSync (fname, 'utf-8');
     var result = pre (allchars);
