@@ -109,5 +109,12 @@ ChildNameList = ChildName ChildName*
 ChildName = string
 SynccodeObject := PTag<"synccode"> strippedString
 strippedString = dq (~dq any)* dq
-
+InputsObject := PTag<"inputs"> ArrayOfPortNames
+OutputsObject := PTag<"outputs"> ArrayOfPortNames
+ArrayOfPortNames = "[" ListOfPortNames? "]"
+ListOfPortNames = 
+  | ListablePortName ListOfPortNames -- rec
+  | PortName             -- bottom
+ListablePortName = PortName
+PortName = string
 }

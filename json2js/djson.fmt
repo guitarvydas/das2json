@@ -152,3 +152,9 @@ ChildName [n] = [[${fmt.put ("instances", 'var child' + fmt.gensym () + ' = new 
 ChildNameList [first @rest] = [[${first}${rest}]]
 
 strippedString [dq1 @cs dq2] = [[${cs}]]
+
+ArrayOfPortNames [lb @ns rb] = [[${lb}${ns}${rb}]]
+ListOfPortNames_rec [n ns] = [[${n}${ns}]]
+ListOfPortNames_bottom [n] = [[${n}]]
+ListablePortName [n] = [[${n}]]
+PortName [s] = [[\{name:${s}, structure:[${fmt.jsize (s)}]\}]]

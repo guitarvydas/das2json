@@ -2,8 +2,8 @@
 
 var Phrase_Faker_signature = {
     name: "Phrase_Faker",
-    inputs: [{name:"go", structure: ["go"]}],
-    outputs: [{name:"short phrase", "long phrase", structure: ["short phrase", "long phrase"]}]
+    inputs: [[{name:"go", structure:[go]}]],
+    outputs: [[{name:"short phrase", structure:[short_phrase]}{name:"long phrase", structure:[long_phrase]}]]
 }
 
 

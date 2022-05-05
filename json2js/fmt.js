@@ -107,7 +107,8 @@ exports.formatChildMapEntry = function (n) {
 
 exports.formatPort = function (p) {
     if (p) {
-	return '{name:' + p + ', structure: [' + p + ']}';
+	return p;
+	// return '{name:' + p + ', structure: [' + p + ']}';
     } else {
 	return '';
     }
