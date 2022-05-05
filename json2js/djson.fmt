@@ -71,7 +71,7 @@ Sender [lb PTagsender Pair rb] = [[mpos.Sender (${Pair})]]
 SingleComponent [impl] = 
 {{fmt.reset ();}}
 [[
-${fmt.put ('jsname', fmt.pythonize (fmt.get ("name")))}
+${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
 var ${fmt.get ('jsname')}_signature = {
     name: "${fmt.get ('jsname')}",
     inputs: \[${fmt.aget ("inputs", ', ')}\],
@@ -81,7 +81,7 @@ ${impl}
 ]]
 
 Leaf [lb @x rb] = [[
-${fmt.put ('jsname', fmt.pythonize (fmt.get ("name")))}
+${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
 var ${fmt.get ('jsname')}_protoImplementation = {
     name: "${fmt.get ('jsname')}",
     kind: "leaf",
@@ -99,7 +99,7 @@ function ${fmt.get ('jsname')} (container, instancename) {
 ]]
 
 Container [lb @x rb] = [[
-${fmt.put ('jsname', fmt.pythonize (fmt.get ("name")))}
+${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
 var ${fmt.get ('jsname')}_protoImplementation = {
     name: "${fmt.get ('jsname')}",
     kind: "container",
