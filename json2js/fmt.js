@@ -24,19 +24,31 @@
     
 exports.decode = function (s) {
     var code = decodeURIComponent (s);
-    var code7 = code
+    var code0 = code
 	.replace (/&gt;/g, '>')
 	.replace (/&lt;/g, '<')
+	.replace (/&amp;/g, '&')
+    ;
+    var code1 = code0
+	.replace (/\&nbsp;/g, ' ')
+	.replace (/&quot;/g, '"')
+    ;
+    
+    var code7 = code1
 	.replace (/<pre[^>]*/g, '')
 	.replace (/<\/pre>/g, '')
-	.replace (/<div>([^<]*)<\/div>/g, '\n')
+
+	.replace (/<div>/g, '')
+	.replace (/<\/div>/g, '\n')
+
 	.replace (/<p ([^>]*)>/g, '')
 	.replace (/<\/p>/g, '')
+
 	.replace (/<span ([^<]*)>/g, '')
 	.replace (/<\/span>/g, '\n')
+
 	.replace (/<br>/g, '\n')
 	.replace (/<br\/>/g, '\n')
-	.replace (/&quot;/g, '"')
     ;
     return decodeURIComponent (code7);
 }
