@@ -59,14 +59,14 @@ SynccodeObject [PTag Object] = [[${fmt.put ("synccode", fmt.decode (Object))}]]
 ComponentObject [PTag Object] = [[${Object}]]
 PortObject [PTag Object] = [[${Object}]]
 
-Pair [lb ComponentObject PortObject rb] = [[${ComponentObject}, ${PortObject}]]
+Pair [lb ComponentObject PortObject rb] = [[name: ${ComponentObject}, etag: ${PortObject}]]
 
-Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${fmt.put ("connectionInstances", 'conn' + fmt.gensym () + ' = mpos.Connector (' + SenderArray + ', ' + ReceiverArray + '})')}${fmt.put ("connections", 'conn' + fmt.getsym ())}]]
+Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${fmt.put ("connectionInstances", 'var conn' + fmt.gensym () + ' = {sender:' + SenderArray + ', net: "NIY", receivers: [' + ReceiverArray + ']})')}${fmt.put ("connections", 'conn' + fmt.getsym ())}]]
 
 ReceiverArray [lb @Receivers rb] = [[ \[${Receivers}\] ]]
 SenderArray [lb Sender rb] = [[${Sender}]]
-Receiver [lb PTagreceiver Pair rb] = [[mpos.Receiver (${Pair})]]
-Sender [lb PTagsender Pair rb] = [[mpos.Sender (${Pair})]]
+Receiver [lb PTagreceiver Pair rb] = [[\{${Pair}\})]]
+Sender [lb PTagsender Pair rb] = [[\{${Pair}\})]]
 
 SingleComponent [impl] = 
 {{fmt.reset ();}}
@@ -107,12 +107,21 @@ function ${fmt.get ('jsname')}_makechildren (container) {
       return children;
 }
 
+function ${fmt.get ('jsname')}_makeconnections (container) {
+    ${fmt.aget ("connectionInstances", ';\n    ')};
+    var connections = [ ${fmt.aget ("connections", ', ')} ];
+    return connections;
+}
+
+function ${fmt.get ('jsname')}_makenets (container) {
+    return [];
+}
+
 var ${fmt.get ('jsname')}_protoImplementation = {
     name: "${fmt.get ('jsname')}",
     kind: "container",
     begin: function () {},
     finish: function () {},
-    self.connections = [ ${fmt.aget ("connections", ', ')} ]
     handler: function (me, message) {
         deliverInputMessageToAllChildrenOfSelf (me, message);
     }
@@ -121,7 +130,10 @@ var ${fmt.get ('jsname')}_protoImplementation = {
 function ${fmt.get ('jsname')} (container, instancename) {
     let me = new Container (${fmt.get ('jsname')}_signature, ${fmt.get ('jsname')}_protoImplementation, container, instancename);
     me.children = ${fmt.get ('jsname')}_makechildren (me);
-    ...
+    me.connections = ${fmt.get ('jsname')}_makeconnections (me);
+    me.nets =  ${fmt.get ('jsname')}_makenets (me);
+    me.deliver_input_from_container_input_to_child_input = deliver_input_from_container_input_to_child_input;
+    me.deliver_input_from_container_input_to_me_output = deliver_input_from_container_input_to_me_output;
     return me;
 }
 ]]
