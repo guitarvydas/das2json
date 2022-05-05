@@ -7,7 +7,8 @@ format=djson.fmt
 #src=testbench2.json
 #src=testbench3.json
 #src=helloworld.json
-src=helloworld1.json
+#src=helloworld1.json
+src=helloworld2.json
 here=`pwd`
 
 all:

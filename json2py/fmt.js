@@ -84,6 +84,7 @@ exports.gensym = function () {
 function getsym  () {
     return counter.toString ();
 }
+exports.getsym = getsym;
 
 exports.formatChildMapEntry = function (n) {
     put ("children", `${n}:child${getsym ()}`);

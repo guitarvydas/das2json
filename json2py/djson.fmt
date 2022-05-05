@@ -59,13 +59,14 @@ SynccodeObject [PTag Object] = [[${fmt.put ("synccode", fmt.decode (Object))}]]
 ComponentObject [PTag Object] = [[${Object}]]
 PortObject [PTag Object] = [[${Object}]]
 
-Pair [lb ComponentObject PortObject rb] = [[${ComponentObject}${PortObject}]]
+Pair [lb ComponentObject PortObject rb] = [[${ComponentObject}, ${PortObject}]]
 
-Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${ReceiverArray}, ${SenderArray}]]
-ReceiverArray [lb @Receivers rb] = [[${Receivers}]]
+Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${fmt.put ("connectionInstances", 'conn' + fmt.gensym () + ' = mpos.Connector (' + SenderArray + ', ' + ReceiverArray + '})')}${fmt.put ("connections", 'conn' + fmt.getsym ())}]]
+
+ReceiverArray [lb @Receivers rb] = [[ \[${Receivers}\] ]]
 SenderArray [lb Sender rb] = [[${Sender}]]
-Receiver [lb PTagreceiver Pair rb] = [[${Pair}]]
-Sender [lb PTagsender Pair rb] = [[${Pair}]]
+Receiver [lb PTagreceiver Pair rb] = [[mpos.Receiver (${Pair})]]
+Sender [lb PTagsender Pair rb] = [[mpos.Sender (${Pair})]]
 
 SingleComponent [x] = {{fmt.reset ();}}[[
 class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
@@ -76,6 +77,8 @@ class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
 	${fmt.aget ("outputs", ', ')}
         ${fmt.aget ("instances", '\n        ')}
         self.children = \{${fmt.aget ("children", ", ")}\}
+        ${fmt.aget ("connectionInstances", '\n        ')}
+	self.connections = [ ${fmt.aget ("connections", ', ')} ]
     def react (self, inputMessage):
         ${fmt.aget ("synccode",  '\n        ')}
         return super ().react (inputMessage)
