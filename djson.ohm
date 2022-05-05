@@ -107,4 +107,7 @@ ChildrenObject := PTag<"children"> ArrayOfChildNames
 ArrayOfChildNames = "[" ChildNameList "]"
 ChildNameList = ChildName ChildName*
 ChildName = string
+SynccodeObject := PTag<"synccode"> strippedString
+strippedString = dq (~dq any)* dq
+
 }

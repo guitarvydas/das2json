@@ -1,0 +1,13 @@
+[
+  [
+    {
+      "children": [],
+      "connections": [],
+      "id":"cell_7",
+      "inputs": ["a" ],
+      "name":"hello",
+      "outputs": ["out" ],
+      "synccode":"print (&quot;hello&quot;)&lt;br&gt;self.send (&quot;out&quot;, True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;"
+    }
+  ]
+]

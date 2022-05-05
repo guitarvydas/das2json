@@ -2,11 +2,12 @@ grammar=../djson.ohm
 prep=../prep/prep
 format=djson.fmt
 #src=../testbench.json
-src=testbench1.json
+#src=testbench1.json
 #src=testbench5.json
 #src=testbench2.json
 #src=testbench3.json
 #src=helloworld.json
+src=helloworld1.json
 here=`pwd`
 
 all:

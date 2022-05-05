@@ -1,4 +1,7 @@
-// from ../das/pyemit.py ...
+// import sys
+// import json
+// import html
+// import re
 
 // def unescapeCode (s):
 //   code = html.unescape (s)
@@ -21,8 +24,19 @@
 
 //   codefinal = html.unescape (code7)
 //   return codefinal
-    
-exports.decode = function (s) {
+
+// def xxx ():
+//     s = 'print ("hello")&lt;br&gt;self.send ("out", True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;'
+//     # y = html.unescape (s)
+//     # print (y)
+//     # z = html.unescape (s)
+//     # print (z)
+//     x = unescapeCode (s)
+//     print (x)
+
+// xxx ()
+
+function decode (s) {
     var code = decodeURI (s);
     var code7 = code
 	.replace (/&lt;br/g, '<br')
@@ -42,51 +56,8 @@ exports.decode = function (s) {
     return decodeURI (code7);
 }
 
-var comp = {};
-exports.reset = function () { comp = {}; }
-
-function put (field, v) {
-    if (comp[field]) {
-	comp[field].push (v);
-    } else {
-	comp[field] = [v];
-    }
-    return "";
-}
-exports.put = put;
-exports.get = function (field) {
-    return comp[field].pop ();
-}
-exports.aget = function (field, prefix) {
-    var r = comp[field];
-    if (r) {
-	return comp[field].join (prefix);
-    } else {
-	return "";
-    }
-}
-
-exports.putlines = function (field, s) {
-    var a = s.split (/\n/);
-    a.forEach (i => put (field, i));
-}
-
-exports.pythonize = function (s) {
-    return s
-	.replace (/ /g, "_")
-	.replace (/"/g, "")
-}
-
-var counter = 0;
-exports.gensym = function () {
-    counter += 1;
-    return counter.toString ();
-}
-function getsym  () {
-    return counter.toString ();
-}
-
-exports.formatChildMapEntry = function (n) {
-    put ("children", `${n}:child${getsym ()}`);
-    return '';
-}
+var s = 'print ("hello")&lt;br&gt;self.send ("out", True)&lt;br&gt;&lt;div&gt;&lt;/div&gt;';
+var x = decodeURI (s);
+console.log (x);
+var y = decode (x);
+console.log (y);
