@@ -3,7 +3,7 @@
 var HTML_Button_signature = {
     name: "HTML_Button",
     inputs: [],
-    outputs: [{name:"click", structure: ["click"]}]
+    outputs: [{name:"click", structure:[click]}]
 }
 
 
@@ -26,8 +26,8 @@ function HTML_Button (container, instancename) {
 
 var Phrase_Faker_signature = {
     name: "Phrase_Faker",
-    inputs: [{name:"go", structure: ["go"]}],
-    outputs: [{name:"short phrase", "long phrase", structure: ["short phrase", "long phrase"]}]
+    inputs: [{name:"go", structure:[go]}],
+    outputs: [{name:"short phrase", structure:[short_phrase]}, {name:"long phrase", structure:[long_phrase]}]
 }
 
 
@@ -53,8 +53,8 @@ function Phrase_Faker (container, instancename) {
 
 var Phrase_Parser_signature = {
     name: "Phrase_Parser",
-    inputs: [{name:"phrase", structure: ["phrase"]}],
-    outputs: [{name:"order no choices", "order with choices", "parse error", "hook error", structure: ["order no choices", "order with choices", "parse error", "hook error"]}]
+    inputs: [{name:"phrase", structure:[phrase]}],
+    outputs: [{name:"order no choices", structure:[order_no_choices]}, {name:"order with choices", structure:[order_with_choices]}, {name:"parse error", structure:[parse_error]}, {name:"hook error", structure:[hook_error]}]
 }
 
 
@@ -78,7 +78,7 @@ function Phrase_Parser (container, instancename) {
 var Test_Bench_signature = {
     name: "Test_Bench",
     inputs: [],
-    outputs: [{name:"food order", structure: ["food order"]}]
+    outputs: [{name:"food order", structure:[food_order]}]
 }
 
 
@@ -92,10 +92,14 @@ function Test_Bench_makechildren (container) {
 }
 
 function Test_Bench_makeconnections (container) {
-    var conn4 = {sender:{name: "HTML Button", etag: "click"}), net: "NIY", receivers: [ [{name: "Phrase Faker", etag: "go"})] ]});
-    var conn5 = {sender:{name: "Phrase Faker", etag: "short phrase"}), net: "NIY", receivers: [ [{name: "Order Taker", etag: "phrase"})] ]});
-    var conn6 = {sender:{name: "Phrase Faker", etag: "long phrase"}), net: "NIY", receivers: [ [{name: "Order Taker", etag: "phrase"})] ]});
-    var conn7 = {sender:{name: "Order Taker", etag: "food order"}), net: "NIY", receivers: [ [{name: "Test Bench", etag: "food order"})] ]});
+    var conn4 = {
+	sender:{name: "HTML Button", etag: "click"}, 
+	net: "NIY", 
+	receivers:  [{name: "Phrase Faker", etag: "go"}]
+    };
+    var conn5 = {sender:{name: "Phrase Faker", etag: "short phrase"}, net: "NIY", receivers:  [{name: "Order Taker", etag: "phrase"}] };
+    var conn6 = {sender:{name: "Phrase Faker", etag: "long phrase"}, net: "NIY", receivers:  [{name: "Order Taker", etag: "phrase"}] };
+    var conn7 = {sender:{name: "Order Taker", etag: "food order"}, net: "NIY", receivers:  [{name: "Test Bench", etag: "food order"}] };
     var connections = [ conn4, conn5, conn6, conn7 ];
     return connections;
 }
@@ -128,8 +132,8 @@ function Test_Bench (container, instancename) {
 
 var Order_Taker_signature = {
     name: "Order_Taker",
-    inputs: [{name:"phrase", structure: ["phrase"]}],
-    outputs: [{name:"food order", structure: ["food order"]}]
+    inputs: [{name:"phrase", structure:[phrase]}],
+    outputs: [{name:"food order", structure:[food_order]}]
 }
 
 
@@ -141,9 +145,9 @@ function Order_Taker_makechildren (container) {
 }
 
 function Order_Taker_makeconnections (container) {
-    var conn9 = {sender:{name: "Order Taker", etag: "phrase"}), net: "NIY", receivers: [ [{name: "Phrase Parser", etag: "phrase"})] ]});
-    var conn10 = {sender:{name: "Phrase Parser", etag: "order no choices"}), net: "NIY", receivers: [ [{name: "Order Taker", etag: "food order"})] ]});
-    var conn11 = {sender:{name: "Phrase Parser", etag: "order with choices"}), net: "NIY", receivers: [ [{name: "Order Taker", etag: "food order"})] ]});
+    var conn9 = {sender:{name: "Order Taker", etag: "phrase"}, net: "NIY", receivers:  [{name: "Phrase Parser", etag: "phrase"}] };
+    var conn10 = {sender:{name: "Phrase Parser", etag: "order no choices"}, net: "NIY", receivers:  [{name: "Order Taker", etag: "food order"}] };
+    var conn11 = {sender:{name: "Phrase Parser", etag: "order with choices"}, net: "NIY", receivers:  [{name: "Order Taker", etag: "food order"}] };
     var connections = [ conn9, conn10, conn11 ];
     return connections;
 }

@@ -61,12 +61,12 @@ PortObject [PTag Object] = [[${Object}]]
 
 Pair [lb ComponentObject PortObject rb] = [[name: ${ComponentObject}, etag: ${PortObject}]]
 
-Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${fmt.put ("connectionInstances", 'var conn' + fmt.gensym () + ' = {sender:' + SenderArray + ', net: "NIY", receivers: [' + ReceiverArray + ']})')}${fmt.put ("connections", 'conn' + fmt.getsym ())}]]
+Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${fmt.put ("connectionInstances", 'var conn' + fmt.gensym () + ' = {sender:' + SenderArray + ', net: "NIY", receivers: ' + ReceiverArray + '}')}${fmt.put ("connections", 'conn' + fmt.getsym ())}]]
 
 ReceiverArray [lb @Receivers rb] = [[ \[${Receivers}\] ]]
 SenderArray [lb Sender rb] = [[${Sender}]]
-Receiver [lb PTagreceiver Pair rb] = [[\{${Pair}\})]]
-Sender [lb PTagsender Pair rb] = [[\{${Pair}\})]]
+Receiver [lb PTagreceiver Pair rb] = [[\{${Pair}\}]]
+Sender [lb PTagsender Pair rb] = [[\{${Pair}\}]]
 
 SingleComponent [impl] = 
 {{fmt.reset ();}}
@@ -74,8 +74,8 @@ SingleComponent [impl] =
 ${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
 var ${fmt.get ('jsname')}_signature = {
     name: "${fmt.get ('jsname')}",
-    inputs: \[${fmt.aget ("inputs", ', ')}\],
-    outputs: \[${fmt.aget ("outputs", ', ')}\]
+    inputs: ${fmt.aget ("inputs", ', ')},
+    outputs: ${fmt.aget ("outputs", ', ')}
 }
 ${impl}
 ]]
@@ -156,5 +156,5 @@ strippedString [dq1 @cs dq2] = [[${cs}]]
 ArrayOfPortNames [lb @ns rb] = [[${lb}${ns}${rb}]]
 ListOfPortNames_rec [n ns] = [[${n}${ns}]]
 ListOfPortNames_bottom [n] = [[${n}]]
-ListablePortName [n] = [[${n}]]
+ListablePortName [n] = [[${n}, ]]
 PortName [s] = [[\{name:${s}, structure:[${fmt.jsize (s)}]\}]]
