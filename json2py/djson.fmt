@@ -55,7 +55,7 @@ IDObject [PTag Object] = [[]]
 InputsObject [PTag Object] = [[${fmt.put ("inputs", 'self.inputs = [' + Object + ']')}]]
 OutputsObject [PTag Object] = [[${fmt.put ("outputs", 'self.outputs = [' + Object + ']')}]]
 NameObject [PTag Object] = [[${fmt.put ("name", Object)}]]
-SynccodeObject [PTag Object] = [[${fmt.putlines ("synccode", fmt.decode (Object))}]]
+SynccodeObject [PTag Object] = [[${fmt.put ("synccode", fmt.decode (Object))}]]
 ComponentObject [PTag Object] = [[${Object}]]
 PortObject [PTag Object] = [[${Object}]]
 
@@ -89,9 +89,9 @@ ListOfNames_rec [name more] = [[${name}${more}]]
 ListOfNames_bottom [name] = [[${name}]]
 ListableName [s] = [[${s}, ]]
 
-ArrayOfConnections [lb @Connections rb] = [[A${Connections}B ]]
+ArrayOfConnections [lb @Connections rb] = [[${Connections}]]
 
-ArrayOfChildNames [lb ChildNames rb] = [[^^ ${ChildNames} ^^]]
+ArrayOfChildNames [lb ChildNames rb] = [[${ChildNames}]]
 
 ChildName [n] = [[${fmt.put ("instances", 'child' + fmt.gensym () + ' = ' + n + '._' + n + ' (dispatcher, self, ' + n + ')')})}${fmt.formatChildMapEntry (n)}${fmt.pythonize (n)}]]
 ChildNameList [first @rest] = [[${first}${rest}]]

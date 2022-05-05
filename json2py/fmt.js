@@ -23,23 +23,22 @@
 //   return codefinal
     
 exports.decode = function (s) {
-    var code = decodeURI (s);
+    var code = decodeURIComponent (s);
     var code7 = code
-	.replace (/&lt;br/g, '<br')
 	.replace (/&gt;/g, '>')
 	.replace (/&lt;/g, '<')
 	.replace (/<pre[^>]*/g, '')
 	.replace (/<\/pre>/g, '')
-	.replace (/<div>([^<]*)<\/div>/g, '\1\n')
+	.replace (/<div>([^<]*)<\/div>/g, '\n')
 	.replace (/<p ([^>]*)>/g, '')
 	.replace (/<\/p>/g, '')
 	.replace (/<span ([^<]*)>/g, '')
 	.replace (/<\/span>/g, '\n')
-	.replace (/<br\/>/g, '\n')
 	.replace (/<br>/g, '\n')
+	.replace (/<br\/>/g, '\n')
 	.replace (/&quot;/g, '"')
     ;
-    return decodeURI (code7);
+    return decodeURIComponent (code7);
 }
 
 var comp = {};
