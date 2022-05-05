@@ -1,0 +1,12 @@
+
+    def __init__ (self, dispatcher, parent, idInParent):
+        super ().__init__ (dispatcher, parent, idInParent)
+	${fmt.aget ("inputs", ', ')}
+	${fmt.aget ("outputs", ', ')}
+        ${fmt.aget ("instances", '\n        ')}
+        self.children = \{${fmt.aget ("children", ", ")}\}
+        ${fmt.aget ("connectionInstances", '\n        ')}
+	self.connections = [ ${fmt.aget ("connections", ', ')} ]
+    def react (self, inputMessage):
+        ${fmt.aget ("synccode",  '\n        ')}
+        return super ().react (inputMessage)
