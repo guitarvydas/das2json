@@ -128,7 +128,7 @@ ArrayOfConnections [lb @Connections rb] = [[${Connections}]]
 
 ArrayOfChildNames [lb ChildNames rb] = [[${ChildNames}]]
 
-ChildName [n] = [[${fmt.put ("instances", 'var child' + fmt.gensym () + ' = new ' + fmt.jsize (n) + ' (me, "' + n + '")')}]]
+ChildName [n] = [[${fmt.put ("instances", 'var child' + fmt.gensym () + ' = new ' + fmt.jsize (n) + ' (me, ' + n + ')')}]]
 
 ChildNameList [first @rest] = [[${first}${rest}]]
 
