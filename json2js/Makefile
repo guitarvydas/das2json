@@ -6,6 +6,7 @@ src=testbench1.json
 #src=testbench5.json
 #src=testbench2.json
 #src=testbench3.json
+#src=testbench4.json
 target=`basename ${src} .json`
 here=`pwd`
 
