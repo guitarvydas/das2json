@@ -101,8 +101,10 @@ function ${fmt.get ('jsname')} (container, instancename) {
 Container [lb @x rb] = [[
 ${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
 
-function ${fmt.get ('jsname')}_makechildren (me) {
+function ${fmt.get ('jsname')}_makechildren (container) {
       ${fmt.aget ("instances", '\n        ')}
+      var children = [ ${fmt.aget ("children", ", ")} ];
+      return children;
 }
 
 var ${fmt.get ('jsname')}_protoImplementation = {
@@ -133,7 +135,7 @@ ArrayOfConnections [lb @Connections rb] = [[${Connections}]]
 
 ArrayOfChildNames [lb ChildNames rb] = [[${ChildNames}]]
 
-ChildName [n] = [[${fmt.put ("instances", 'var child' + fmt.gensym () + ' = new ' + fmt.jsize (n) + ' (me, ' + n + ');')}]]
+ChildName [n] = [[${fmt.put ("instances", 'var child' + fmt.gensym () + ' = new ' + fmt.jsize (n) + ' (container, ' + n + ');')}${fmt.put ("children", 'child' + fmt.getsym ())}]]
 
 ChildNameList [first @rest] = [[${first}${rest}]]
 

@@ -8,8 +8,10 @@ var Order_Taker_signature = {
 
 
 
-function Order_Taker_makechildren (me) {
-      var child1 = new Phrase_Parser (me, "Phrase Parser");
+function Order_Taker_makechildren (container) {
+      var child1 = new Phrase_Parser (container, "Phrase Parser");
+      var children = [ child1 ];
+      return children;
 }
 
 var Order_Taker_protoImplementation = {

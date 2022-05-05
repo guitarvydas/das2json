@@ -1,3 +1,8 @@
+${fmt.put ("children", 'child' + fmt.getsym ())}
+
+
+
+
     self.children = \{${fmt.aget ("children", ", ")}\}
       ${fmt.aget ("connectionInstances", '\n        ')}
 
