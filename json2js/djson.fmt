@@ -98,7 +98,26 @@ function ${fmt.get ('jsname')} (container, instancename) {
 }
 ]]
 
-Container [lb @x rb] = [[${x}]]
+Container [lb @x rb] = [[
+${fmt.put ('jsname', fmt.pythonize (fmt.get ("name")))}
+var ${fmt.get ('jsname')}_protoImplementation = {
+    name: "${fmt.get ('jsname')}",
+    kind: "container",
+    begin: function () {},
+    finish: function () {},
+      ${fmt.aget ("instances", '\n        ')}
+    self.connections = [ ${fmt.aget ("connections", ', ')} ]
+    handler: function (me, message) {
+        deliverInputMessageToAllChildrenOfSelf (me, message);
+    }
+}
+
+function ${fmt.get ('jsname')} (container, instancename) {
+    let me = new Container (${fmt.get ('jsname')}_signature, ${fmt.get ('jsname')}_protoImplementation, container, instancename);
+    ...
+    return me;
+}
+]]
 
 ArrayOfNames [lb @anames rb] = [[${anames}]]
 ListOfNames_rec [name more] = [[${name}${more}]]
@@ -109,7 +128,8 @@ ArrayOfConnections [lb @Connections rb] = [[${Connections}]]
 
 ArrayOfChildNames [lb ChildNames rb] = [[${ChildNames}]]
 
-ChildName [n] = [[${fmt.put ("instances", 'child' + fmt.gensym () + ' = ' + n + '._' + n + ' (dispatcher, self, ' + n + ')')})}${fmt.formatChildMapEntry (n)}${fmt.pythonize (n)}]]
+ChildName [n] = [[${fmt.put ("instances", 'var child' + fmt.gensym () + ' = new ')}]]
+
 ChildNameList [first @rest] = [[${first}${rest}]]
 
 strippedString [dq1 @cs dq2] = [[${cs}]]

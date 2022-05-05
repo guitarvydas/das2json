@@ -72,7 +72,7 @@ exports.putlines = function (field, s) {
     a.forEach (i => put (field, i));
 }
 
-exports.pythonize = function (s) {
+exports.jsize = function (s) {
     return s
 	.replace (/ /g, "_")
 	.replace (/"/g, "")
