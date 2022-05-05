@@ -68,20 +68,33 @@ SenderArray [lb Sender rb] = [[${Sender}]]
 Receiver [lb PTagreceiver Pair rb] = [[mpos.Receiver (${Pair})]]
 Sender [lb PTagsender Pair rb] = [[mpos.Sender (${Pair})]]
 
-SingleComponent [x] = {{fmt.reset ();}}[[${x}]]
-
-Leaf [lb @x rb] = [[
+SingleComponent [impl] = 
+{{fmt.reset ();}}
+[[
 ${fmt.put ('jsname', fmt.pythonize (fmt.get ("name")))}
 var ${fmt.get ('jsname')}_signature = {
     name: "${fmt.get ('jsname')}",
     inputs: \[${fmt.aget ("inputs", ', ')}\],
     outputs: \[${fmt.aget ("outputs", ', ')}\]
 }
+${impl}
+]]
+
+Leaf [lb @x rb] = [[
+${fmt.put ('jsname', fmt.pythonize (fmt.get ("name")))}
 var ${fmt.get ('jsname')}_protoImplementation = {
     name: "${fmt.get ('jsname')}",
     kind: "leaf",
     begin: function () {},
-    finish: function () {}
+    finish: function () {},
+    handler: function (me, message) {
+        ${fmt.get ('synccode')}
+    }
+}
+
+function ${fmt.get ('jsname')} (container, instancename) {
+    let me = new Leaf (${fmt.get ('jsname')}_signature, ${fmt.get ('jsname')}_protoImplementation, container, instancename);
+    return me;
 }
 ]]
 
