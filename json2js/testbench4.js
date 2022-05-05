@@ -12,7 +12,7 @@ var Order_Taker_protoImplementation = {
     kind: "container",
     begin: function () {},
     finish: function () {},
-      var child1 = new Phrase_Parser ()
+      var child1 = new Phrase_Parser (me, )
     self.connections = [ conn2, conn3, conn4 ]
     handler: function (me, message) {
         deliverInputMessageToAllChildrenOfSelf (me, message);
