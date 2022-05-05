@@ -100,12 +100,16 @@ function ${fmt.get ('jsname')} (container, instancename) {
 
 Container [lb @x rb] = [[
 ${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
+
+function ${fmt.get ('jsname')}_makechildren (me) {
+      ${fmt.aget ("instances", '\n        ')}
+}
+
 var ${fmt.get ('jsname')}_protoImplementation = {
     name: "${fmt.get ('jsname')}",
     kind: "container",
     begin: function () {},
     finish: function () {},
-      ${fmt.aget ("instances", '\n        ')}
     self.connections = [ ${fmt.aget ("connections", ', ')} ]
     handler: function (me, message) {
         deliverInputMessageToAllChildrenOfSelf (me, message);
@@ -114,6 +118,7 @@ var ${fmt.get ('jsname')}_protoImplementation = {
 
 function ${fmt.get ('jsname')} (container, instancename) {
     let me = new Container (${fmt.get ('jsname')}_signature, ${fmt.get ('jsname')}_protoImplementation, container, instancename);
+    me.children = ${fmt.get ('jsname')}_makechildren (me);
     ...
     return me;
 }
@@ -128,7 +133,7 @@ ArrayOfConnections [lb @Connections rb] = [[${Connections}]]
 
 ArrayOfChildNames [lb ChildNames rb] = [[${ChildNames}]]
 
-ChildName [n] = [[${fmt.put ("instances", 'var child' + fmt.gensym () + ' = new ' + fmt.jsize (n) + ' (me, ' + n + ')')}]]
+ChildName [n] = [[${fmt.put ("instances", 'var child' + fmt.gensym () + ' = new ' + fmt.jsize (n) + ' (me, ' + n + ');')}]]
 
 ChildNameList [first @rest] = [[${first}${rest}]]
 
