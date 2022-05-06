@@ -67,8 +67,8 @@ SenderArray [lb Sender rb] = [[${lb}${Sender}${rb}]]
 Receiver [lb PTagreceiver Pair rb] = [[${lb}${PTagreceiver}${Pair}${rb}]]
 Sender [lb PTagsender Pair rb] = [[${lb}${PTagsender}${Pair}${rb}]]
 
-SingleComponent [@pragma x] = {{ fmt.reset (); }} [[\n%name ${fmt.get ('name')}\n${x}]]
+SingleComponent [@pragma x] = {{ fmt.reset (); }} [[${x}]]
 Leaf [cdesc] = [[${cdesc}]]
 Container [cdesc] = [[${cdesc}]]
 
-NamePragma [k s] = [[${k}${s}${fmt.put ('name', s)}]]
+NamePragma [k s] = [[${fmt.put ('name', s)}]]

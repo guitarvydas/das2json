@@ -20,5 +20,5 @@ regression:
 
 dev:
 	${prep} "." '$$' ${grammar} ${format} --stop=1 ${support} --grammarname=${gname} <${src} >${target}.js
-	${prep} "." '$$' ${grammar} ${reformat} --stop=1 ${support} --grammarname=${gname} <${src} >${target}.js
-	cat ${target}.js
+	${prep} "." '$$' ${grammar} ${reformat} --stop=1 ${support} --grammarname=${gname} <${target}.js >${target}-2.js
+	cat ${target}-2.js
