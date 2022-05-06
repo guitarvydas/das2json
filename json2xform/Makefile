@@ -1,8 +1,8 @@
 grammar=../djson.ohm
 prep=../prep/prep
-format=identity-djson.fmt
-#src=testbench4.json
-src=../testbench.json
+format=xdjson.fmt
+src=testbench4.json
+#src=../testbench.json
 target=`basename ${src} .json`
 here=`pwd`
 gname=ASCxform

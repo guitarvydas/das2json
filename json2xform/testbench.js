@@ -1,5 +1,6 @@
 [
-[{
+[%name "HTML Button"
+{
 "children":[]
 "connections":[]
 "id":"cell_12"
@@ -7,7 +8,8 @@
 "name":"HTML Button"
 "outputs":["click"]
 "synccode":"me.send (&quot;click&quot;, true);"}]
-[{
+[%name "Phrase Faker"
+{
 "children":[]
 "connections":[]
 "id":"cell_15"
@@ -15,7 +17,8 @@
 "name":"Phrase Faker"
 "outputs":["short phrase""long phrase"]
 "synccode":"&lt;div&gt;&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Bacon And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;"}]
-[{
+[%name "Phrase Parser"
+{
 "children":[]
 "connections":[]
 "id":"cell_22"
@@ -23,7 +26,8 @@
 "name":"Phrase Parser"
 "outputs":["order no choices""order with choices""parse error""hook error"]
 "synccode":""}]
-[{
+[%name "Test Bench"
+{
 "children":["HTML Button""Phrase Faker""Order Taker"]
 "connections":[{
 "receivers":[{
@@ -63,7 +67,8 @@
 "name":"Test Bench"
 "outputs":["food order"]
 "synccode":""}]
-[{
+[%name "Order Taker"
+{
 "children":["Phrase Parser"]
 "connections":[{
 "receivers":[{
