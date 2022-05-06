@@ -2,22 +2,22 @@
 
 var Order_Taker_signature = {
     name: "Order_Taker",
-    inputs: [{name:"phrase", structure: ["phrase"]}],
-    outputs: [{name:"food order", structure: ["food order"]}]
+    inputs: [{name:"phrase", structure:["phrase"]}],
+    outputs: [{name:"food order", structure:["food_order"]}]
 }
 
 
 
 function Order_Taker_makechildren (container) {
       var child1 = new Phrase_Parser (container, "Phrase Parser");
-      var children = [ child1 ];
+      var children = [ {name: "Phrase Parser", runnable: child1} ];
       return children;
 }
 
 function Order_Taker_makeconnections (container) {
-    var conn2 = {sender:{name: "Order Taker", etag: "phrase"}), net: "NIY", receivers: [ [{name: "Phrase Parser", etag: "phrase"})] ]});
-    var conn3 = {sender:{name: "Phrase Parser", etag: "order no choices"}), net: "NIY", receivers: [ [{name: "Order Taker", etag: "food order"})] ]});
-    var conn4 = {sender:{name: "Phrase Parser", etag: "order with choices"}), net: "NIY", receivers: [ [{name: "Order Taker", etag: "food order"})] ]});
+    var conn2 = {sender:{name: "_me", etag: "phrase"}, net: "NIY", receivers:  [{name: "Phrase Parser", etag: "phrase"}] };
+    var conn3 = {sender:{name: "Phrase Parser", etag: "order no choices"}, net: "NIY", receivers:  [{name: "_me", etag: "food order"}] };
+    var conn4 = {sender:{name: "Phrase Parser", etag: "order with choices"}, net: "NIY", receivers:  [{name: "_me", etag: "food order"}] };
     var connections = [ conn2, conn3, conn4 ];
     return connections;
 }

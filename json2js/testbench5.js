@@ -3,7 +3,7 @@
 var HTML_Button_signature = {
     name: "HTML_Button",
     inputs: [],
-    outputs: [{name:"click", structure: ["click"]}]
+    outputs: [{name:"click", structure:["click"]}]
 }
 
 
@@ -27,7 +27,7 @@ function HTML_Button (container, instancename) {
 var HTML_Buttonza_signature = {
     name: "HTML_Buttonza",
     inputs: [],
-    outputs: [{name:"clicka", structure: ["clicka"]}]
+    outputs: [{name:"clicka", structure:["clicka"]}]
 }
 
 

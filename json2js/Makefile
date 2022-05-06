@@ -17,7 +17,7 @@ xfmt2=../json2xform/xdjson2.fmt
 
 dev:
 	(cd .. ; make testbenchdb.json)
-	${prep} "." '$$' ${grammar} ${xfmt1} --stop=1 --fmt=${here}/fmt.js --grammarname=${xg} <${src} >${target}-1.js
-	${prep} "." '$$' ${grammar} ${xfmt2} --stop=1 --fmt=${here}/fmt.js --grammarname=${xg} <${target}-1.js >${target}-2.js
-	${prep} "." '$$' ${grammar} ${format} --stop=1 --fmt=${here}/fmt.js --grammarname=ASC2py --errorview <${target}-2.js >${target}.js
+	${prep} "." '$$' ${grammar} ${xfmt1} --stop=1 --fmt=${here}/fmt.js --grammarname=${xg} <${src} >${target}-1.json
+	${prep} "." '$$' ${grammar} ${xfmt2} --stop=1 --fmt=${here}/fmt.js --grammarname=${xg} <${target}-1.js >${target}-2.json
+	${prep} "." '$$' ${grammar} ${format} --stop=1 --fmt=${here}/fmt.js --grammarname=ASC2py --errorview <${target}-2.json >${target}.js
 	cat ${target}.js
