@@ -26,7 +26,7 @@ Main [ArrayOfComponents] = [[${ArrayOfComponents}]]
 ArrayOfComponents [lb @Components rb] = [[${lb}${Components}${rb}]]
 Component [ArrayOfSingleComponent] = [[\n${ArrayOfSingleComponent}]]
 ArrayOfSingleComponent [lb SingleComponent rb]  = [[${lb}${SingleComponent}${rb}]]
-SingleComponent [x] = [[\n${x}]]
+SingleComponent [x] = {{fmt.reset (); }} [[\n${x}]]
 ComponentDescriptor [NestedJObject] = [[${NestedJObject}]]
 tagname [k] = [[${k}]]
 
