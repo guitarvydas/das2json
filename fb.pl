@@ -612,7 +612,7 @@ diagram_fact(value, cell_16, "Phrase Faker").
 diagram_fact(value, cell_17, "short phrase").
 diagram_fact(value, cell_19, "long phrase").
 diagram_fact(value, cell_20, "go").
-diagram_fact(value, cell_21, "&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Bacon And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;").
+diagram_fact(value, cell_21, "&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Cheese And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;").
 diagram_fact(value, cell_22, "probe2").
 diagram_fact(value, cell_24, "out").
 diagram_fact(value, cell_25, "console.log ('probe 2: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
@@ -907,7 +907,7 @@ das_fact(name, cell_16, "Phrase Faker").
 das_fact(name, cell_17, "short phrase").
 das_fact(name, cell_19, "long phrase").
 das_fact(name, cell_20, "go").
-das_fact(name, cell_21, "&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Bacon And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;").
+das_fact(name, cell_21, "&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Cheese And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;").
 das_fact(name, cell_22, "probe2").
 das_fact(name, cell_24, "out").
 das_fact(name, cell_25, "console.log ('probe 2: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
@@ -1349,7 +1349,7 @@ das_fact(direct_contains,cell_27,cell_50).
 das_fact(direct_contains,cell_27,cell_30).
 das_fact(codebox,cell_10,"me.send (&quot;click&quot;, true);").
 das_fact(codebox,cell_14,"console.log ('probe: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
-das_fact(codebox,cell_21,"&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Bacon And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;").
+das_fact(codebox,cell_21,"&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Cheese And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;").
 das_fact(codebox,cell_25,"console.log ('probe 2: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(codebox,cell_42,"console.log ('probe 3: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(codebox,cell_47,"console.log ('probe 4: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
