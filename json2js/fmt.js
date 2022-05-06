@@ -121,8 +121,8 @@ exports.formatPort = function (p) {
 ///// for xform
 // preqreq - get ('name') returns the current component name 
 exports.meify = function (s) {
-    if (s === get ('name')) {
-	return "_me";
+    if (s == get ('name')) {
+	return '"_me"';
     } else {
 	return s;
     }

@@ -8,11 +8,11 @@
 "port":"phrase"}}]
 "senders":[{
 "sender":{
-"component":"Order Taker"
+"component":"_me"
 "port":"phrase"}}]},{
 "receivers":[{
 "receiver":{
-"component":"Order Taker"
+"component":"_me"
 "port":"food order"}}]
 "senders":[{
 "sender":{
@@ -20,7 +20,7 @@
 "port":"order no choices"}}]},{
 "receivers":[{
 "receiver":{
-"component":"Order Taker"
+"component":"_me"
 "port":"food order"}}]
 "senders":[{
 "sender":{
