@@ -127,6 +127,6 @@ Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject |
 }
 
 ASCxform <: ASCconnection {
-SingleComponent := NamePragma (Leaf | Container)
+SingleComponent := NamePragma? (Leaf | Container)
 NamePragma = "%name" string
 }
