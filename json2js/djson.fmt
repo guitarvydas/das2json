@@ -56,6 +56,7 @@ InputsObject [PTag Object] =  [[${fmt.put ( "inputs", fmt.formatPort (Object))}]
 OutputsObject [PTag Object] = [[${fmt.put ("outputs", fmt.formatPort (Object))}]]
 NameObject [PTag Object] = [[${fmt.put ("name", Object)}]]
 SynccodeObject [PTag Object] = [[${fmt.put ("synccode", fmt.decode (Object))}]]
+EmptySynccodeObject [PTag lb rb] = [[]]
 ComponentObject [PTag Object] = [[${Object}]]
 PortObject [PTag Object] = [[${Object}]]
 
@@ -91,6 +92,15 @@ var ${fmt.get ('jsname')}_protoImplementation = {
         ${fmt.get ('synccode')}
     }
 }
+
+function ${fmt.get ('jsname')} (container, instancename) {
+    let me = new Leaf (${fmt.get ('jsname')}_signature, ${fmt.get ('jsname')}_protoImplementation, container, instancename);
+    return me;
+}
+]]
+
+Signature [lb @x rb] = [[
+${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
 
 function ${fmt.get ('jsname')} (container, instancename) {
     let me = new Leaf (${fmt.get ('jsname')}_signature, ${fmt.get ('jsname')}_protoImplementation, container, instancename);
