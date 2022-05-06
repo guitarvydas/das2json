@@ -73,6 +73,8 @@ PortObject = PTag<"port"> JObject
 
 ASCpairs <: ASCLC {
 Pair = "{" ComponentObject PortObject "}"
+Signature = "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | EmptySynccodeObject)+ "}"
+EmptySynccodeObject = PTag<"synccode"> dq dq
 }
 
 ASCconnection <: ASCpairs {
@@ -108,7 +110,6 @@ ArrayOfChildNames = "[" ChildNameList "]"
 ChildNameList = ChildName ChildName*
 ChildName = string
 SynccodeObject := PTag<"synccode"> strippedString
-EmptySynccodeObject = PTag<"synccode"> dq dq
 strippedString = dq (~dq any)* dq
 InputsObject := PTag<"inputs"> ArrayOfPortNames
 OutputsObject := PTag<"outputs"> ArrayOfPortNames
@@ -120,8 +121,12 @@ ListablePortName = PortName
 PortName = string
 
 SingleComponent := Signature | Leaf | Container
-Signature = "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | EmptySynccodeObject)+ "}"
 
 Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
 
+}
+
+ASCxform <: ASCconnection {
+SingleComponent := NamePragma? (Leaf | Container)
+NamePragma = "%name" string
 }

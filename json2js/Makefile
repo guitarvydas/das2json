@@ -6,10 +6,18 @@ format=djson.fmt
 #src=testbench2.json
 #src=testbench3.json
 #src=testbench4.json
-src=../testbench.json
+src=testbench6.json
+#src=../testbenchdb.json
 target=`basename ${src} .json`
 here=`pwd`
 
-all:
-	${prep} "." '$$' ${grammar} ${format} --stop=1 --fmt=${here}/fmt.js --grammarname=ASC2py <${src} >${target}.js
+xg=ASCxform
+xfmt1=../json2xform/xdjson.fmt
+xfmt2=../json2xform/xdjson2.fmt
+
+dev:
+	(cd .. ; make testbenchdb.json)
+	${prep} "." '$$' ${grammar} ${xfmt1} --stop=1 --fmt=${here}/fmt.js --grammarname=${xg} <${src} >${target}-1.js
+	${prep} "." '$$' ${grammar} ${xfmt2} --stop=1 --fmt=${here}/fmt.js --grammarname=${xg} <${target}-1.js >${target}-2.js
+	${prep} "." '$$' ${grammar} ${format} --stop=1 --fmt=${here}/fmt.js --grammarname=ASC2py <${target}-2.js >${target}.js
 	cat ${target}.js

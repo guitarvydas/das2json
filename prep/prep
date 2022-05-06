@@ -246,10 +246,10 @@ function _ruleExit (ruleName) {
 }
 
 
-function execTranspiler (source, grammar, semantics, errorMessage) {
+function execTranspiler (source, grammar, semantics, errorMessage, srcFilename, glueFilename) {
     // first pass - transpile glue code to javascript
     try {
-	let generatedSCNSemantics = gluetranspiler (semantics, glueGrammar, "_glue", glueSemantics, "in glue specification " + errorMessage);
+	let generatedSCNSemantics = gluetranspiler (semantics, glueGrammar, "_glue", glueSemantics, "in FORMAT specification: " + glueFilename);
     _ruleInit();
 	try {
 	    if (viewGeneratedCode) {
@@ -259,7 +259,7 @@ function execTranspiler (source, grammar, semantics, errorMessage) {
 	    }
             let semObject = eval('(' + generatedSCNSemantics + ')');
 	    try {
-		let tr = inputtranspiler(source, grammar, "_glue", semObject, errorMessage);
+		let tr = inputtranspiler(source, grammar, "_glue", semObject, srcFilename);
 		return tr;
 	    } catch (err) {
 		throw err;
@@ -275,10 +275,10 @@ function execTranspiler (source, grammar, semantics, errorMessage) {
     }
 }
 
-function internal_stranspile (sourceString, grammarFileName, glueFileName, errorMessage) {
+function internal_stranspile (sourceString, grammarFileName, glueFileName, errorMessage, srcFilename) {
     var grammar = fs.readFileSync (grammarFileName, 'utf-8');
     var glue = fs.readFileSync (glueFileName, 'utf-8');
-    var returnString = execTranspiler (sourceString, grammar, glue, errorMessage);
+    var returnString = execTranspiler (sourceString, grammar, glue, errorMessage, srcFilename, glueFileName);
     return returnString;
 }
 
@@ -295,9 +295,9 @@ function dump (announce, s) {
     }
 }
 
-function expand (s, grammarFileName, glueFileName, message) {
+function expand (s, grammarFileName, glueFileName, message, srcFilename) {
     dump ("********* block *********", s);
-    var result = internal_stranspile (s, grammarFileName, glueFileName, message);
+    var result = internal_stranspile (s, grammarFileName, glueFileName, message, srcFilename);
     dump ("********* Expanded ******", result);
     return result;
 }
@@ -357,7 +357,7 @@ function pdebug (s) {
     }
 }
 
-function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message) {
+function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message, srcFilename) {
     dump ("*** expandAll ***", s);
     if (s === undefined) {
 	return s;
@@ -369,7 +369,7 @@ function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message)
 	    return front;
 	} else {
 	    dump ("*** expansion ***", middle);
-	    var expandedText = expand (middle, grammarFileName, glueFileName, message);
+	    var expandedText = expand (middle, grammarFileName, glueFileName, message, srcFilename);
 	    cycles += 1;
 	    if (stop & (cycles >= stop)) {
 		return front + expandedText + rest;
@@ -380,7 +380,7 @@ function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message)
 		    console.error (expandedText.substring (0,30));
 		    throw 'expand made no changes';
 		}
-		return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message);
+		return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message, srcFilename);
 	    }
 	}
     }
@@ -413,7 +413,7 @@ function pre (allchars) {
     }
 
 
-    var expanded = expandAll (allchars, reTrigger, reEnd, grammarFileName, glueFileName, 'parsing input');
+    var expanded = expandAll (allchars, reTrigger, reEnd, grammarFileName, glueFileName, 'STDIN', 'STDIN');
     return expanded;
 }
 

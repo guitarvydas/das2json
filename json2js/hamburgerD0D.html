@@ -26,7 +26,8 @@
     <script src="https://unpkg.com/ohm-js@16/dist/ohm.min.js"></script>
 
     <!-- Components for this app (see, also, hamburgerworkbench0d.drawio) -->
-    <script src="testbench.js"></script>
+    <script src="phraseparser.js"></script>
+    <script src="testbenchdb.js"></script>
 
     <script>
       
@@ -37,10 +38,14 @@
           htmlbutton.handler (htmlbutton, null);
           htmlbutton.container.wakeup ();
           let outs = testBench.outputs ();
-	  let order = outs [0].data;
-          //document.getElementById ('output').innerHTML = outs.toString () + '\ndone';
-          document.getElementById ('output').innerHTML
-	      = order.item.toString () + '\nextra: ' + order.extras.toString () + '\ncondiments: ' + order.condiments.toString ();
+          if (Array.isArray (outs)) {
+              if (outs.length > 0) {
+                  let order = outs [0].data;
+                  //document.getElementById ('output').innerHTML = outs.toString () + '\ndone';
+                  document.getElementById ('output').innerHTML
+                      = order.item.toString () + '\nextra: ' + order.extras.toString () + '\ncondiments: ' + order.condiments.toString ();
+              }
+          }
       }
 
     </script>
