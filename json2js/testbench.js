@@ -87,7 +87,7 @@ function Test_Bench_makechildren (container) {
       var child1 = new HTML_Button (container, "HTML Button");
         var child2 = new Phrase_Faker (container, "Phrase Faker");
         var child3 = new Order_Taker (container, "Order Taker");
-      var children = [ child1, child2, child3 ];
+      var children = [ {name: "HTML Button", runnable: child1}, {name: "Phrase Faker", runnable: child2}, {name: "Order Taker", runnable: child3} ];
       return children;
 }
 
@@ -136,7 +136,7 @@ var Order_Taker_signature = {
 
 function Order_Taker_makechildren (container) {
       var child8 = new Phrase_Parser (container, "Phrase Parser");
-      var children = [ child8 ];
+      var children = [ {name: "Phrase Parser", runnable: child8} ];
       return children;
 }
 
