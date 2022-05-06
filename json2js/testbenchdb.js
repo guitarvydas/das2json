@@ -38,7 +38,7 @@ var Phrase_Faker_protoImplementation = {
     begin: function () {},
     finish: function () {},
     handler: function (me, message) {
-        console.log ('phrase faker: ' + message.etag);    me.send ("long phrase", "I Want A Hamburger With Ketchup And Bacon And Pickles");
+        console.log ('phrase faker: ' + message.etag);    me.send ("long phrase", "I Want A Hamburger With Ketchup And Cheese And Pickles");
 
 
 

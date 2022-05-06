@@ -14,7 +14,7 @@
 "inputs":["go" ]
 "name":"Phrase Faker" 
 "outputs":["short phrase" "long phrase" ]
-"synccode":"&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Bacon And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" }]
+"synccode":"&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Cheese And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" }]
 [{
 "children":[]
 "connections":[]
