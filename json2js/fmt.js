@@ -65,12 +65,15 @@ function put (field, v) {
     return "";
 }
 exports.put = put;
-exports.get = function (field) {
+
+function get (field) {
     var x = comp[field].pop (); // this can be done less stupidly, but it works for now
     comp[field].push (x);
     return x;
 }
-exports.aget = function (field, prefix) {
+exports.get = get;
+
+function aget (field, prefix) {
     var r = comp[field];
     if (r) {
 	return comp[field].join (prefix);
@@ -78,6 +81,7 @@ exports.aget = function (field, prefix) {
 	return "";
     }
 }
+exports.aget = aget;
 
 exports.putlines = function (field, s) {
     var a = s.split (/\n/);
@@ -111,5 +115,15 @@ exports.formatPort = function (p) {
 	// return '{name:' + p + ', structure: [' + p + ']}';
     } else {
 	return '';
+    }
+}
+
+///// for xform
+// preqreq - get ('name') returns the current component name 
+exports.meify = function (s) {
+    if (s === get ('name')) {
+	return "_me";
+    } else {
+	return s;
     }
 }
