@@ -71,3 +71,6 @@ Leaf [cdesc] = [[${cdesc}]]
 Container [cdesc] = [[${cdesc}]]
 
 NamePragma [k s] = [[${k}${s}]]
+
+Signature [lb @cdesc rb] = [[${lb}${cdesc}${rb}]]
+EmptySynccodeObject [PTag dq1 dq2] = [[${PTag}${dq1}${dq2}]]

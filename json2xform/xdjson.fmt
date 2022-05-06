@@ -68,7 +68,10 @@ Receiver [lb PTagreceiver Pair rb] = [[${lb}${PTagreceiver}${Pair}${rb}]]
 Sender [lb PTagsender Pair rb] = [[${lb}${PTagsender}${Pair}${rb}]]
 
 SingleComponent [@pragma x] = [[\n%name ${fmt.get ('name')}\n${x}]]
+Signature [lb @cdesc rb] = [[${lb}${cdesc}${rb}]]
 Leaf [cdesc] = [[${cdesc}]]
 Container [cdesc] = [[${cdesc}]]
 
 NamePragma [k s] = [[${k}${s}]]
+
+EmptySynccodeObject [PTag dq1 dq2] = [[${PTag}${dq1}${dq2}]]

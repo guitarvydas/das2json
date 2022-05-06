@@ -73,7 +73,7 @@ PortObject = PTag<"port"> JObject
 
 ASCpairs <: ASCLC {
 Pair = "{" ComponentObject PortObject "}"
-Signature = "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | EmptySynccodeObject)+ "}"
+Signature = "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | NameObject | InputsObject | OutputsObject | EmptySynccodeObject)+ "}"
 EmptySynccodeObject = PTag<"synccode"> dq dq
 }
 
@@ -127,6 +127,6 @@ Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject |
 }
 
 ASCxform <: ASCconnection {
-SingleComponent := NamePragma? (Leaf | Container)
+SingleComponent := NamePragma? (Signature | Leaf | Container)
 NamePragma = "%name" string
 }
