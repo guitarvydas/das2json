@@ -120,6 +120,8 @@ ListablePortName = PortName
 PortName = string
 
 SingleComponent := Signature | Leaf | Container
-Signature = "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | EmptySynccodeObject)+ "}"
+Signature = "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | EmptySynccodeObject)+ "}"
+
+Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
 
 }

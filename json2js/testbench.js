@@ -58,6 +58,15 @@ var Phrase_Parser_signature = {
 }
 
 
+var Phrase_Parser_protoImplementation = {
+    name: "Phrase_Parser",
+    kind: "leaf",
+    begin: function () {},
+    finish: function () {},
+    handler: function (me, message) {
+        
+    }
+}
 
 function Phrase_Parser (container, instancename) {
     let me = new Leaf (Phrase_Parser_signature, Phrase_Parser_protoImplementation, container, instancename);
