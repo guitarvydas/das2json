@@ -632,7 +632,7 @@ diagram_fact(value, cell_42, "console.log ('probe 3:');&lt;br&gt;console.log (me
 diagram_fact(value, cell_43, "in").
 diagram_fact(value, cell_44, "probe4").
 diagram_fact(value, cell_46, "out").
-diagram_fact(value, cell_47, "console.log ('probe 4: '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+diagram_fact(value, cell_47, "console.log ('probe 4 (woohoo): '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 diagram_fact(value, cell_48, "in").
 diagram_fact(value, cell_49, "probe3a").
 diagram_fact(value, cell_51, "out").
@@ -927,7 +927,7 @@ das_fact(name, cell_42, "console.log ('probe 3:');&lt;br&gt;console.log (message
 das_fact(name, cell_43, "in").
 das_fact(name, cell_44, "probe4").
 das_fact(name, cell_46, "out").
-das_fact(name, cell_47, "console.log ('probe 4: '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(name, cell_47, "console.log ('probe 4 (woohoo): '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(name, cell_48, "in").
 das_fact(name, cell_49, "probe3a").
 das_fact(name, cell_51, "out").
@@ -1352,7 +1352,7 @@ das_fact(codebox,cell_14,"console.log ('probe 1: ');&lt;br&gt;console.log (messa
 das_fact(codebox,cell_21,"&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Cheese And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;").
 das_fact(codebox,cell_25,"console.log ('probe 2: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(codebox,cell_42,"console.log ('probe 3:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
-das_fact(codebox,cell_47,"console.log ('probe 4: '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(codebox,cell_47,"console.log ('probe 4 (woohoo): '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(codebox,cell_52,"console.log ('probe 3a:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(connection, cell_6, cell_12).
 das_fact(sender, cell_12, sender{component:"probe1",port:"out"}).

@@ -184,7 +184,7 @@ var probe4_protoImplementation = {
     begin: function () {},
     finish: function () {},
     handler: function (me, message) {
-        console.log ('probe 4: '); console.log (message);
+        console.log ('probe 4 (woohoo): '); console.log (message);
 me.send ("out", message.data);
     }
 }

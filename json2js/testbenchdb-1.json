@@ -93,7 +93,7 @@
 "inputs":["in"]
 "name":"probe4"
 "outputs":["out"]
-"synccode":"console.log ('probe 4: '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);"}]
+"synccode":"console.log ('probe 4 (woohoo): '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);"}]
 [
 %name "probe3a"
 {
