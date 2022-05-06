@@ -7,6 +7,7 @@ target=`basename ${src} .json`
 here=`pwd`
 gname=ASCxform
 support=--fmt=${here}/../json2js/fmt.js
+reformat=xdjson2.fmt
 
 all: main regression
 
@@ -17,5 +18,7 @@ regression:
 	${prep} "." '$$' ${grammar} ${format} --stop=1 ${support} --grammarname=${gname} <${target}.js >${target}-regression.js
 	diff ${target}.js ${target}-regression.js
 
-dev: main
+dev:
+	${prep} "." '$$' ${grammar} ${format} --stop=1 ${support} --grammarname=${gname} <${src} >${target}.js
+	${prep} "." '$$' ${grammar} ${reformat} --stop=1 ${support} --grammarname=${gname} <${src} >${target}.js
 	cat ${target}.js
