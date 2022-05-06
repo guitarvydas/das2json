@@ -95,7 +95,7 @@ function Test_Bench_makeconnections (container) {
     var conn4 = {sender:{name: "HTML Button", etag: "click"}, net: "NIY", receivers:  [{name: "Phrase Faker", etag: "go"}] };
     var conn5 = {sender:{name: "Phrase Faker", etag: "short phrase"}, net: "NIY", receivers:  [{name: "Order Taker", etag: "phrase"}] };
     var conn6 = {sender:{name: "Phrase Faker", etag: "long phrase"}, net: "NIY", receivers:  [{name: "Order Taker", etag: "phrase"}] };
-    var conn7 = {sender:{name: "Order Taker", etag: "food order"}, net: "NIY", receivers:  [{name: "Test Bench", etag: "food order"}] };
+    var conn7 = {sender:{name: "Order Taker", etag: "food order"}, net: "NIY", receivers:  [{name: "_me", etag: "food order"}] };
     var connections = [ conn4, conn5, conn6, conn7 ];
     return connections;
 }
@@ -141,9 +141,9 @@ function Order_Taker_makechildren (container) {
 }
 
 function Order_Taker_makeconnections (container) {
-    var conn9 = {sender:{name: "Order Taker", etag: "phrase"}, net: "NIY", receivers:  [{name: "Phrase Parser", etag: "phrase"}] };
-    var conn10 = {sender:{name: "Phrase Parser", etag: "order no choices"}, net: "NIY", receivers:  [{name: "Order Taker", etag: "food order"}] };
-    var conn11 = {sender:{name: "Phrase Parser", etag: "order with choices"}, net: "NIY", receivers:  [{name: "Order Taker", etag: "food order"}] };
+    var conn9 = {sender:{name: "_me", etag: "phrase"}, net: "NIY", receivers:  [{name: "Phrase Parser", etag: "phrase"}] };
+    var conn10 = {sender:{name: "Phrase Parser", etag: "order no choices"}, net: "NIY", receivers:  [{name: "_me", etag: "food order"}] };
+    var conn11 = {sender:{name: "Phrase Parser", etag: "order with choices"}, net: "NIY", receivers:  [{name: "_me", etag: "food order"}] };
     var connections = [ conn9, conn10, conn11 ];
     return connections;
 }
