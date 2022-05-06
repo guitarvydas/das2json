@@ -7,8 +7,8 @@ format=djson.fmt
 #src=testbench3.json
 #src=testbench4.json
 #src=testbench6.json
-src=../testbenchdb.json
-#src=../testbench.json
+#src=../testbenchdb.json
+src=../testbench.json
 target=`basename ${src} .json`
 here=`pwd`
 
