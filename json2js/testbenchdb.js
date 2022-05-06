@@ -13,7 +13,8 @@ var probe1_protoImplementation = {
     begin: function () {},
     finish: function () {},
     handler: function (me, message) {
-        console.log ('probe: ' + message.data);
+        console.log ('probe 1: ');
+console.log (message);
 me.send ("out", message.data);
     }
 }
@@ -65,7 +66,8 @@ var probe2_protoImplementation = {
     begin: function () {},
     finish: function () {},
     handler: function (me, message) {
-        console.log ('probe 2: ' + message.data);
+        console.log ('probe 2: ');
+console.log (message);
 me.send ("out", message.data);
     }
 }
@@ -156,7 +158,8 @@ var probe3_protoImplementation = {
     begin: function () {},
     finish: function () {},
     handler: function (me, message) {
-        console.log ('probe 3: ' + message.data);
+        console.log ('probe 3:');
+console.log (message);
 me.send ("out", message.data);
     }
 }
@@ -181,7 +184,7 @@ var probe4_protoImplementation = {
     begin: function () {},
     finish: function () {},
     handler: function (me, message) {
-        console.log ('probe 4: ' + message.data);
+        console.log ('probe 4: '); console.log (message);
 me.send ("out", message.data);
     }
 }
@@ -206,7 +209,8 @@ var probe3a_protoImplementation = {
     begin: function () {},
     finish: function () {},
     handler: function (me, message) {
-        console.log ('probe 3a: ' + message.data);
+        console.log ('probe 3a:');
+console.log (message);
 me.send ("out", message.data);
     }
 }

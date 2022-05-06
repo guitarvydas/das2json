@@ -606,7 +606,7 @@ diagram_fact(target, cell_8, d2PD9pr8LVU__TdM__kRBD__8).
 diagram_fact(value, cell_10, "me.send (&quot;click&quot;, true);").
 diagram_fact(value, cell_11, "probe1").
 diagram_fact(value, cell_13, "out").
-diagram_fact(value, cell_14, "console.log ('probe: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+diagram_fact(value, cell_14, "console.log ('probe 1: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 diagram_fact(value, cell_15, "in").
 diagram_fact(value, cell_16, "Phrase Faker").
 diagram_fact(value, cell_17, "short phrase").
@@ -615,7 +615,7 @@ diagram_fact(value, cell_20, "go").
 diagram_fact(value, cell_21, "&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Cheese And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;").
 diagram_fact(value, cell_22, "probe2").
 diagram_fact(value, cell_24, "out").
-diagram_fact(value, cell_25, "console.log ('probe 2: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+diagram_fact(value, cell_25, "console.log ('probe 2: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 diagram_fact(value, cell_26, "in").
 diagram_fact(value, cell_27, "Order Taker").
 diagram_fact(value, cell_29, "food order").
@@ -628,15 +628,15 @@ diagram_fact(value, cell_37, "parse error").
 diagram_fact(value, cell_38, "hook error").
 diagram_fact(value, cell_39, "probe3").
 diagram_fact(value, cell_41, "out").
-diagram_fact(value, cell_42, "console.log ('probe 3: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+diagram_fact(value, cell_42, "console.log ('probe 3:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 diagram_fact(value, cell_43, "in").
 diagram_fact(value, cell_44, "probe4").
 diagram_fact(value, cell_46, "out").
-diagram_fact(value, cell_47, "console.log ('probe 4: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+diagram_fact(value, cell_47, "console.log ('probe 4: '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 diagram_fact(value, cell_48, "in").
 diagram_fact(value, cell_49, "probe3a").
 diagram_fact(value, cell_51, "out").
-diagram_fact(value, cell_52, "console.log ('probe 3a: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+diagram_fact(value, cell_52, "console.log ('probe 3a:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 diagram_fact(value, cell_53, "in").
 diagram_fact(value, cell_54, "food order").
 diagram_fact(value, cell_6, "Test Bench").
@@ -901,7 +901,7 @@ das_fact(kind,cell_9,ellipse).
 das_fact(name, cell_10, "me.send (&quot;click&quot;, true);").
 das_fact(name, cell_11, "probe1").
 das_fact(name, cell_13, "out").
-das_fact(name, cell_14, "console.log ('probe: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(name, cell_14, "console.log ('probe 1: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(name, cell_15, "in").
 das_fact(name, cell_16, "Phrase Faker").
 das_fact(name, cell_17, "short phrase").
@@ -910,7 +910,7 @@ das_fact(name, cell_20, "go").
 das_fact(name, cell_21, "&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Cheese And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;").
 das_fact(name, cell_22, "probe2").
 das_fact(name, cell_24, "out").
-das_fact(name, cell_25, "console.log ('probe 2: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(name, cell_25, "console.log ('probe 2: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(name, cell_26, "in").
 das_fact(name, cell_27, "Order Taker").
 das_fact(name, cell_29, "food order").
@@ -923,15 +923,15 @@ das_fact(name, cell_37, "parse error").
 das_fact(name, cell_38, "hook error").
 das_fact(name, cell_39, "probe3").
 das_fact(name, cell_41, "out").
-das_fact(name, cell_42, "console.log ('probe 3: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(name, cell_42, "console.log ('probe 3:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(name, cell_43, "in").
 das_fact(name, cell_44, "probe4").
 das_fact(name, cell_46, "out").
-das_fact(name, cell_47, "console.log ('probe 4: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(name, cell_47, "console.log ('probe 4: '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(name, cell_48, "in").
 das_fact(name, cell_49, "probe3a").
 das_fact(name, cell_51, "out").
-das_fact(name, cell_52, "console.log ('probe 3a: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(name, cell_52, "console.log ('probe 3a:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(name, cell_53, "in").
 das_fact(name, cell_54, "food order").
 das_fact(name, cell_6, "Test Bench").
@@ -1348,12 +1348,12 @@ das_fact(direct_contains,cell_6,cell_45).
 das_fact(direct_contains,cell_27,cell_50).
 das_fact(direct_contains,cell_27,cell_30).
 das_fact(codebox,cell_10,"me.send (&quot;click&quot;, true);").
-das_fact(codebox,cell_14,"console.log ('probe: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(codebox,cell_14,"console.log ('probe 1: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(codebox,cell_21,"&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Cheese And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;").
-das_fact(codebox,cell_25,"console.log ('probe 2: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
-das_fact(codebox,cell_42,"console.log ('probe 3: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
-das_fact(codebox,cell_47,"console.log ('probe 4: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
-das_fact(codebox,cell_52,"console.log ('probe 3a: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(codebox,cell_25,"console.log ('probe 2: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(codebox,cell_42,"console.log ('probe 3:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(codebox,cell_47,"console.log ('probe 4: '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
+das_fact(codebox,cell_52,"console.log ('probe 3a:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);").
 das_fact(connection, cell_6, cell_12).
 das_fact(sender, cell_12, sender{component:"probe1",port:"out"}).
 das_fact(receiver, cell_12, receiver{component:"Phrase Faker",port:"go"}).

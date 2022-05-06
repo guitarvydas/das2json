@@ -7,7 +7,7 @@
       "inputs": ["in" ],
       "name":"probe1",
       "outputs": ["out" ],
-      "synccode":"console.log ('probe: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);"
+      "synccode":"console.log ('probe 1: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);"
     }
   ],
   [
@@ -29,7 +29,7 @@
       "inputs": ["in" ],
       "name":"probe2",
       "outputs": ["out" ],
-      "synccode":"console.log ('probe 2: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);"
+      "synccode":"console.log ('probe 2: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);"
     }
   ],
   [
@@ -79,7 +79,7 @@
       "inputs": ["in" ],
       "name":"probe3",
       "outputs": ["out" ],
-      "synccode":"console.log ('probe 3: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);"
+      "synccode":"console.log ('probe 3:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);"
     }
   ],
   [
@@ -90,7 +90,7 @@
       "inputs": ["in" ],
       "name":"probe4",
       "outputs": ["out" ],
-      "synccode":"console.log ('probe 4: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);"
+      "synccode":"console.log ('probe 4: '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);"
     }
   ],
   [
@@ -101,7 +101,7 @@
       "inputs": ["in" ],
       "name":"probe3a",
       "outputs": ["out" ],
-      "synccode":"console.log ('probe 3a: ' + message.data);&lt;br&gt;me.send (&quot;out&quot;, message.data);"
+      "synccode":"console.log ('probe 3a:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);"
     }
   ],
   [
