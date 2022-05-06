@@ -125,3 +125,6 @@ Signature = "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | Input
 Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
 
 }
+
+ASCxform <: ASCconnection {
+}
