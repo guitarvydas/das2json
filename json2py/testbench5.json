@@ -1,0 +1,24 @@
+[
+  [
+    {
+      "children": [],
+      "connections": [],
+      "id":"cell_12",
+      "inputs": [],
+      "name":"HTML Button",
+      "outputs": ["click" ],
+      "synccode":"me.send (&quot;click&quot;, true);"
+    }
+  ],
+  [
+    {
+      "children": [],
+      "connections": [],
+      "id":"cell_12a",
+      "inputs": [],
+      "name":"HTML Buttonza",
+      "outputs": ["clicka" ],
+      "synccode":"me.senda (&quot;click&quot;, true);"
+    }
+  ]
+]

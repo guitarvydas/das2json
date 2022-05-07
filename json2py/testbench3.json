@@ -1,0 +1,18 @@
+[
+  [
+    {
+      "children": ["HTML Button", "Phrase Faker", "Order Taker" ],
+      "connections": [
+        {
+          "receivers": [ {"receiver": {"component":"Phrase Faker", "port":"go"}} ],
+          "senders": [ {"sender": {"component":"HTML Button", "port":"click"}} ]
+        },
+      ],
+      "id":"cell_6",
+      "inputs": [],
+      "name":"Test Bench 3",
+      "outputs": ["food order" ],
+      "synccode":""
+    }
+  ]
+]

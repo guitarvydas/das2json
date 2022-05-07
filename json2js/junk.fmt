@@ -1,0 +1,20 @@
+${fmt.put ("children", 'child' + fmt.getsym ())}
+
+
+
+
+    self.children = \{${fmt.aget ("children", ", ")}\}
+      ${fmt.aget ("connectionInstances", '\n        ')}
+
+
+ChildName [n] = [[${fmt.put ("instances", 'var child' + fmt.gensym () + ' = 'new ' + n + ' (me,)}${fmt.formatChildMapEntry (n)}${fmt.pythonize (n)}]]
+
+var xxx =
+'var child' + 
+fmt.gensym () + 
+' = new ' + 
+n + 
+' (me,)}'
+${fmt.formatChildMapEntry (n)}${fmt.pythonize (n)}]]
+
+'var child' + fmt.gensym () + ' = new ' + n + ' (me,)}'${fmt.formatChildMapEntry (n)}${fmt.pythonize (n)}]]

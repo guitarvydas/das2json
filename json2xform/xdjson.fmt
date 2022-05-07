@@ -1,0 +1,77 @@
+string [dq1 @cs dq2] = [[STR]]
+
+JObject [x] = [[${x}]]
+JArray [lb @o rb] = [[${lb}${o}${rb}]]
+NestedJObject [lb @o rb] = [[${lb}${o}${rb}]]
+
+  Tag [@dq1 tagname @dq2 kcolon] = [[${dq1}${tagname}${dq2}${kcolon}]]
+  tagname [name] = [[${name}]]
+
+    COLON [c] = [[${c}]]
+    dq  [c] = [[${c}]]
+
+    string [dq1 @cs dq2] = [[${dq1}${cs}${dq2}]]
+
+    space [c] = [[${c}]]
+
+    name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
+    nameFirst [c] = [[${c}]]
+    nameRest [c] = [[${c}]]
+
+    number [@digits] = [[${digits}]]
+    true [k] = [[${k}]]
+    false [k] = [[${k}]]
+
+Main [ArrayOfComponents] = [[${ArrayOfComponents}]]
+ArrayOfComponents [lb @Components rb] = [[${lb}${Components}${rb}]]
+Component [ArrayOfSingleComponent] = [[\n${ArrayOfSingleComponent}]]
+ArrayOfSingleComponent [lb SingleComponent rb]  = [[${lb}${SingleComponent}${rb}]]
+SingleComponent [x] = {{fmt.reset (); }} [[\n${x}]]
+ComponentDescriptor [NestedJObject] = [[${NestedJObject}]]
+tagname [k] = [[${k}]]
+
+  PTag [@dq1 tname @dq2 kcolon] = [[${dq1}${tname}${dq2}${kcolon}]]
+
+  TaggedJObject [x] = [[\n${x}]]
+  
+  TaggedJObject_emptychildren [x] = [[${x}]]
+  TaggedJObject_emptyconnections [x] = [[${x}]]
+  TaggedJObject_children [x] = [[${x}]]
+  TaggedJObject_connections [x] = [[${x}]]
+  TaggedJObject_id [x] = [[${x}]]
+  TaggedJObject_inputs [x] = [[${x}]]
+  TaggedJObject_outputs [x] = [[${x}]]
+  TaggedJObject_name [x] = [[${x}]]
+  TaggedJObject_synccode [x] = [[${x}]]
+  TaggedJObject_component [x] = [[${x}]]
+  TaggedJObject_port [x] = [[${x}]]
+  TaggedJObject_generic [Tag obj] = [[${Tag}${obj}]]
+
+EmptyChildrenObject [PTag Object] = [[${PTag}${Object}]]
+EmptyConnectionsObject [PTag Object] = [[${PTag}${Object}]]
+ChildrenObject [PTag Object] = [[${PTag}${Object}]]
+ConnectionsObject [PTag Object] = [[${PTag}${Object}]]
+IDObject [PTag Object] = [[${PTag}${Object}]]
+InputsObject [PTag Object] = [[${PTag}${Object}]]
+OutputsObject [PTag Object] = [[${PTag}${Object}]]
+NameObject [PTag Object] = [[${PTag}${Object}${fmt.put ("name",Object)}]]
+SynccodeObject [PTag Object] = [[${PTag}${Object}]]
+ComponentObject [PTag Object] = [[${PTag}${Object}]]
+PortObject [PTag Object] = [[${PTag}${Object}]]
+
+Pair [lb ComponentObject PortObject rb] = [[${lb}${ComponentObject}${PortObject}${rb}]]
+
+Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${lb}${PTagreceivers}${ReceiverArray}${PTagsenders}${SenderArray}${rb}]]
+ReceiverArray [lb @Receivers rb] = [[${lb}${Receivers}${rb}]]
+SenderArray [lb Sender rb] = [[${lb}${Sender}${rb}]]
+Receiver [lb PTagreceiver Pair rb] = [[${lb}${PTagreceiver}${Pair}${rb}]]
+Sender [lb PTagsender Pair rb] = [[${lb}${PTagsender}${Pair}${rb}]]
+
+SingleComponent [@pragma x] = [[\n%name ${fmt.get ('name')}\n${x}]]
+Signature [lb @cdesc rb] = [[${lb}${cdesc}${rb}]]
+Leaf [cdesc] = [[${cdesc}]]
+Container [cdesc] = [[${cdesc}]]
+
+NamePragma [k s] = [[${k}${s}]]
+
+EmptySynccodeObject [PTag dq1 dq2] = [[${PTag}${dq1}${dq2}]]

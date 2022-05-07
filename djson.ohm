@@ -1,0 +1,132 @@
+djson {
+Main = JObject
+JObject = JArray | NestedJObject+ | string | number | true | false
+JArray = "[" JObject* "]"
+NestedJObject = "{" TaggedJObject+ "}"
+
+  Tag = dq? tagname dq? ":"
+  TaggedJObject = Tag JObject
+  tagname = name
+
+    COLON = ":"
+    dq = "\""
+
+    string = dq (~dq any)* dq
+
+    space += ","
+
+    name = nameFirst nameRest*
+    nameFirst = "A" .. "Z" | "a" .. "z" | "_"
+    nameRest = digit | nameFirst
+
+    number = digit+
+    true = "true"
+    false = "false"
+
+}
+
+LeafAndContainer <: djson {
+Main := ArrayOfComponents
+ArrayOfComponents = "[" Component* "]"
+Component = ArrayOfSingleComponent
+ArrayOfSingleComponent = "[" SingleComponent+ "]"
+SingleComponent = Leaf | Container
+Container = ComponentDescriptor
+Leaf = ComponentDescriptor
+ComponentDescriptor = NestedJObject
+tagname := (
+             "children" | "connections" | "id" | "inputs" | "outputs" | "name" 
+	   | "synccode"
+	   | "receivers" | "senders" | "receiver" | "sender"
+	   | "component" | "port"
+	   ) 
+}
+
+ASCLC <: LeafAndContainer {
+  PTag<tname> = dq? tname dq? ":"
+  TaggedJObject :=
+    | EmptyChildrenObject -- emptychildren
+    | EmptyConnectionsObject -- emptyconnections
+    | ChildrenObject -- children
+    | ConnectionsObject -- connections
+    | IDObject -- id
+    | InputsObject -- inputs
+    | OutputsObject -- outputs
+    | NameObject -- name
+    | SynccodeObject -- synccode
+    | ComponentObject -- component
+    | PortObject -- port
+    | Tag JObject -- generic
+
+EmptyChildrenObject = PTag<"children"> "[]"
+EmptyConnectionsObject = PTag<"connections"> "[]"
+ChildrenObject = PTag<"children"> JArray
+ConnectionsObject = PTag<"connections"> JArray
+IDObject = PTag<"id"> JObject
+InputsObject = PTag<"inputs"> JArray
+OutputsObject = PTag<"outputs"> JArray
+NameObject = PTag<"name"> JObject
+SynccodeObject = PTag<"synccode"> JObject
+ComponentObject = PTag<"component"> JObject
+PortObject = PTag<"port"> JObject
+}
+
+ASCpairs <: ASCLC {
+Pair = "{" ComponentObject PortObject "}"
+Signature = "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | NameObject | InputsObject | OutputsObject | EmptySynccodeObject)+ "}"
+EmptySynccodeObject = PTag<"synccode"> dq dq
+}
+
+ASCconnection <: ASCpairs {
+Connection = "{" PTag<"receivers"> ReceiverArray PTag<"senders"> SenderArray "}"
+ReceiverArray = "[" Receiver+ "]"
+SenderArray = "[" Sender "]"
+Receiver = "{" PTag<"receiver"> Pair "}"
+Sender = "{" PTag<"sender"> Pair "}"
+}
+
+ASCLOCO <: ASCconnection {
+SingleComponent := Leaf | Container
+Leaf := "{" (EmptyChildrenObject | EmptyConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
+Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
+
+ConnectionsObject := PTag<"connections"> ArrayOfConnections
+ChildrenObject := PTag<"children"> ArrayOfNames
+InputsObject := PTag<"inputs"> ArrayOfNames
+OutputsObject := PTag<"outputs"> ArrayOfNames
+ArrayOfNames = "[" ListOfNames? "]"
+ListOfNames = 
+  | ListableName ListOfNames -- rec
+  | string             -- bottom
+ListableName = string
+
+ArrayOfConnections = "[" Connection* "]"
+
+}
+
+ASC2py <: ASCLOCO {
+ChildrenObject := PTag<"children"> ArrayOfChildNames
+ArrayOfChildNames = "[" ChildNameList "]"
+ChildNameList = ChildName ChildName*
+ChildName = string
+SynccodeObject := PTag<"synccode"> strippedString
+strippedString = dq (~dq any)* dq
+InputsObject := PTag<"inputs"> ArrayOfPortNames
+OutputsObject := PTag<"outputs"> ArrayOfPortNames
+ArrayOfPortNames = "[" ListOfPortNames? "]"
+ListOfPortNames = 
+  | ListablePortName ListOfPortNames -- rec
+  | PortName             -- bottom
+ListablePortName = PortName
+PortName = string
+
+SingleComponent := Signature | Leaf | Container
+
+Container := "{" (ChildrenObject | ConnectionsObject | IDObject | InputsObject | OutputsObject | NameObject | SynccodeObject)+ "}"
+
+}
+
+ASCxform <: ASCconnection {
+SingleComponent := NamePragma? (Signature | Leaf | Container)
+NamePragma = "%name" string
+}

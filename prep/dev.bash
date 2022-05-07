@@ -1,2 +1,2 @@
-echo 'see run.bash for examples, use "prep" at command line'
+echo 'see run.bash for examples, use "pre" at command line'
 exit 1

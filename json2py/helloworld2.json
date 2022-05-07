@@ -1,0 +1,22 @@
+[
+  [
+    {
+      "children": ["world", "hello" ],
+      "connections": [
+	{
+	  "receivers": [ {"receiver": {"component":"hello", "port":"a"}} ],
+	  "senders": [ {"sender": {"component":"helloworld", "port":"go"}} ]
+	},
+	{
+	  "receivers": [ {"receiver": {"component":"world", "port":"in"}} ],
+	  "senders": [ {"sender": {"component":"hello", "port":"out"}} ]
+	}
+      ],
+      "id":"cell_6",
+      "inputs": ["go" ],
+      "name":"helloworld",
+      "outputs": [],
+      "synccode":""
+    }
+  ]
+]

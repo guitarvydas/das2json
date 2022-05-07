@@ -1,0 +1,170 @@
+string [dq1 @cs dq2] = [[STR]]
+
+JObject [x] = [[${x}]]
+JArray [lb @o rb] = [[${o}]]
+NestedJObject [lb @o rb] = [[${o}]]
+
+  Tag [@dq1 tagname @dq2 kcolon] = [[]]
+  tagname [name] = [[${name}]]
+
+    COLON [c] = [[${c}]]
+    dq  [c] = [[${c}]]
+
+    string [dq1 @cs dq2] = [["${cs}"]]
+
+    space [c] = [[]]
+
+    name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
+    nameFirst [c] = [[${c}]]
+    nameRest [c] = [[${c}]]
+
+    number [@digits] = [[${digits}]]
+    true [k] = [[${k}]]
+    false [k] = [[${k}]]
+
+Main [ArrayOfComponents] = [[${ArrayOfComponents}]]
+ArrayOfComponents [lb @Components rb] = [[${Components}]]
+Component [ArrayOfSingleComponent] = [[${ArrayOfSingleComponent}]]
+ArrayOfSingleComponent [lb @SingleComponent rb]  = [[${SingleComponent}]]
+
+ComponentDescriptor [NestedJObject] = [[${NestedJObject}]]
+tagname [k] = [[${k}]]
+
+  PTag [@dq1 tname @dq2 kcolon] = [[${tname}]]
+
+  TaggedJObject [x] = [[${x}]]
+  
+  TaggedJObject_emptychildren [x] = [[${x}]]
+  TaggedJObject_emptyconnections [x] = [[${x}]]
+  TaggedJObject_children [x] = [[${x}]]
+  TaggedJObject_connections [x] = [[${x}]]
+  TaggedJObject_id [x] = [[${x}]]
+  TaggedJObject_inputs [x] = [[B${x}]]
+  TaggedJObject_outputs [x] = [[${x}]]
+  TaggedJObject_name [x] = [[${x}]]
+  TaggedJObject_synccode [x] = [[${x}]]
+  TaggedJObject_component [x] = [[${x}]]
+  TaggedJObject_port [x] = [[${x}]]
+  TaggedJObject_generic [Tag obj] = [[!!! ${Tag}${obj}]]
+
+EmptyChildrenObject [PTag Object] = [[]]
+EmptyConnectionsObject [PTag Object] = [[]]
+ChildrenObject [PTag Object] = [[]]
+ConnectionsObject [PTag Object] = [[${Object}]]
+IDObject [PTag Object] = [[]]
+InputsObject [PTag Object] =  [[${fmt.put ( "inputs", fmt.formatPort (Object))}]]
+OutputsObject [PTag Object] = [[${fmt.put ("outputs", fmt.formatPort (Object))}]]
+NameObject [PTag Object] = [[${fmt.put ("name", Object)}]]
+SynccodeObject [PTag Object] = [[${fmt.put ("synccode", fmt.decode (Object))}]]
+EmptySynccodeObject [PTag lb rb] = [[]]
+ComponentObject [PTag Object] = [[${Object}]]
+PortObject [PTag Object] = [[${Object}]]
+
+Pair [lb ComponentObject PortObject rb] = [[name: ${ComponentObject}, etag: ${PortObject}]]
+
+Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${fmt.put ("connectionInstances", 'var conn' + fmt.gensym () + ' = {sender:' + SenderArray + ', net: "NIY", receivers: ' + ReceiverArray + '}')}${fmt.put ("connections", 'conn' + fmt.getsym ())}]]
+
+ReceiverArray [lb @Receivers rb] = [[ \[${Receivers}\] ]]
+SenderArray [lb Sender rb] = [[${Sender}]]
+Receiver [lb PTagreceiver Pair rb] = [[\{${Pair}\}]]
+Sender [lb PTagsender Pair rb] = [[\{${Pair}\}]]
+
+SingleComponent [impl] = 
+{{fmt.reset ();}}
+[[
+${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
+var ${fmt.get ('jsname')}_signature = {
+    name: "${fmt.get ('jsname')}",
+    inputs: ${fmt.aget ("inputs", ', ')},
+    outputs: ${fmt.aget ("outputs", ', ')}
+}
+${impl}
+]]
+
+Leaf [lb @x rb] = [[
+${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
+var ${fmt.get ('jsname')}_protoImplementation = {
+    name: "${fmt.get ('jsname')}",
+    kind: "leaf",
+    begin: function () {},
+    finish: function () {},
+    handler: function (me, message) {
+        ${fmt.get ('synccode')}
+    }
+}
+
+function ${fmt.get ('jsname')} (container, instancename) {
+    let me = new Leaf (${fmt.get ('jsname')}_signature, ${fmt.get ('jsname')}_protoImplementation, container, instancename);
+    return me;
+}
+]]
+
+Signature [lb @x rb] = [[
+${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
+
+function ${fmt.get ('jsname')} (container, instancename) {
+    let me = new Leaf (${fmt.get ('jsname')}_signature, ${fmt.get ('jsname')}_protoImplementation, container, instancename);
+    return me;
+}
+]]
+
+Container [lb @x rb] = [[
+${fmt.put ('jsname', fmt.jsize (fmt.get ("name")))}
+
+function ${fmt.get ('jsname')}_makechildren (container) {
+      ${fmt.aget ("instances", '\n        ')}
+      var children = [ ${fmt.aget ("children", ", ")} ];
+      return children;
+}
+
+function ${fmt.get ('jsname')}_makeconnections (container) {
+    ${fmt.aget ("connectionInstances", ';\n    ')};
+    var connections = [ ${fmt.aget ("connections", ', ')} ];
+    return connections;
+}
+
+function ${fmt.get ('jsname')}_makenets (container) {
+    return [];
+}
+
+var ${fmt.get ('jsname')}_protoImplementation = {
+    name: "${fmt.get ('jsname')}",
+    kind: "container",
+    begin: function () {},
+    finish: function () {},
+    handler: function (me, message) {
+        deliverInputMessageToAllChildrenOfSelf (me, message);
+    }
+}
+
+function ${fmt.get ('jsname')} (container, instancename) {
+    let me = new Container (${fmt.get ('jsname')}_signature, ${fmt.get ('jsname')}_protoImplementation, container, instancename);
+    me.children = ${fmt.get ('jsname')}_makechildren (me);
+    me.connections = ${fmt.get ('jsname')}_makeconnections (me);
+    me.nets =  ${fmt.get ('jsname')}_makenets (me);
+    me.deliver_input_from_container_input_to_child_input = deliver_input_from_container_input_to_child_input;
+    me.deliver_input_from_container_input_to_me_output = deliver_input_from_container_input_to_me_output;
+    return me;
+}
+]]
+
+ArrayOfNames [lb @anames rb] = [[${anames}]]
+ListOfNames_rec [name more] = [[${name}${more}]]
+ListOfNames_bottom [name] = [[${name}]]
+ListableName [s] = [[${s}, ]]
+
+ArrayOfConnections [lb @Connections rb] = [[${Connections}]]
+
+ArrayOfChildNames [lb ChildNames rb] = [[${ChildNames}]]
+
+ChildName [n] = [[${fmt.put ("instances", 'var child' + fmt.gensym () + ' = new ' + fmt.jsize (n) + ' (container, ' + n + ');')}${fmt.put ("children", '{name: ' + n + ', runnable: child' + fmt.getsym () + '}')}]]
+
+ChildNameList [first @rest] = [[${first}${rest}]]
+
+strippedString [dq1 @cs dq2] = [[${cs}]]
+
+ArrayOfPortNames [lb @ns rb] = [[${lb}${ns}${rb}]]
+ListOfPortNames_rec [n ns] = [[${n}${ns}]]
+ListOfPortNames_bottom [n] = [[${n}]]
+ListablePortName [n] = [[${n}, ]]
+PortName [s] = [[\{name:${s}, structure:["${fmt.jsize (s)}"]\}]]

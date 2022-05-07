@@ -1,0 +1,26 @@
+[
+  [
+    {
+      "children": ["Phrase Parser" ],
+      "connections": [
+        {
+          "receivers": [ {"receiver": {"component":"Phrase Parser", "port":"phrase"}} ],
+          "senders": [ {"sender": {"component":"Order Taker", "port":"phrase"}} ]
+        },
+        {
+          "receivers": [ {"receiver": {"component":"Order Taker", "port":"food order"}} ],
+          "senders": [ {"sender": {"component":"Phrase Parser", "port":"order no choices"}} ]
+        },
+        {
+          "receivers": [ {"receiver": {"component":"Order Taker", "port":"food order"}} ],
+          "senders": [ {"sender": {"component":"Phrase Parser", "port":"order with choices"}} ]
+        }
+      ],
+      "id":"cell_7",
+      "inputs": ["phrase" ],
+      "name":"Order Taker",
+      "outputs": ["food order" ],
+      "synccode":""
+    }
+  ]
+]

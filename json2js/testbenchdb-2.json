@@ -1,0 +1,154 @@
+[
+[{
+"children":[]
+"connections":[]
+"id":"cell_11" 
+"inputs":["in" ]
+"name":"probe1" 
+"outputs":["out" ]
+"synccode":"console.log ('probe 1: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);" }]
+[{
+"children":[]
+"connections":[]
+"id":"cell_16" 
+"inputs":["go" ]
+"name":"Phrase Faker" 
+"outputs":["short phrase" "long phrase" ]
+"synccode":"&lt;div&gt;console.log ('phrase faker: ' + message.etag);&amp;nbsp; &amp;nbsp; me.send (&quot;long phrase&quot;, &quot;I Want A Hamburger With Ketchup And Cheese And Pickles&quot;);&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" }]
+[{
+"children":[]
+"connections":[]
+"id":"cell_22" 
+"inputs":["in" ]
+"name":"probe2" 
+"outputs":["out" ]
+"synccode":"console.log ('probe 2: ');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);" }]
+[{
+"children":["Phrase Parser" "probe3" "probe3a" ]
+"connections":[{
+"receivers":[{
+"receiver":{
+"component":"probe3" 
+"port":"in" }}]
+"senders":[{
+"sender":{
+"component":"_me"
+"port":"phrase" }}]},{
+"receivers":[{
+"receiver":{
+"component":"probe3a" 
+"port":"in" }}]
+"senders":[{
+"sender":{
+"component":"Phrase Parser" 
+"port":"order with choices" }}]},{
+"receivers":[{
+"receiver":{
+"component":"Phrase Parser" 
+"port":"phrase" }}]
+"senders":[{
+"sender":{
+"component":"probe3" 
+"port":"out" }}]},{
+"receivers":[{
+"receiver":{
+"component":"_me"
+"port":"food order" }}]
+"senders":[{
+"sender":{
+"component":"probe3a" 
+"port":"out" }}]}]
+"id":"cell_27" 
+"inputs":["phrase" ]
+"name":"Order Taker" 
+"outputs":["food order" ]
+"synccode":"" }]
+[{"children":[]"connections":[]"id":"cell_32" "inputs":["phrase" ]"name":"Phrase Parser" "outputs":["order no choices" "order with choices" "parse error" "hook error" ]"synccode":""}]
+[{
+"children":[]
+"connections":[]
+"id":"cell_39" 
+"inputs":["in" ]
+"name":"probe3" 
+"outputs":["out" ]
+"synccode":"console.log ('probe 3:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);" }]
+[{
+"children":[]
+"connections":[]
+"id":"cell_44" 
+"inputs":["in" ]
+"name":"probe4" 
+"outputs":["out" ]
+"synccode":"console.log ('probe 4 (woohoo): '); console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);" }]
+[{
+"children":[]
+"connections":[]
+"id":"cell_49" 
+"inputs":["in" ]
+"name":"probe3a" 
+"outputs":["out" ]
+"synccode":"console.log ('probe 3a:');&lt;br&gt;console.log (message);&lt;br&gt;me.send (&quot;out&quot;, message.data);" }]
+[{
+"children":["probe1" "Phrase Faker" "probe2" "Order Taker" "probe4" "HTML Button" ]
+"connections":[{
+"receivers":[{
+"receiver":{
+"component":"Phrase Faker" 
+"port":"go" }}]
+"senders":[{
+"sender":{
+"component":"probe1" 
+"port":"out" }}]},{
+"receivers":[{
+"receiver":{
+"component":"probe2" 
+"port":"in" }}]
+"senders":[{
+"sender":{
+"component":"Phrase Faker" 
+"port":"long phrase" }}]},{
+"receivers":[{
+"receiver":{
+"component":"Order Taker" 
+"port":"phrase" }}]
+"senders":[{
+"sender":{
+"component":"probe2" 
+"port":"out" }}]},{
+"receivers":[{
+"receiver":{
+"component":"probe4" 
+"port":"in" }}]
+"senders":[{
+"sender":{
+"component":"Order Taker" 
+"port":"food order" }}]},{
+"receivers":[{
+"receiver":{
+"component":"_me"
+"port":"food order" }}]
+"senders":[{
+"sender":{
+"component":"probe4" 
+"port":"out" }}]},{
+"receivers":[{
+"receiver":{
+"component":"probe1" 
+"port":"in" }}]
+"senders":[{
+"sender":{
+"component":"HTML Button" 
+"port":"click" }}]}]
+"id":"cell_6" 
+"inputs":[]
+"name":"Test Bench" 
+"outputs":["food order" ]
+"synccode":"" }]
+[{
+"children":[]
+"connections":[]
+"id":"cell_7" 
+"inputs":[]
+"name":"HTML Button" 
+"outputs":["click" ]
+"synccode":"me.send (&quot;click&quot;, true);" }]]

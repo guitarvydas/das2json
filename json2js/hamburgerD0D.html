@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      textarea {
+          background-color: oldlace;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>Hamburger D0D Workbench</h1>
+
+    <p>output:</p>
+    <textarea id="output" rows="7" cols="90" placeholder="output">
+    </textarea>
+
+
+    <p id="status" >READY</p>
+
+
+    <!-- Component Operating System -->
+    <script src="cos.js"></script>
+
+    <!-- Ohm-JS -->
+    <script src="https://unpkg.com/ohm-js@16/dist/ohm.min.js"></script>
+
+    <!-- Components for this app (see, also, hamburgerworkbench0d.drawio) -->
+    <script src="phraseparser.js"></script>
+    <script src="testbench.js"></script>
+
+    <script>
+      
+      var testBench = new Test_Bench (null);
+      var htmlbutton = testBench.lookupChild ("HTML Button");
+
+      function buttonhandler () {
+          htmlbutton.handler (htmlbutton, null);
+          htmlbutton.container.wakeup ();
+          let outs = testBench.outputs ();
+          if (Array.isArray (outs)) {
+              if (outs.length > 0) {
+                  let order = outs [0].data;
+                  //document.getElementById ('output').innerHTML = outs.toString () + '\ndone';
+                  document.getElementById ('output').innerHTML
+                      = order.item.toString () + '\nextra: ' + order.extras.toString () + '\ncondiments: ' + order.condiments.toString ();
+              }
+          }
+      }
+
+    </script>
+
+    <br>
+    <button onclick="buttonhandler ()">Hamburger</button>
+
+  </body>
+</html>
+

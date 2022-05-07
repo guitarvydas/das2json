@@ -1,0 +1,19 @@
+# layer kind
+## parameters
+  ID
+  Direction
+## imports
+  fb
+  shapes
+  onSameDiagram
+  inside
+# query
+diagram_fact(kind,ID,"ellipse") 
+(diagram_fact(color, ID, "green")  -> Direction = input;diagram_fact(color, ID, "yellow")  -> Direction = output;diagram_fact(color, ID, "red")  -> Direction = pervasiveinput;diagram_fact(color, ID, "purple")  -> Direction = pervasiveoutput; Direction = "?")
+## cond
+   ${Direction} === "?"
+        console.error (`all ports must have a direction ; port ${ID} has no direction`);
+   	  throw "design rule";
+## display
+  das_fact(direction,${ID},${Direction}).
+

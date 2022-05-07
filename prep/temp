@@ -1,0 +1,17 @@
+# layer kind
+## parameters
+  X
+  Kind
+## imports
+  shapes
+  onSameDiagram
+  inside
+  names
+  ports
+  contains
+## ~diagram_fact(cell,X,_) 
+((diagram_fact(kind,X,"ellipse")  -> Kind = "ellipse";diagram_fact(edge,X,1)  -> Kind = "edge";diagram_fact(root,X,1)  -> Kind = "root"; Kind = "rectangle")->true ; format(user_error,"querythen failed /(diagram_fact(kind,X,"ellipse")  -> Kind = "ellipse";diagram_fact(edge,X,1)  -> Kind = "edge";diagram_fact(root,X,1)  -> Kind = "root"; Kind = "rectangle")/~n",[]),abort),
+## display
+  das_fact(kind,${X},${Kind}).
+
+

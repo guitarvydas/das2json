@@ -1,0 +1,18 @@
+string [dq1 @cs dq2] = [[${support.decode (cs)}]]
+
+SingleComponent [x] = {{fmt.reset ();}}[[W
+class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
+
+    def __init__ (self, dispatcher, parent, idInParent):
+        super ().__init__ (dispatcher, parent, idInParent)
+	${fmt.aget ("inputs", ', ')}
+	${fmt.aget ("outputs", ', ')}
+        ${fmt.aget ("instances", '\n        ')}
+        self.children = \{${fmt.aget ("children", ", ")}\}
+    def react (self, inputMessage):
+        ${fmt.get ("synccode")}
+        return super ().react (inputMessage)
+]]
+
+Container [ComponentDescriptor] = [[${ComponentDescriptor}]]
+Leaf [ComponentDescriptor] = [[${ComponentDescriptor}]]

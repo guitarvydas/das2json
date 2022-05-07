@@ -1,0 +1,102 @@
+string [dq1 @cs dq2] = [[STR]]
+
+JObject [x] = [[${x}]]
+JArray [lb @o rb] = [[${o}]]
+NestedJObject [lb @o rb] = [[${o}]]
+
+  Tag [@dq1 tagname @dq2 kcolon] = [[]]
+  tagname [name] = [[${name}]]
+
+    COLON [c] = [[${c}]]
+    dq  [c] = [[${c}]]
+
+    string [dq1 @cs dq2] = [["${cs}"]]
+
+    space [c] = [[]]
+
+    name [nameFirst @nameRest] = [[${nameFirst}${nameRest}]]
+    nameFirst [c] = [[${c}]]
+    nameRest [c] = [[${c}]]
+
+    number [@digits] = [[${digits}]]
+    true [k] = [[${k}]]
+    false [k] = [[${k}]]
+
+Main [ArrayOfComponents] = [[${ArrayOfComponents}]]
+ArrayOfComponents [lb @Components rb] = [[${Components}]]
+Component [ArrayOfSingleComponent] = [[${ArrayOfSingleComponent}]]
+ArrayOfSingleComponent [lb @SingleComponent rb]  = [[${SingleComponent}]]
+
+ComponentDescriptor [NestedJObject] = [[${NestedJObject}]]
+tagname [k] = [[${k}]]
+
+  PTag [@dq1 tname @dq2 kcolon] = [[${tname}]]
+
+  TaggedJObject [x] = [[${x}]]
+  
+  TaggedJObject_emptychildren [x] = [[${x}]]
+  TaggedJObject_emptyconnections [x] = [[${x}]]
+  TaggedJObject_children [x] = [[${x}]]
+  TaggedJObject_connections [x] = [[${x}]]
+  TaggedJObject_id [x] = [[${x}]]
+  TaggedJObject_inputs [x] = [[B${x}]]
+  TaggedJObject_outputs [x] = [[${x}]]
+  TaggedJObject_name [x] = [[${x}]]
+  TaggedJObject_synccode [x] = [[${x}]]
+  TaggedJObject_component [x] = [[${x}]]
+  TaggedJObject_port [x] = [[${x}]]
+  TaggedJObject_generic [Tag obj] = [[!!! ${Tag}${obj}]]
+
+EmptyChildrenObject [PTag Object] = [[]]
+EmptyConnectionsObject [PTag Object] = [[]]
+ChildrenObject [PTag Object] = [[]]
+ConnectionsObject [PTag Object] = [[${Object}]]
+IDObject [PTag Object] = [[]]
+InputsObject [PTag Object] = [[${fmt.put ("inputs", 'self.inputs = [' + Object + ']')}]]
+OutputsObject [PTag Object] = [[${fmt.put ("outputs", 'self.outputs = [' + Object + ']')}]]
+NameObject [PTag Object] = [[${fmt.put ("name", Object)}]]
+SynccodeObject [PTag Object] = [[${fmt.put ("synccode", fmt.decode (Object))}]]
+ComponentObject [PTag Object] = [[${Object}]]
+PortObject [PTag Object] = [[${Object}]]
+
+Pair [lb ComponentObject PortObject rb] = [[${ComponentObject}, ${PortObject}]]
+
+Connection [lb PTagreceivers ReceiverArray PTagsenders SenderArray rb] = [[${fmt.put ("connectionInstances", 'conn' + fmt.gensym () + ' = mpos.Connector (' + SenderArray + ', ' + ReceiverArray + '})')}${fmt.put ("connections", 'conn' + fmt.getsym ())}]]
+
+ReceiverArray [lb @Receivers rb] = [[ \[${Receivers}\] ]]
+SenderArray [lb Sender rb] = [[${Sender}]]
+Receiver [lb PTagreceiver Pair rb] = [[mpos.Receiver (${Pair})]]
+Sender [lb PTagsender Pair rb] = [[mpos.Sender (${Pair})]]
+
+SingleComponent [x] = {{fmt.reset ();}}[[
+class _${fmt.pythonize (fmt.get ("name"))} (mpos.Leaf):
+
+    def __init__ (self, dispatcher, parent, idInParent):
+        super ().__init__ (dispatcher, parent, idInParent)
+	${fmt.aget ("inputs", ', ')}
+	${fmt.aget ("outputs", ', ')}
+        ${fmt.aget ("instances", '\n        ')}
+        self.children = \{${fmt.aget ("children", ", ")}\}
+        ${fmt.aget ("connectionInstances", '\n        ')}
+	self.connections = [ ${fmt.aget ("connections", ', ')} ]
+    def react (self, inputMessage):
+        ${fmt.aget ("synccode",  '\n        ')}
+        return super ().react (inputMessage)
+]]
+
+Leaf [lb @x rb] = [[${x}]]
+Container [lb @x rb] = [[${x}]]
+
+ArrayOfNames [lb @anames rb] = [[${anames}]]
+ListOfNames_rec [name more] = [[${name}${more}]]
+ListOfNames_bottom [name] = [[${name}]]
+ListableName [s] = [[${s}, ]]
+
+ArrayOfConnections [lb @Connections rb] = [[${Connections}]]
+
+ArrayOfChildNames [lb ChildNames rb] = [[${ChildNames}]]
+
+ChildName [n] = [[${fmt.put ("instances", 'child' + fmt.gensym () + ' = ' + n + '._' + n + ' (dispatcher, self, ' + n + ')')})}${fmt.formatChildMapEntry (n)}${fmt.pythonize (n)}]]
+ChildNameList [first @rest] = [[${first}${rest}]]
+
+strippedString [dq1 @cs dq2] = [[${cs}]]

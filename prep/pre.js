@@ -1,13 +1,9 @@
-#!/usr/bin/env node
 //'use strict'
 
-
 const fs = require ('fs');
-var argv;
 
 var reTrigger;
 var reEnd;
-var stop;
 
 
 var viewGeneratedCode = false;
@@ -16,7 +12,6 @@ var traceDepth;
 
 var ohm = require ('ohm-js');
 var support;
-var fmt;
 
 const glueGrammar =
       String.raw`
@@ -165,14 +160,8 @@ return _result;
 };
 
 
-function ohm_parse (maybeMultipleGrammars, grammar, text, errorMessage) {
-    var parser;
-    if (maybeMultipleGrammars && argv.grammarname) {
-	var grammars = ohm.grammars (grammar);
-	parser = grammars [argv.grammarname];
-    } else {
-	parser = ohm.grammar (grammar);
-    }
+function ohm_parse (grammar, text, errorMessage) {
+    var parser = ohm.grammar (grammar);
     var cst = parser.match (text);
     if (cst.succeeded ()) {
 	return { parser: parser, cst: cst };
@@ -180,17 +169,16 @@ function ohm_parse (maybeMultipleGrammars, grammar, text, errorMessage) {
 	// console.error (parser.trace (text).toString ());
 	// console.error (text.length);
 	// console.error ("/" + text + "/");
-	// or ... 
-	if (argv.errorview) {
-	    console.error (text);
-	}
+	// or ... console.error (text);
 	var pos = cst._rightmostFailurePosition;
+	console.error ("\n*** input:");
+	console.error (text);
 	throw ("FAIL: at position " + pos.toString () + " " + errorMessage);
     }
 }
 
-function transpiler (maybeMultipleGrammars, scnText, grammar, semOperation, semanticsObject, errorMessage) {
-    var { parser, cst } = ohm_parse (maybeMultipleGrammars, grammar, scnText, errorMessage);
+function transpiler (scnText, grammar, semOperation, semanticsObject, errorMessage) {
+    var { parser, cst } = ohm_parse (grammar, scnText, errorMessage);
     var sem = {};
     try {
 	if (cst.succeeded ()) {
@@ -205,16 +193,64 @@ function transpiler (maybeMultipleGrammars, scnText, grammar, semOperation, sema
 	throw err;
     }
 }
-function gluetranspiler (scnText, grammar, semOperation, semanticsObject, errorMessage) {
-    return transpiler(false, scnText, grammar, semOperation, semanticsObject, errorMessage);
+
+
+var _scope;
+
+function scopeStack () {
+    this._stack = [];
+    this.pushNew = function () {this._stack.push ([])};
+    this.pop = function () {this._stack.pop ()};
+    this._topIndex = function () {return this._stack.length - 1;};
+    this._top = function () { return this._stack[this._topIndex ()]; };
+    this.scopeAdd = function (key, val) {
+	this._top ().push ({key: key, val: val});
+    };
+    this._lookup = function (key, a) { 
+	return a.find (obj => {return obj && obj.key && (obj.key === key)}); };
+    this.scopeGet = function (key) {
+	var i = this._topIndex ();
+	for (; i >= 0 ; i -= 1) {
+	    var obj = this._lookup (key, this._stack [i]);
+	    if (obj) {
+		return obj.val;
+	    };
+	};
+        console.log ('*** scopeGet error ' + key + ' ***');
+	console.log (this._stack);
+	console.log (key);
+	throw "scopeGet internal error - can't find /" + key + "/";
+    };
+    this.scopeModify = function (key, val) {
+	var i = this._topIndex ();
+	for (; i >= 0 ; i -= 1) {
+	    var obj = this._lookup (key, this._stack [i]);
+	    if (obj) {
+              obj.val = val;
+              return val;
+	    };
+	};
+        console.log ('*** scopeModify error ' + key + ' ***');
+	console.log (this._stack);
+	console.log (key);
+	throw "scopeModify internal error " + key;
+    };
 }
 
-function inputtranspiler (scnText, grammar, semOperation, semanticsObject, errorMessage) {
-    return transpiler(true, scnText, grammar, semOperation, semanticsObject, errorMessage);
+function scopeAdd (key, val) {
+  return _scope.scopeAdd (key, val);
 }
 
+function scopeModify (key, val) {
+  return _scope.scopeModify (key, val);
+}
+
+function scopeGet (key) {
+  return _scope.scopeGet (key);
+}
 
 function _ruleInit () {
+    _scope = new scopeStack ();
 }
 
 function traceSpaces () {
@@ -236,6 +272,7 @@ function _ruleEnter (ruleName) {
 	process.stderr.write (ruleName.toString ());
 	process.stderr.write ("\n");
     }
+    _scope.pushNew ();
 }
 
 function _ruleExit (ruleName) {
@@ -246,13 +283,14 @@ function _ruleExit (ruleName) {
 	process.stderr.write (ruleName); 
 	process.stderr.write ("\n");
     }
+    _scope.pop ();
 }
 
 
-function execTranspiler (source, grammar, semantics, errorMessage, srcFilename, glueFilename) {
+function execTranspiler (source, grammar, semantics, errorMessage) {
     // first pass - transpile glue code to javascript
     try {
-	let generatedSCNSemantics = gluetranspiler (semantics, glueGrammar, "_glue", glueSemantics, "in FORMAT specification: " + glueFilename);
+	let generatedSCNSemantics = transpiler (semantics, glueGrammar, "_glue", glueSemantics, "in glue specification " + errorMessage);
     _ruleInit();
 	try {
 	    if (viewGeneratedCode) {
@@ -262,7 +300,7 @@ function execTranspiler (source, grammar, semantics, errorMessage, srcFilename, 
 	    }
             let semObject = eval('(' + generatedSCNSemantics + ')');
 	    try {
-		let tr = inputtranspiler(source, grammar, "_glue", semObject, srcFilename);
+		let tr = transpiler(source, grammar, "_glue", semObject, errorMessage);
 		return tr;
 	    } catch (err) {
 		throw err;
@@ -272,38 +310,26 @@ function execTranspiler (source, grammar, semantics, errorMessage, srcFilename, 
 	    throw err;
 	}
     } catch (err) {
-	// console.error ('source:');
-	// console.error (source.replace (/[\n\t ]/g,'.'));
 	throw err;
     }
 }
 
-function internal_stranspile (sourceString, grammarFileName, glueFileName, errorMessage, srcFilename) {
+function internal_stranspile (sourceString, grammarFileName, glueFileName, errorMessage) {
     var grammar = fs.readFileSync (grammarFileName, 'utf-8');
     var glue = fs.readFileSync (glueFileName, 'utf-8');
-    var returnString = execTranspiler (sourceString, grammar, glue, errorMessage, srcFilename, glueFileName);
+    var returnString = execTranspiler (sourceString, grammar, glue, errorMessage);
     return returnString;
 }
 
-
-
-
-function dump (announce, s) {
-    if (argv.split) {
-	console.error ();
-	console.error (announce);
-	console.error (s);
-	console.error (announce);
-	console.error ();
-    }
-}
-
-function expand (s, grammarFileName, glueFileName, message, srcFilename) {
-    dump ("********* block *********", s);
-    var result = internal_stranspile (s, grammarFileName, glueFileName, message, srcFilename);
-    dump ("********* Expanded ******", result);
+function expand (s, grammarFileName, glueFileName, message) {
+    var result = internal_stranspile (s, grammarFileName, glueFileName, message);
     return result;
 }
+
+
+
+
+
 
 function splitOnSeparators (triggerSep, endSep, s) {
     // s = front + beginSep + middle + endSep + rest
@@ -326,25 +352,17 @@ function splitOnSeparators (triggerSep, endSep, s) {
 	if (endMatch) {
 	    ;
 	} else {
-	    dump ("thus far:",middleEndSepRestText);
-	    errormsg = `cannot find end separator ${endSep}`;
-	    throw errormsg;
+	    emsg = `cannot find end separator ${endSep}`;
+	    throw emsg;
 	}
 
 	var indexEndEnd = endMatch.index;
 	var endSepText = endMatch [0];
+	
+	var middleText = beginSepText + middleEndSepRestText.substring (0, indexEndEnd);
+	var restText = endSepText + middleEndSepRestText.substring (indexEndEnd + endSepText.length);
 
-	let  middleText;
-	let restText;
-	if (argv.inclusive ) {
-	    // include endSepText in block
-	    middleText = beginSepText + middleEndSepRestText.substring (0, indexEndEnd) + endSepText;
-	    restText = middleEndSepRestText.substring (indexEndEnd + endSepText.length);
-	} else {
-	    // endSepText is not part of block
-	    middleText = beginSepText + middleEndSepRestText.substring (0, indexEndEnd);
-	    restText = endSepText + middleEndSepRestText.substring (indexEndEnd + endSepText.length);
-	}
+
 	return { front: frontText, middle: middleText, rest: restText };
     } else {
 	// there is no middle nor rest (no beginSep)
@@ -352,115 +370,144 @@ function splitOnSeparators (triggerSep, endSep, s) {
     }
 }
 
-function pdebug (s) {
-    if (10 < s.length) {
-	console.error (s.substring(0,10) + "...");
-    } else {
-	console.error (s);
-    }
-}
-
-function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message, srcFilename) {
-    dump ("*** expandAll ***", s);
+function expandAll (s, triggerRE, endRE, grammarFileName, glueFileName, message) {
+    
     if (s === undefined) {
 	return s;
     } else {
 	let _retObj = splitOnSeparators (triggerRE, endRE, s);
-	let {front: front, middle: middle, rest: rest} = _retObj;
+    let {front: front, middle: middle, rest: rest} = _retObj;
 	
 	if (middle === undefined || middle === '') {
 	    return front;
 	} else {
-	    dump ("*** expansion ***", middle);
-	    var expandedText = expand (middle, grammarFileName, glueFileName, message, srcFilename);
-	    cycles += 1;
-	    if (stop & (cycles >= stop)) {
-		return front + expandedText + rest;
-	    } else {
-		if (expandedText === middle) {
-		    console.error ('expand made no changes');
-		    console.error (middle.substring (0,30));
-		    console.error (expandedText.substring (0,30));
-		    throw 'expand made no changes';
-		}
-		return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message, srcFilename);
-	    }
+	    var expandedText = expand (middle, grammarFileName, glueFileName, message);
+	    return front + expandAll (expandedText + rest, triggerRE, endRE, grammarFileName, glueFileName, message);
 	}
     }
 }
 
 function pre (allchars) {
-    var reTrigger = new RegExp (argv._[0]);
-    var reEnd = new RegExp (argv._[1]);
-    var grammarFileName = argv._[2];
-    var glueFileName = argv._[3];
+    var args = process.argv;
+    var reTrigger = new RegExp (args[2]);
+    var reEnd = new RegExp (args[3]);
+    var grammarFileName = args[4];
+    var glueFileName = args[5];
+    var supportFileName = args[6];
 
-    if (argv.support) {
-	support = require (argv.support);
-	if (support.setArgv) {
-	    support.setArgv (argv);
-	}
-    }
-    if (argv.fmt) {
-	fmt = require (argv.fmt);
-	if (fmt.setArgv) {
-	    fmt.setArgv (argv);
-	}
-    }
-    if (argv.trace) {
-	var traceFlag = true;
+    console.error (supportFileName);
+    
+    support = require (supportFileName);
+    if (args.length >= 8) {
+	var traceFlag = args[7];
 	if (traceFlag === 't') {
 	    tracing = true;
 	    traceDepth = 0;
 	}
     }
-
-
-    var expanded = expandAll (allchars, reTrigger, reEnd, grammarFileName, glueFileName, 'STDIN', 'STDIN');
+    var expanded = expandAll (allchars, reTrigger, reEnd, grammarFileName, glueFileName, 'parsing input');
     return expanded;
 }
 
 function main () {
-    argv = require('yargs/yargs')(process.argv.slice(2)).argv;
-    var fname;
-    if (argv.input) {
-	fname = argv.input;
-    } else {
-	fname = '/dev/fd/0';
-    }
-    cycles = 0;
-    if (argv.stop) {
-	stop = argv.stop;
-    } else {
-	stop = undefined;
-    }
-    if (argv.view) {
-	viewGeneratedCode = true;
-    } else {
-	viewGeneratedCode = false;
-    }
-    if (argv.trace) {
-	tracing = true;
-	traceDepth = 0;
-    } else {
-	tracing = false;
-    }
-    var allchars = fs.readFileSync (fname, 'utf-8');
+    var allchars = fs.readFileSync ('/dev/fd/0', 'utf-8');
     var result = pre (allchars);
     emit (result);
 }
+
+function debug_forall () {
+    var allchars = String.raw`
+# layer kind
+## parameters
+  X
+  Kind
+## imports
+  shapes
+  onSameDiagram
+  inside
+  names
+  ports
+  contains
+## forall X as diagram_fact(cell,X,_)
+    Kind = cond
+      diagram_fact(kind,X,"ellipse") "ellipse"
+      diagram_fact(edge,X,1)         "edge"
+      diagram_fact(root,X,1)         "root"
+     else                            "rectangle"
+## display
+  das_fact(kind,\${X},\${Kind}).
+`;
+    var result = pre (allchars);
+    emit (result);
+}
+
+function debug_forall () {
+    var allchars = String.raw`
+# layer kind
+## parameters
+  X
+  Kind
+## imports
+  shapes
+  onSameDiagram
+  inside
+  names
+  ports
+  contains
+## forall X as diagram_fact(cell,X,_)
+    Kind = cond
+      diagram_fact(kind,X,"ellipse") "ellipse"
+      diagram_fact(edge,X,1)         "edge"
+      diagram_fact(root,X,1)         "root"
+     else                            "rectangle"
+## display
+  das_fact(kind,\${X},\${Kind}).
+`;
+    var result = pre (allchars);
+    emit (result);
+}
+function debug_implicitforall0 () {
+    var allchars = String.raw`
+    # stuff
+....## query
+QUERY STUFF
+QQQQ## display
+1234~
+    
+`;
+    var result = pre (allchars);
+    emit (result);
+}
+
+function debug_implicitforall () {
+    var allchars = String.raw`
+# layer kind
+## parameters
+  X
+  Kind
+## imports
+  shapes
+  onSameDiagram
+  inside
+  names
+  ports
+  contains
+## query
+diagram_fact(cell,X,_) 
+(diagram_fact(kind,X,"ellipse")  -> Kind = "ellipse";diagram_fact(edge,X,1)  -> Kind = "edge";diagram_fact(root,X,1)  -> Kind = "root"; Kind = "rectangle")
+## display
+  das_fact(kind,\${X},\${Kind}).
+
+`;
+    var result = pre (allchars);
+    emit (result);
+}
+
 function emit (s) {
     console.log (s);
 }
 
-function getargv (s) {
-    let r = argv[s];
-    if (r) {
-	return r;
-    } else {
-	return "";
-    }
-}
-
+// debug_forall ();
+//debug_implicitforall0 ();
+//debug_implicitforall ();
 main ();
-

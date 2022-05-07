@@ -9,6 +9,8 @@ TOOLS=.
 
 all: testbench.json
 
+dev: testbenchdb.json
+
 main_all: $(NODEMODULES) tools topbuildscript.py
 	./topbuildscript.py
 
@@ -37,6 +39,10 @@ helloworld.json : tools helloworld.drawio
 testbench.json : tools testbench.drawio
 	./generate.bash $(TOOLS) testbench.drawio
 	mv out.json testbench.json
+
+testbenchdb.json : tools testbenchdb.drawio
+	./generate.bash $(TOOLS) testbenchdb.drawio
+	mv out.json testbenchdb.json
 
 
 bootstrap_helloworld.json : tools helloworld.drawio

@@ -1,3 +1,3 @@
 all:
+# nothing
 
-clean:
