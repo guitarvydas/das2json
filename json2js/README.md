@@ -1,43 +1,43 @@
-Unfinished
+Hamburger workbench from a draw.io diagram.
+
+usage:
+1. make
+2. open file `hamburgerD0D.html` in a browswer
+3. hit button "hamburger"
+
+expected output:
+```
+hamburger
+extra: bacon
+condiments: ketchup,pickles
+```
+
+Source code `../testbench.drawio`.
+
+See, also, `../testbenchdb.drawio`, which has various probes plugged into the message paths (they use console.log (message) to output to the browser console).
+
 
 (see ../json2py/README.md)
 
-- wip: rewrite `djson.fmt` for JS in ../json2js
+NIY (Not Implemented Yet):
+1. nets (should be included in the connections)
+2. component id's that are unique
 
-- missing:
-  - detail in phraseparser for Ohm-js
-  - testbench.js route: route
-	- makeNets details (NIY)
-	- `var conn7 = {sender:{name: "Order Taker", etag: "food order"}, net: "NIY", receivers:  [{name: "Test Bench", etag: "food order"}] };` should be name: "_me" instead of "Test Bench"
-	- `var conn9 = {sender:{name: "Order Taker", etag: "phrase"}, net: "NIY", receivers:  [{name: "Phrase Parser", etag: "phrase"}] };` name: "_me" instead of "Order Taker"
-	- 3rd connection in OT from _me.phrase to ...
-
-<!-- ## Theory phrase parser should not generate an implementation (only a signature) -->
-<!-- - test: manually remove implementation, run workbench, but don't run make -->
-<!-- - conclusion:  -->
-<!--   - works better (thru probe 4) -->
-<!--   - PhraseParser spelled without _, instead of Phrase_Parser -->
-
-<!-- ## Theory - output on TB will be generated -->
-<!-- - test: install output port on TB, manually remove parser implementation -->
-<!-- - conclusion: -->
-<!--   - created output -->
-  
-<!-- ## Theory phrase parser should not generate an implementation (only a signature) -->
-<!-- - theory: parser being misparsed as Leaf -->
-<!-- - test: make, then examine testbenchdb.js and see how the implementation is instantiated -->
-<!-- - conclusion: parser is generated as Leaf -->
-
-<!-- - test: examine testbenchdb.json and see if parser has a body -->
-
-<!-- - test: create testbench6.json containing only parser, run make, examine -->
-
-## Theory - probe can be duplicated
-- test: change all probe[1-4] to be the same
-- conclusion:
-  -
-  
-
-
-
+## Discussion:
+1. nets (should be included in the connections)
+   - nets are important for maintaining message delivery semantics on bare hardware
+   - implicit synchronization in most current programming languages, e.g. Python, JS, etc. obviate the need for unique nets (since delivery semantics are guaranteed by the epicycle of using implicit synchronization)
+	 - this "feature" (implicit synchronization) allows sloppy implementation of cos.js
+	 - in fact, a connection *should be*: {sender, net} and net *should be*: [list of receivers]
+	 - on bare metal, all receivers on one net need to be locked to prevent message interleaving
+	 - in fact, the regular case is a net with exactly one receiver, in which case the locking can be "optimized away" (we need to "lock" only one receiver, which devolves to a no-op (messages cannot interleave by definition)) ; message order is no defined, the only semantic detail is that ALL receivers on a net get the same message "all at once" (without interleaving with other messages)
+	 - message delivery is atomic
+	 - fan-out === edge case, all receivers must be locked, before delivering message
+	 - fan-out is common in hardware, less common in Software Architecture 
+		 - can this semantic be preserved by wrapping multiple receivers inside a Container?
+		 - a Container must process each message to completion before grabbing another message
+		 - i.e. a Container must step all of its children to completion before grabbing another message
+2. component id's that are unique
+   - currently, the component id is always the same as the prototype name
+   - unique component id's allow the same prototype to be used multiple times in one diagram
  
