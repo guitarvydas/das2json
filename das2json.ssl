@@ -18,7 +18,7 @@
 
 : Attributes =
   <<*
-    | "style=": ? . String .
+    | "style=": ? String _clear_collector
     | ">": _break
     | "/>": _break
     | *: ? .
@@ -42,11 +42,11 @@
   >>
 
 : String =
-  "\"" . NotDquotes "\"" .
+  "\"" + NotDquotes "\"" +
 
 : NotDquotes =
   <<*
     | "\"": _break
-    | *: ? .
+    | *: ? +
   >>
   

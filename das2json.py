@@ -38,9 +38,8 @@ def Attributes ():
     while True:
         if _in.peek ("style="):
             _in.accept ()
-            _in.echo ()
             String ()
-            _in.echo
+            _in.clear_collector ()
         elif _in.peek (">"):
             break
         elif _in.peek ("/>"):
@@ -88,7 +87,6 @@ def String ():
     NotDquotes ()
     _in.need ('"')
     _in.collect ()
-    _in.echo_collection ()
 
 def NotDquotes ():
     while True:
