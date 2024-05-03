@@ -3,7 +3,6 @@ EOF = chr (0)
 
 
 def das2json ():
-    # use test.xml
     global _in
     Spaces () # Spaces "<" Stuff
     _in.need ("<")
@@ -30,7 +29,7 @@ def Content ():
       if _in.peek ("</"):
           break
       elif _in.peek ("<"):
-          XML ()
+          das2json ()
       else:
           Stuff ()
           
