@@ -1,0 +1,12 @@
+das2json {
+  drawio = element
+  element =
+    | spaces ("<" ~"/") stuff+ ">" element* rawstuff? "</" stuff+ ">" spaces -- withcontent
+    | spaces ("<" ~"/") stuff+ "/>" spaces -- nocontent
+  rawstuff = stuff+
+  stuff =
+   | string -- string
+   |  ~"<" ~">" ~"</" ~"/>" any -- char
+  string = "\"" (~"\"" any)* "\""
+}
+

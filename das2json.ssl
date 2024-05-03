@@ -1,0 +1,52 @@
+: XML =
+  Spaces "<" . Attributes
+  [*
+    | ">": ? . Content "</" Stuff ">"
+    | "/>": ? .
+    | *: Stuff
+  ]
+
+: Content =
+  <<
+    Spaces
+    [*
+      | "</": _break
+      | "<": XML
+      | *: Stuff
+    ]
+  >>
+
+: Attributes =
+  <<*
+    | "style=": ? . String .
+    | ">": _break
+    | "/>": _break
+    | *: ? .
+  >>
+
+: Stuff =
+  <<*
+    | ">": _break
+    | "<": _break
+    | "/>": _break
+    | *: ? .
+  >>
+
+: Spaces =
+  <<*
+    | " ": ? .
+    | "\t": ? .
+    | "\n": ? .
+    | EOF: _break
+    | *: _break
+  >>
+
+: String =
+  "\"" . NotDquotes "\"" .
+
+: NotDquotes =
+  <<*
+    | "\"": _break
+    | *: ? .
+  >>
+  
