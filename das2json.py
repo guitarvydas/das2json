@@ -84,10 +84,11 @@ def Spaces ():
         
 def String ():
     _in.need ('"')
-    _in.echo ()
+    _in.collect ()
     NotDquotes ()
     _in.need ('"')
-    _in.echo ()
+    _in.collect ()
+    _in.echo_collection ()
 
 def NotDquotes ():
     while True:
@@ -95,7 +96,7 @@ def NotDquotes ():
             break
         else:
             _in.accept ()
-            _in.echo ()
+            _in.collect ()
 
 
 #####
@@ -111,6 +112,7 @@ class InputStream:
         self.stdin_position = 0
         self.most_recently_accepted = None
         self.afresh ()
+        self.collector = ""
         
     def afresh (self):
         self.cache = []
@@ -142,6 +144,17 @@ class InputStream:
     def echo (self) :
         for tok in self.most_recently_accepted:
             print (f'{tok.c}', end='')
+            
+    def collect (self) :
+        for tok in self.most_recently_accepted:
+            self.collector = self.collector + tok.c
+            
+    def echo_collection (self) :
+        print (f'{self.collector}', end='')
+        self.clear_collector ()
+
+    def clear_collector (self):
+        self.collector = ""
             
     def accept (self):
         # do something with cached tokens, then start afresh
