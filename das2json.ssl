@@ -1,8 +1,8 @@
-: XML =
-  Spaces "<" . Attributes
-  [*
-    | ">": ? . Content "</" Stuff ">"
-    | "/>": ? .
+: Das2Json =
+  Spaces "<" Attributes
+  [
+    | ">": Content "</" Stuff ">"
+    | "/>": 
     | *: Stuff
   ]
 
@@ -11,42 +11,52 @@
     Spaces
     [*
       | "</": _break
-      | "<": XML
+      | "<": Das2Json
       | *: Stuff
     ]
   >>
 
 : Attributes =
-  <<*
-    | "style=": ? String _clear_collector
-    | ">": _break
-    | "/>": _break
-    | *: ? .
+  <<
+    [*
+      | "style=": . String
+      | ">": _break
+      | "/>": _break
+      | eof: _break
+      | *: .
+    ]
   >>
 
 : Stuff =
-  <<*
-    | ">": _break
-    | "<": _break
-    | "/>": _break
-    | *: ? .
+  <<
+    [*
+      | ">": _break
+      | "<": _break
+      | "/>": _break
+      | eof: _break
+      | *: .
+    ]
   >>
 
 : Spaces =
-  <<*
-    | " ": ? .
-    | "\t": ? .
-    | "\n": ? .
-    | EOF: _break
-    | *: _break
+  <<
+    [*
+      | " ": .
+      | "\t": .
+      | "\n": .
+      | eof: _break
+      | *: _break
+    ]
   >>
 
 : String =
-  "\"" + NotDquotes "\"" +
+  "\"" NotDquotes "\""
 
 : NotDquotes =
-  <<*
-    | "\"": _break
-    | *: ? +
+  <<
+    [*
+      | "\"": _break
+      | *: .
+    ]
   >>
   
