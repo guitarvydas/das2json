@@ -1,123 +1,142 @@
-_in = None
+_r = None
 EOF = chr (0)
 
 
 def Das2json ():
-    global _in
-    _in.push_new_string ()
-    _in.begin_breadcrumb ("Das2json")
+    global _r
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("Das2json")
     Spaces ()
-    _in.append_returned_string ()
-    _in.need_and_append ("<")
-    Attributes ()
-    _in.append_returned_string (s)
-    if _in.maybe_append (">"):
+    _r.append_returned_string ()
+    _r.need_and_append ("<")
+    Stuff ()
+    _r.append_returned_string ()
+    _r.need_and_append (">")
+    _r.end_breadcrumb ("Das2json")
+    return _r.return_string_pop ()
+
+def hold_Das2json ():
+    global _r
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("Das2json")
+    Spaces ()
+    _r.append_returned_string ()
+    _r.need_and_append ("<")
+    Stuff ()
+    _r.append_returned_string ()
+    if _r.maybe_append (">"):
         Content ()
-        _in.append_returned_string ()
-        _in.need_and_append ("</")
+        _r.append_returned_string ()
+        _r.need_and_append ("</")
         Stuff ()
-        _in.append_returned_string ()
-        _in.need_and_append (">")
-    elif _in.maybe_append ("/>"):
+        _r.append_returned_string ()
+        _r.need_and_append (">")
+    elif _r.maybe_append ("/>"):
         pass
     else:
         Stuff ()
-        _in.append_returned_string ()
-    _in.end_breadcrumb ("Das2json")
-    return _in.return_string_pop ()
+        _r.append_returned_string ()
+    _r.end_breadcrumb ("Das2json")
+    return _r.return_string_pop ()
 
 def Content ():
-    _in.push_new_string ()
-    _in.begin_breadcrumb ("Content")
+    global _r
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("Content")
     while True:
         Spaces ()
-        _in.append_returned_string ()
-        if _in.peek ("</"):
+        _r.append_returned_string ()
+        if _r.peek ("</"):
             break
-        elif _in.peek ("<"):
+        elif _r.peek ("<"):
             Das2json ()
-            _in.append_returned_string ()
+            _r.append_returned_string ()
         else:
             Stuff ()
-            _in.append_returned_string ()
-    _in.end_breadcrumb ("Content")
-    return _in.return_string_pop ()
+            _r.append_returned_string ()
+    _r.end_breadcrumb ("Content")
+    return _r.return_string_pop ()
           
             
 def Attributes ():
-    _in.push_new_string ()
-    _in.begin_breadcrumb ("Attributes")
+    global _r
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("Attributes")
     while True:
-        if _in.peek ("style="):
-            _in.accept_and_append ()
+        if _r.peek ("style="):
+            _r.accept_and_append ()
             String ()
-            _in.append_returned_string ()
-        elif _in.peek (">"):
+            _r.append_returned_string ()
+        elif _r.peek (">"):
             break
-        elif _in.peek ("/>"):
+        elif _r.peek ("/>"):
             break
-        elif _in.eof ():
+        elif _r.eof ():
             break
         else:
-            _in.accept_and_append ()
-    _in.end_breadcrumb ("Attributes")
-    return _in.return_string_pop ()
+            _r.accept_and_append ()
+    _r.end_breadcrumb ("Attributes")
+    return _r.return_string_pop ()
 
 def Stuff ():
-    _in.push_new_string ()
-    _in.begin_breadcrumb ("Stuff")
+    global _r
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("Stuff")
     while True:
-        if _in.peek (">"):
+        if _r.peek (">"):
             break
-        elif _in.peek ("<"):
+        elif _r.peek ("<"):
             break
-        elif _in.peek ("/>"):
+        elif _r.peek ("/>"):
             break
-        elif _in.peek (EOF):
+        elif _r.eof ():
             break
         else:
-            _in.accept_and_append ()
-    _in.end_breadcrumb ("Stuff")
-    return _in.return_string_pop ()
+            _r.accept_and_append ()
+    _r.end_breadcrumb ("Stuff")
+    return _r.return_string_pop ()
 
 def Spaces ():
+    global _r
     global EOF
-    _in.push_new_string ()
-    _in.begin_breadcrumb ("Spaces")
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("Spaces")
     while True:
-        if _in.peek (" "):
-            _in.accept_and_append ()
-        elif _in.peek ("\t"):
-            _in.accept_and_append ()
-        elif _in.peek ("\n"):
-            _in.accept_and_append ()
-        elif _in.peek (EOF):
+        if _r.peek (" "):
+            _r.accept_and_append ()
+        elif _r.peek ("\t"):
+            _r.accept_and_append ()
+        elif _r.peek ("\n"):
+            _r.accept_and_append ()
+        elif _r.eof ():
             break
         else:
             break
-    _in.end_breadcrumb ("Spaces")
-    return _in.return_string_pop ()
+    _r.end_breadcrumb ("Spaces")
+    return _r.return_string_pop ()
         
 def String ():
-    _in.push_new_string ()
-    _in.begin_breadcrumb ("String")
-    _in.need_and_append ('"')
+    global _r
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("String")
+    _r.need_and_append ('"')
     NotDquotes ()
-    _in.append_returned_string ()
-    _in.need_and_append ('"')
-    _in.end_breadcrumb ("String")
-    return _in.return_string_pop ()
+    _r.append_returned_string ()
+    _r.need_and_append ('"')
+    _r.end_breadcrumb ("String")
+    return _r.return_string_pop ()
 
 def NotDquotes ():
-    _in.push_new_string ()
-    _in.begin_breadcrumb ("NotDquotes")
+    global _r
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("NotDquotes")
     while True:
-        if _in.peek ('"'):
+        if _r.peek ('"'):
             break
         else:
-            _in.accept_and_append ()
-    _in.end_breadcrumb ("NotDquotes")
-    return _in.return_string_pop ()
+            _r.accept_and_append ()
+    _r.end_breadcrumb ("NotDquotes")
+    return _r.return_string_pop ()
 
 
 
@@ -146,9 +165,7 @@ class CharacterStream:
     
     def __init__ (self):
         self.stdin_position = 0
-        self.cache = ""
-        self.cache_index = None
-        self.getc
+        self.clear ()
 
     def getc (self):
         # ensure that the next character is in the cache
@@ -167,19 +184,31 @@ class CharacterStream:
         else:
             pass
 
-    def current_char (self):
-        return self.cache [self.cache_index]
-
     def rewind (self):
         self.cache_index = 0
 
     def clear (self):
-        self.cache = ""
+        self.cache = []
         self.cache_index = None
+        self.getc ()
 
     def accept (self):
-        r = self.cache
+        r = self.cache_toString ()
         self.clear ()
+        print (f'CharacterStream.accept "{r}"')
+        return r
+
+    def current_char (self):
+        return self.cache [self.cache_index].c
+
+    def current_input_position (self):
+        return self.stdin_position
+
+    def cache_toString (self):
+        s = ""
+        for in_c in self.cache:
+            s = s + in_c.c
+        return s
 
 
 class Receptor:
@@ -202,19 +231,23 @@ class Receptor:
         self.string_stack.append ("")
         
     def return_string_pop (self):
-            self.return_stack.append (self.string_stack.pop ())
+            r = self.string_stack.pop ()
+            self.return_stack.append (r)
 
     def begin_breadcrumb (self, name):
         self.breadcrumb_wip_depth += 1
-        b = Breadcrumb (name, self.breadcrumb_wip_depth, self.current_input_position ())
+        b = Breadcrumb (name, self.breadcrumb_wip_depth, self.instream.current_input_position ())
         self.breadcrumb_wip_stack.append (b)
+        print (f'\x1B[43mbegin {b.name} {b.depth} {b.position}\x1B[0m')
         
     def end_breadcrumb (self, name):
-        self.breadcrumb_stack.append (self.breadcrumb_wip_stack.pop ())
+        b = self.breadcrumb_wip_stack.pop ()
+        self.breadcrumb_stack.append (b)
         self.breadcrumb_wip_depth -= 1
+        print (f'\x1B[47mend {b.name} {b.depth} {b.position}\x1B[0m')
 
     def append (self, s):
-        self.string_stack [-1].append (s)
+        self.string_stack [-1] = self.string_stack [-1] + s
         
     def accept_and_append (self):
         s = self.instream.accept ()
@@ -228,29 +261,56 @@ class Receptor:
             self.instream.rewind ()
             return False
 
+    def eof (self):
+        return EOF == self.instream.current_char ()
+
+    def peek_recursively (self, s):
+        global EOF
+        if 0 == len (s):
+            if self.eof ():
+                return True
+            else:
+                return False
+        elif s [0] == self.instream.current_char ():
+            if 1 == len (s):
+                return True
+            else:
+                self.instream.getc ()
+                return self.peek_recursively (s [1:])
+        else:
+            return False
+
     def append_returned_string (self):
         s = self.return_stack.pop ()
         self.append (s)
 
     def need_and_append (self, s):
         if self.peek (s):
-            self.append (s)
+            self.accept_and_append ()
         else:
             self.error (s)
 
     def maybe_append (self, s):
         if self.peek (s):
-            self.append (s)
+            self.accept_and_append ()
             return True
         else:
             return False
 
-    def error (s):
-        print (f'\x1B[101mReceptor error at input position {self.breadcrumb_wip_stack [-1].position}\x1B[0m')
+    def pop_return_value (self):
+        r = self.return_stack.pop ()
+        return r
+
+    def error (self, s):
+        print (f'\x1B[101mReceptor error at input position {self.breadcrumb_wip_stack [-1].position} wanted "{s}" got "{self.instream.current_char ()}"\x1B[0m')
+        sys.exit (1)
 
 def _begin ():
-    global _in
-    _in = InputStream ()
+    global _r
+    _r = Receptor ()
     
 _begin ()
 Das2json ()
+s = _r.pop_return_value ()
+print (s)
+

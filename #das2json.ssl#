@@ -1,4 +1,7 @@
 : Das2Json =
+  Spaces "<" Stuff ">"
+
+: Das2Json =
   Spaces "<" Stuff
   [
     | ">": Content "</" Stuff ">"
