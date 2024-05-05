@@ -1,5 +1,5 @@
 swib {
-  main [rule+] = ‛«rule»’
+  main [spaces rule+] = ‛«rule»’
   rule [_colon spaces rulename _eq spaces2 pattern+] =‛
 def «rulename» ():(-
     global _r
@@ -36,8 +36,8 @@ def «rulename» ():(-
   peekCondMatch_else [x] = ‛True’
 
   action [a] = ‛«a»’
-  break [_break spaces] = ‛break’
-  acceptAndAppend [_dot spaces] = ‛_r.accept_and_append ()’
+  break [_break spaces] = ‛break\n’
+  acceptAndAppend [_dot spaces] = ‛_r.accept_and_append ()\n’
 
   cycle [lb spaces1 pattern+ rb spaces2] = ‛while True:(-\n«pattern»-)\n’
 

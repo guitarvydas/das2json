@@ -1,5 +1,5 @@
 swib {
-  main = rule+
+  main = spaces rule+
   rule = ":" spaces rulename "=" spaces pattern+
   pattern = stringMatch | endop | cond | peekcond | cycle | rulecall
 

@@ -1,9 +1,8 @@
-: Content =
+: NotDquotes =
   <<<
-    Spaces
     [*
-      | "</": _break
-      | "<": XML
-      | *: Stuff
+      | "\"": _break
+      | *: .
     ]
   >>>
+  
