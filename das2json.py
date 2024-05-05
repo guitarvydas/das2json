@@ -245,13 +245,13 @@ class Receptor:
         self.breadcrumb_wip_depth += 1
         b = Breadcrumb (name, self.breadcrumb_wip_depth, self.instream.current_input_position ())
         self.breadcrumb_wip_stack.append (b)
-        print (f'\x1B[43mbegin {b.name} {b.depth} {b.position}\x1B[0m')
+        print (f'\x1B[43mbegin {b.name} depth={b.depth} position={b.position}\x1B[0m')
         
     def end_breadcrumb (self, name):
         b = self.breadcrumb_wip_stack.pop ()
         self.breadcrumb_stack.append (b)
         self.breadcrumb_wip_depth -= 1
-        print (f'\x1B[47mend {b.name} {b.depth} {b.position}\x1B[0m')
+        print (f'\x1B[47mend {b.name} depth={b.depth} position={b.position}\x1B[0m')
 
     def append (self, s):
         self.string_stack [-1] = self.string_stack [-1] + s
@@ -309,7 +309,8 @@ class Receptor:
         return r
 
     def error (self, s):
-        print (f'\x1B[101mReceptor error at input position {self.breadcrumb_wip_stack [-1].position} wanted "{s}" got "{self.instream.current_char ()}"\x1B[0m')
+        b = self.breadcrumb_wip_stack [-1]
+        print (f'\x1B[101mReceptor error at input position {self.instream.current_input_position ()} wanted "{s}" got "{self.instream.current_char ()} (rule {b.name} beginning at {b.position})"\x1B[0m')
         sys.exit (1)
 
 def _begin ():
