@@ -2,7 +2,7 @@ _r = None
 EOF = chr (0)
 
 
-def Das2json ():
+def test_Das2json ():
     global _r
     _r.push_new_string ()
     _r.begin_breadcrumb ("Das2json")
@@ -24,10 +24,22 @@ def Das2json ():
     _r.end_breadcrumb ("Das2json")
     return _r.return_string_pop ()
 
-def Hold_Das2json ():
+def Das2json ():
     global _r
     _r.push_new_string ()
     _r.begin_breadcrumb ("Das2json")
+    XML ()
+    _r.append_returned_string ()
+    Spaces ()
+    _r.append_returned_string ()
+    _r.need (EOF)
+    _r.end_breadcrumb ("Das2json")
+    return _r.return_string_pop ()
+
+def XML ():
+    global _r
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("XML")
     Spaces ()
     _r.append_returned_string ()
     _r.need_and_append ("<")
@@ -45,7 +57,7 @@ def Hold_Das2json ():
     else:
         Stuff ()
         _r.append_returned_string ()
-    _r.end_breadcrumb ("Das2json")
+    _r.end_breadcrumb ("XML")
     return _r.return_string_pop ()
 
 def Content ():
@@ -58,7 +70,7 @@ def Content ():
         if _r.peek ("</"):
             break
         elif _r.peek ("<"):
-            Hold_Das2json ()
+            XML ()
             _r.append_returned_string ()
         else:
             Stuff ()
@@ -333,13 +345,13 @@ class Receptor:
 
 def make_printable (c):        
     if c == EOF:
-        c = "<EOF>"
+        c = "_end"
     elif c == "\n":
-        c = "<newline>"
+        c = "_newline"
     elif c == "\t":
-        c = "<tab>"
+        c = "_tab"
     elif c == " ":
-        c = "<space>"
+        c = "_space"
     else:
         pass
     return c

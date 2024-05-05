@@ -1,7 +1,7 @@
-: Das2Json =
-  Spaces "<" Stuff ">" Content "</" Stuff ">" Spaces _EOF
+: Das2json =
+  XML Spaces _end
 
-: Das2Json =
+: XML =
   Spaces "<" Stuff
   [
     | ">": Content "</" Stuff ">"
@@ -14,7 +14,7 @@
     Spaces
     [*
       | "</": _break
-      | "<": Hold_Das2Json
+      | "<": XML
       | *: Stuff
     ]
   >>
