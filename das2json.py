@@ -12,6 +12,9 @@ def Das2json ():
     Stuff ()
     _r.append_returned_string ()
     _r.need_and_append (">")
+    Spaces ()
+    _r.append_returned_string ()
+    _r.need (EOF)
     _r.end_breadcrumb ("Das2json")
     return _r.return_string_pop ()
 
@@ -176,7 +179,7 @@ class CharacterStream:
             c = sys.stdin.read (1)
             if 1 > len (c):
                 c = EOF
-            self.stdin_position = 1
+            self.stdin_position += 1
             self.cache = [InCharacter (c=c, position=self.stdin_position)]
             self.cache_index = 0
         elif len (self.cache) == (self.cache_index + 1):
@@ -291,6 +294,12 @@ class Receptor:
         s = self.return_stack.pop ()
         self.append (s)
 
+    def need (self, s):
+        if self.peek (s):
+            pass
+        else:
+            self.error (s)
+
     def need_and_append (self, s):
         if self.peek (s):
             self.accept_and_append ()
@@ -310,8 +319,25 @@ class Receptor:
 
     def error (self, s):
         b = self.breadcrumb_wip_stack [-1]
-        print (f'\x1B[101mReceptor error at input position {self.instream.current_input_position ()} wanted "{s}" got "{self.instream.current_char ()} (rule {b.name} beginning at {b.position})"\x1B[0m')
+        c = self.instream.current_char ()
+        c = make_printable (c)
+        s = make_printable (s)
+        print (f'\x1B[101mReceptor error at input position {self.instream.current_input_position ()} wanted "{s}" got "{c}" (rule {b.name} beginning at {b.position})"\x1B[0m')
         sys.exit (1)
+
+def make_printable (c):        
+    if c == EOF:
+        c = "<EOF>"
+    elif c == "\n":
+        c = "<newline>"
+    elif c == "\t":
+        c = "<tab>"
+    elif c == " ":
+        c = "<space>"
+    else:
+        pass
+    return c
+            
 
 def _begin ():
     global _r
