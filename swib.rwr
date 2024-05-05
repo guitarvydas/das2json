@@ -23,14 +23,14 @@ def «rulename» ():(-
   notdq_escaped [_bs c] = ‛«_bs»«c»’
   notdq_raw [c] = ‛«c»’
 
-  cond [lb spaces1 condClause+ rb spaces2] = ‛while True:(-\nif False:(-\npass-)\n«condClause»-)’
+  cond [lb spaces1 condClause+ rb spaces2] = ‛if False:(-\npass-)\n«condClause»’
   condClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:(-\n«action»pass-)\n’
   condMatch_string [x] = ‛_r.maybe_append («x»)’
   condMatch_endop [x] = ‛_r.maybe (EOF)’
   condMatch_else [x] = ‛True’
 
-  peekcond [lb spaces1 condClause+ rb spaces2] = ‛while True:(-\n«condClause»-)’
-  peekCondClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛«_bar»«spaces1»«condMatch»«_colon»«spaces2»«action»’
+  peekcond [lb spaces1 condClause+ rb spaces2] = ‛if False:(-pass-)\n«condClause»’
+  peekCondClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:(-\n«action»pass-)\n’
   peekCondMatch_string [x] = ‛_r.peek («x»)’
   peekCondMatch_endop [x] = ‛_r.peek (EOF)’
   peekCondMatch_else [x] = ‛True’
