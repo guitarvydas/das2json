@@ -1,24 +1,31 @@
 swib {
   main = rule+
   rule = ":" spaces rulename "=" spaces pattern+
-  pattern = rulecall | string | endop | cond | peekcond | cycle
+  pattern = stringMatch | endop | cond | peekcond | cycle | rulecall
 
   endop = "_end" spaces
 
   rulename = name spaces
 
   rulecall = name spaces
+
+  stringMatch = string spaces
   
-  string = dq notdq* dq spaces
+  string = dq notdq* dq
   dq = "\""
   notdq =
     | "\\" any -- escaped
     | ~dq any -- raw
 
   cond = "[" spaces condClause+ "]" spaces
-  peekcond = "[*" spaces condClause+ "]" spaces
+  peekcond = "[*" spaces peekCondClause+ "]" spaces
+  peekCondClause = "|" spaces peekCondMatch ":" spaces action*
   condClause = "|" spaces condMatch ":" spaces action*
   condMatch =
+    | string -- string
+    | endop -- endop
+    | "*" -- else
+  peekCondMatch =
     | string -- string
     | endop -- endop
     | "*" -- else

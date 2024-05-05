@@ -1,28 +1,43 @@
 swib {
   main [rule+] = ‛«rule»’
-  rule [_colon spaces rulename _eq spaces2 pattern+] = ‛«_colon»«spaces»«rulename»«_eq»«spaces2»«pattern»’
+  rule [_colon spaces rulename _eq spaces2 pattern+] =‛
+def «rulename» ():(-
+    global _r
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("«rulename»")
+    «pattern»_r.end_breadcrumb ("«rulename»")
+    return _r.return_string_pop ()-)\n’
+  
   pattern [p] = ‛«p»’
 
-  endop [_end spaces] = ‛«_end»«spaces»’
+  endop [_end spaces] = ‛_r.need (EOF)\n’
 
-  rulename [name spaces] = ‛«name»«spaces»’
+  rulename [name spaces] = ‛«name»’
 
-  rulecall [name spaces] = ‛«name»«spaces»’
+  rulecall [name spaces] = ‛«name» ()\n_r_append_returned_string ()\n’
   
-  string [dq1 notdq* dq2 spaces] = ‛«dq1»«notdq»«dq2»«spaces»’
+  stringMatch [s ws] = ‛_r.need_and_append («s»)\n’
+
+  string [dq1 notdq* dq2] = ‛"«notdq»"’
   dq [q] = ‛«q»’
   notdq_escaped [_bs c] = ‛«_bs»«c»’
   notdq_raw [c] = ‛«c»’
 
-  cond [lb spaces1 condClause+ rb spaces2] = ‛«lb»«spaces1»«condClause»«rb»«spaces2»’
-  peekcond [lb spaces1 condClause+ rb spaces2] = ‛«lb»«spaces1»«condClause»«rb»«spaces2»’
-  condClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛«_bar»«spaces1»«condMatch»«_colon»«spaces2»«action»’
-  condMatch_string [x] = ‛«x»’
-  condMatch_endop [x] = ‛«x»’
-  condMatch_else [x] = ‛«x»’
+  cond [lb spaces1 condClause+ rb spaces2] = ‛while True:(-\nif False:(-\npass-)\n«condClause»-)’
+  condClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:(-\n«action»pass-)\n’
+  condMatch_string [x] = ‛_r.maybe_append («x»)’
+  condMatch_endop [x] = ‛_r.maybe (EOF)’
+  condMatch_else [x] = ‛True’
+
+  peekcond [lb spaces1 condClause+ rb spaces2] = ‛while True:(-\n«condClause»-)’
+  peekCondClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛«_bar»«spaces1»«condMatch»«_colon»«spaces2»«action»’
+  peekCondMatch_string [x] = ‛_r.peek («x»)’
+  peekCondMatch_endop [x] = ‛_r.peek (EOF)’
+  peekCondMatch_else [x] = ‛True’
+
   action [a] = ‛«a»’
-  break [_break spaces] = ‛«_break»«spaces»’
-  acceptAndAppend [_dot spaces] = ‛«_dot»«spaces»’
+  break [_break spaces] = ‛break’
+  acceptAndAppend [_dot spaces] = ‛_r.accept_and_append ()’
 
   cycle [lb spaces1 pattern+ rb spaces2] = ‛«lb»«spaces1»«pattern»«rb»«spaces2»’
 
