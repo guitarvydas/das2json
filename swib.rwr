@@ -29,7 +29,7 @@ def «rulename» ():(-
   condMatch_endop [x] = ‛_r.maybe (EOF)’
   condMatch_else [x] = ‛True’
 
-  peekcond [lb spaces1 condClause+ rb spaces2] = ‛if False:(-pass-)\n«condClause»’
+  peekcond [lb spaces1 condClause+ rb spaces2] = ‛if False:(-\npass-)\n«condClause»’
   peekCondClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:(-\n«action»pass-)\n’
   peekCondMatch_string [x] = ‛_r.peek («x»)’
   peekCondMatch_endop [x] = ‛_r.peek (EOF)’
@@ -39,7 +39,7 @@ def «rulename» ():(-
   break [_break spaces] = ‛break’
   acceptAndAppend [_dot spaces] = ‛_r.accept_and_append ()’
 
-  cycle [lb spaces1 pattern+ rb spaces2] = ‛«lb»«spaces1»«pattern»«rb»«spaces2»’
+  cycle [lb spaces1 pattern+ rb spaces2] = ‛while True:(-\n«pattern»-)\n’
 
   name [firstLetter moreLetter*] = ‛«firstLetter»«moreLetter»’
   firstLetter [c] = ‛«c»’

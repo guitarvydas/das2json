@@ -1,8 +1,9 @@
-: XML =
-  Spaces "<" Stuff
-  [
-    | ">": Content "</" Stuff ">"
-    | "/>": 
-    | *: Stuff
-  ]
-
+: Content =
+  <<<
+    Spaces
+    [*
+      | "</": _break
+      | "<": XML
+      | *: Stuff
+    ]
+  >>>
