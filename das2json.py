@@ -1,6 +1,3 @@
-EOF = chr (0)
-
-
 def Das2json (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("Das2json")
@@ -8,7 +5,7 @@ def Das2json (_r):
     _r.append_returned_string ()
     Spaces (_r)
     _r.append_returned_string ()
-    _r.need (EOF)
+    _r.need (_r.endchar ())
     _r.end_breadcrumb ("Das2json")
     return _r.return_string_pop ()
 
@@ -90,7 +87,6 @@ def Stuff (_r):
     return _r.return_string_pop ()
 
 def Spaces (_r):
-    global EOF
     _r.push_new_string ()
     _r.begin_breadcrumb ("Spaces")
     while True:
@@ -165,18 +161,18 @@ class CharacterStream:
         if len (self.cache) == 0:
             c = sys.stdin.read (1)
             if 1 > len (c):
-                c = EOF
+                c = self.endchar ()
             self.stdin_position += 1
             self.cache = [InCharacter (c=c, position=self.stdin_position)]
             self.cache_index = 0
         elif len (self.cache) == (self.cache_index + 1):
             c = sys.stdin.read (1)
             if 1 > len (c):
-                c = EOF
+                c = self.endchar ()
             self.stdin_position += 1
             self.cache.append (InCharacter (c=c, position=self.stdin_position))
             self.cache_index += 1
-        elif self.cache [self.cache_index] != EOF:
+        elif self.cache [self.cache_index] != self.endchar ():
             self.cache_index += 1
         else:
             pass
@@ -207,6 +203,8 @@ class CharacterStream:
             s = s + in_c.c
         return s
 
+    def endchar (self):
+        return chr (0)
 
 class Receptor:
     # A receptor parses the input stream of characters and keeps track of how it got there and what it is working on.
@@ -259,10 +257,12 @@ class Receptor:
             return False
 
     def eof (self):
-        return EOF == self.instream.current_char ()
+        return self.instream.endchar () == self.instream.current_char ()
+
+    def endchar (self):
+        return self.instream.endchar ()
 
     def peek_recursively (self, s):
-        global EOF
         if 0 == len (s):
             if self.eof ():
                 return True
