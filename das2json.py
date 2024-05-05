@@ -172,13 +172,20 @@ class CharacterStream:
         # if the cache is not empty and the index is in bounds, then the character is already in place
         # else, get a character from stdin and append it to the cache
         # for convenience EOF is a character and is defined above
-        if (len (self.cache) == 0) or (len (self.cache) == (self.cache_index + 1)):
+        if len (self.cache) == 0:
+            c = sys.stdin.read (1)
+            if 1 > len (c):
+                c = EOF
+            self.stdin_position = 1
+            self.cache = [InCharacter (c=c, position=self.stdin_position)]
+            self.cache_index = 0
+        elif len (self.cache) == (self.cache_index + 1):
             c = sys.stdin.read (1)
             if 1 > len (c):
                 c = EOF
             self.stdin_position += 1
-            self.cache = [InCharacter (c=c, position=self.stdin_position)]
-            self.cache_index = 0
+            self.cache.append (InCharacter (c=c, position=self.stdin_position))
+            self.cache_index += 1
         elif self.cache [self.cache_index] != EOF:
             self.cache_index += 1
         else:
