@@ -29,7 +29,7 @@ swib {
     | string -- string
     | endop -- endop
     | "*" -- else
-  action = pattern | break | acceptAndAppend
+  action = break | acceptAndAppend | pattern
   break = "_break" spaces
   acceptAndAppend = "." spaces
 

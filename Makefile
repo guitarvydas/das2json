@@ -46,3 +46,6 @@ install-js-requires:
 
 manual-das2json:
 	python3 das2json.py <test.drawio
+
+regression:
+	python3 regression.py <test.drawio

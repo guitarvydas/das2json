@@ -1,8 +1,10 @@
-: NotDquotes =
+: Stuff =
   <<<
     [*
-      | "\"": _break
+      | ">": _break
+      | "<": _break
+      | "/>": _break
+      | _end: _break
       | *: .
     ]
   >>>
-  
