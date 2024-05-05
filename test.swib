@@ -1,3 +1,35 @@
+: Das2json =
+  XML Spaces _end
+
+: XML =
+  Spaces "<" Stuff
+  [
+    | ">": Content "</" Stuff ">"
+    | "/>": 
+    | *: Stuff
+  ]
+
+: Content =
+  <<<
+    Spaces
+    [*
+      | "</": _break
+      | "<": XML
+      | *: Stuff
+    ]
+  >>>
+
+: Attributes =
+  <<<
+    [*
+      | "style=": . String
+      | ">": _break
+      | "/>": _break
+      | _end: _break
+      | *: .
+    ]
+  >>>
+
 : Stuff =
   <<<
     [*
@@ -8,3 +40,26 @@
       | *: .
     ]
   >>>
+
+: Spaces =
+  <<<
+    [*
+      | " ": .
+      | "\t": .
+      | "\n": .
+      | _end: _break
+      | *: _break
+    ]
+  >>>
+
+: String =
+  "\"" NotDquotes "\""
+
+: NotDquotes =
+  <<<
+    [*
+      | "\"": _break
+      | *: .
+    ]
+  >>>
+  

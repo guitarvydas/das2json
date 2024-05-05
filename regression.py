@@ -6,9 +6,9 @@ def Das2json ():
     _r.push_new_string ()
     _r.begin_breadcrumb ("Das2json")
     XML ()
-    _r_append_returned_string ()
+    _r.append_returned_string ()
     Spaces ()
-    _r_append_returned_string ()
+    _r.append_returned_string ()
     _r.need (EOF)
     _r.end_breadcrumb ("Das2json")
     return _r.return_string_pop ()
@@ -18,25 +18,25 @@ def XML ():
     _r.push_new_string ()
     _r.begin_breadcrumb ("XML")
     Spaces ()
-    _r_append_returned_string ()
+    _r.append_returned_string ()
     _r.need_and_append ("<")
     Stuff ()
-    _r_append_returned_string ()
+    _r.append_returned_string ()
     if False:
         pass
     elif _r.maybe_append (">"):
         Content ()
-        _r_append_returned_string ()
+        _r.append_returned_string ()
         _r.need_and_append ("</")
         Stuff ()
-        _r_append_returned_string ()
+        _r.append_returned_string ()
         _r.need_and_append (">")
         pass
     elif _r.maybe_append ("/>"):
         pass
     elif True:
         Stuff ()
-        _r_append_returned_string ()
+        _r.append_returned_string ()
         pass
     _r.end_breadcrumb ("XML")
     return _r.return_string_pop ()
@@ -47,20 +47,19 @@ def Content ():
     _r.begin_breadcrumb ("Content")
     while True:
         Spaces ()
-        _r_append_returned_string ()
+        _r.append_returned_string ()
         if False:
             pass
         elif _r.peek ("</"):
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         elif _r.peek ("<"):
             XML ()
-            _r_append_returned_string ()
+            _r.append_returned_string ()
             pass
         elif True:
             Stuff ()
-            _r_append_returned_string ()
+            _r.append_returned_string ()
             pass
         
     _r.end_breadcrumb ("Content")
@@ -76,19 +75,16 @@ def Attributes ():
         elif _r.peek ("style="):
             _r.accept_and_append ()
             String ()
-            _r_append_returned_string ()
+            _r.append_returned_string ()
             pass
         elif _r.peek (">"):
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         elif _r.peek ("/>"):
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         elif _r.peek (EOF):
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         elif True:
             _r.accept_and_append ()
@@ -105,20 +101,16 @@ def Stuff ():
         if False:
             pass
         elif _r.peek (">"):
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         elif _r.peek ("<"):
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         elif _r.peek ("/>"):
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         elif _r.peek (EOF):
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         elif True:
             _r.accept_and_append ()
@@ -144,12 +136,10 @@ def Spaces ():
             _r.accept_and_append ()
             pass
         elif _r.peek (EOF):
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         elif True:
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         
     _r.end_breadcrumb ("Spaces")
@@ -161,7 +151,7 @@ def String ():
     _r.begin_breadcrumb ("String")
     _r.need_and_append ("\"")
     NotDquotes ()
-    _r_append_returned_string ()
+    _r.append_returned_string ()
     _r.need_and_append ("\"")
     _r.end_breadcrumb ("String")
     return _r.return_string_pop ()
@@ -174,8 +164,7 @@ def NotDquotes ():
         if False:
             pass
         elif _r.peek ("\""):
-            _break ()
-            _r_append_returned_string ()
+            break
             pass
         elif True:
             _r.accept_and_append ()
@@ -183,9 +172,6 @@ def NotDquotes ():
         
     _r.end_breadcrumb ("NotDquotes")
     return _r.return_string_pop ()
-
-
-
 
 
 

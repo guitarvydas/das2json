@@ -14,7 +14,7 @@ def «rulename» ():(-
 
   rulename [name spaces] = ‛«name»’
 
-  rulecall [name spaces] = ‛«name» ()\n_r_append_returned_string ()\n’
+  rulecall [name spaces] = ‛«name» ()\n_r.append_returned_string ()\n’
   
   stringMatch [s ws] = ‛_r.need_and_append («s»)\n’
 
