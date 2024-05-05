@@ -2,28 +2,6 @@ _r = None
 EOF = chr (0)
 
 
-def test_Das2json ():
-    global _r
-    _r.push_new_string ()
-    _r.begin_breadcrumb ("Das2json")
-    Spaces ()
-    _r.append_returned_string ()
-    _r.need_and_append ("<")
-    Stuff ()
-    _r.append_returned_string ()
-    _r.need_and_append (">")
-    Content ()
-    _r.append_returned_string ()
-    _r.need_and_append ("</")
-    Stuff ()
-    _r.append_returned_string ()
-    _r.need_and_append (">")
-    Spaces ()
-    _r.append_returned_string ()
-    _r.need (EOF)
-    _r.end_breadcrumb ("Das2json")
-    return _r.return_string_pop ()
-
 def Das2json ():
     global _r
     _r.push_new_string ()
