@@ -1,0 +1,37 @@
+swib {
+  main = rule+
+  rule = ":" spaces rulename "=" spaces pattern+
+  pattern = rulecall | string | endop | cond | peekcond | cycle
+
+  endop = "_end" spaces
+
+  rulename = name spaces
+
+  rulecall = name spaces
+  
+  string = dq notdq* dq spaces
+  dq = "\""
+  notdq =
+    | "\\" any -- escaped
+    | ~dq any -- raw
+
+  cond = "[" spaces condClause+ "]" spaces
+  peekcond = "[*" spaces condClause+ "]" spaces
+  condClause = "|" spaces condMatch ":" spaces action*
+  condMatch =
+    | string -- string
+    | endop -- end
+    | "*" -- else
+  action = pattern | break | acceptAndAppend
+  break = "_break" spaces
+  acceptAndAppend = "." spaces
+
+  cycle = "<<<" spaces pattern+ ">>>" spaces
+
+  name = firstLetter moreLetter*
+  firstLetter = letter | "_"
+  moreLetter = digit | firstLetter
+
+
+}
+

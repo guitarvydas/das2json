@@ -1,0 +1,33 @@
+swib {
+  main [rule+] = ‛«rule»’
+  rule [_colon spaces rulename _eq spaces2 pattern+] = ‛«_colon»«spaces»«rulename»«_eq»«pattern»’
+  pattern [p] = ‛«p»’
+
+  endop [_end spaces] = ‛«_end»«spaces»’
+
+  rulename [name spaces] = ‛«name»«spaces»’
+
+  rulecall [name spaces] = ‛«name»«spaces»’
+  
+  string [dq1 notdq* dq2 spaces] = ‛«dq1»«notdq»«dq2»«spaces»’
+  dq [q] = ‛«q»’
+  notdq_escaped [_bs c] = ‛«_bs»«c»’
+  notdq_raw [c] = ‛«c»’
+
+  cond [lb spaces1 condClause+ rb spaces2] = ‛«lb»«spaces1»«condClause»«rb»«spaces2»’
+  peekcond [lb spaces1 condClause+ rb spaces2] = ‛«lb»«spaces1»«condClause»«rb»«spaces2»’
+  condClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛«_bar»«spaces1»«condMatch»«_colon»«spaces2»«action»’
+  condMatch_string [x] = ‛«x»’
+  condMatch_endop [x] = ‛«x»’
+  condMatch_else [x] = ‛«x»’
+  action [a] = ‛«a»’
+  break [_break" spaces] = ‛«_break»«spaces»’
+  acceptAndAppend [_dot spaces] = ‛«_dot»«spaces»’
+
+  cycle [lb spaces1 pattern+ rb spaces2] = ‛«lb»«spaces1»«pattern»«rb»«spaces2»’
+
+  name [firstLetter moreLetter*] = ‛«firstLetter»«moreLetter»’
+  firstLetter [c] = ‛«c»’
+  moreLetter [c] = ‛«c»’
+}
+
