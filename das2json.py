@@ -12,13 +12,19 @@ def Das2json ():
     Stuff ()
     _r.append_returned_string ()
     _r.need_and_append (">")
+    Content ()
+    _r.append_returned_string ()
+    _r.need_and_append ("</")
+    Stuff ()
+    _r.append_returned_string ()
+    _r.need_and_append (">")
     Spaces ()
     _r.append_returned_string ()
     _r.need (EOF)
     _r.end_breadcrumb ("Das2json")
     return _r.return_string_pop ()
 
-def hold_Das2json ():
+def Hold_Das2json ():
     global _r
     _r.push_new_string ()
     _r.begin_breadcrumb ("Das2json")
@@ -52,7 +58,7 @@ def Content ():
         if _r.peek ("</"):
             break
         elif _r.peek ("<"):
-            Das2json ()
+            Hold_Das2json ()
             _r.append_returned_string ()
         else:
             Stuff ()
@@ -205,7 +211,7 @@ class CharacterStream:
     def accept (self):
         r = self.cache_toString ()
         self.clear ()
-        print (f'CharacterStream.accept "{r}"')
+        #print (f'CharacterStream.accept "{r}"')
         return r
 
     def current_char (self):
@@ -248,13 +254,13 @@ class Receptor:
         self.breadcrumb_wip_depth += 1
         b = Breadcrumb (name, self.breadcrumb_wip_depth, self.instream.current_input_position ())
         self.breadcrumb_wip_stack.append (b)
-        print (f'\x1B[43mbegin {b.name} depth={b.depth} position={b.position}\x1B[0m')
+        # print (f'\x1B[43mbegin {b.name} depth={b.depth} position={b.position}\x1B[0m')
         
     def end_breadcrumb (self, name):
         b = self.breadcrumb_wip_stack.pop ()
         self.breadcrumb_stack.append (b)
         self.breadcrumb_wip_depth -= 1
-        print (f'\x1B[47mend {b.name} depth={b.depth} position={b.position}\x1B[0m')
+        # print (f'\x1B[47mend {b.name} depth={b.depth} position={b.position}\x1B[0m')
 
     def append (self, s):
         self.string_stack [-1] = self.string_stack [-1] + s

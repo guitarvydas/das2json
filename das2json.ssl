@@ -1,7 +1,7 @@
 : Das2Json =
-  Spaces "<" Stuff ">"
+  Spaces "<" Stuff ">" Content "</" Stuff ">" Spaces #EOF
 
-: Das2Json =
+: Hold_Das2Json =
   Spaces "<" Stuff
   [
     | ">": Content "</" Stuff ">"
@@ -14,7 +14,7 @@
     Spaces
     [*
       | "</": _break
-      | "<": Das2Json
+      | "<": Hold_Das2Json
       | *: Stuff
     ]
   >>
