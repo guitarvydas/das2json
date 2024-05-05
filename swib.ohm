@@ -20,7 +20,7 @@ swib {
   condClause = "|" spaces condMatch ":" spaces action*
   condMatch =
     | string -- string
-    | endop -- end
+    | endop -- endop
     | "*" -- else
   action = pattern | break | acceptAndAppend
   break = "_break" spaces

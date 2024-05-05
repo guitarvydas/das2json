@@ -1,6 +1,6 @@
 swib {
   main [rule+] = ‛«rule»’
-  rule [_colon spaces rulename _eq spaces2 pattern+] = ‛«_colon»«spaces»«rulename»«_eq»«pattern»’
+  rule [_colon spaces rulename _eq spaces2 pattern+] = ‛«_colon»«spaces»«rulename»«_eq»«spaces2»«pattern»’
   pattern [p] = ‛«p»’
 
   endop [_end spaces] = ‛«_end»«spaces»’
@@ -21,7 +21,7 @@ swib {
   condMatch_endop [x] = ‛«x»’
   condMatch_else [x] = ‛«x»’
   action [a] = ‛«a»’
-  break [_break" spaces] = ‛«_break»«spaces»’
+  break [_break spaces] = ‛«_break»«spaces»’
   acceptAndAppend [_dot spaces] = ‛«_dot»«spaces»’
 
   cycle [lb spaces1 pattern+ rb spaces2] = ‛«lb»«spaces1»«pattern»«rb»«spaces2»’
