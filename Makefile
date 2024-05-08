@@ -22,10 +22,11 @@ D2J=${das2jsondir}/das2json
 SRC=das2json.swib
 #SRC=test.swib
 
-dev: run
+dev: 
+	@./clr
+	make run
 
 run: _.py das2json.drawio.json transpile.drawio.json
-	@./clr
 	python3 _.py ${_00_} ${_0D_} ${SRC} main das2json.drawio.json transpile.drawio.json
 
 _.py : main.py ${0D}
@@ -48,4 +49,5 @@ manual-das2json:
 	python3 das2json.py <test.drawio
 
 regression:
+	make -s run >regression.py
 	python3 regression.py <test.drawio

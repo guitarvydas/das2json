@@ -16,7 +16,7 @@ def «rulename» (_r):(-
   
   pattern [p] = ‛«p»’
 
-  endop [_end spaces] = ‛_r.need (EOF)\n’
+  endop [_end spaces] = ‛_r.eof ()\n’
 
   rulename [name spaces] = ‛«name»’
 
@@ -32,13 +32,13 @@ def «rulename» (_r):(-
   cond [lb spaces1 condClause+ rb spaces2] = ‛if False:(-\npass-)\n«condClause»’
   condClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:(-\n«action»pass-)\n’
   condMatch_string [x] = ‛_r.maybe_append («x»)’
-  condMatch_endop [x] = ‛_r.maybe (EOF)’
+  condMatch_endop [x] = ‛_r.eof ()’
   condMatch_else [x] = ‛True’
 
   peekcond [lb spaces1 condClause+ rb spaces2] = ‛if False:(-\npass-)\n«condClause»’
   peekCondClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:(-\n«action»pass-)\n’
   peekCondMatch_string [x] = ‛_r.peek («x»)’
-  peekCondMatch_endop [x] = ‛_r.peek (EOF)’
+  peekCondMatch_endop [x] = ‛_r.eof ()’
   peekCondMatch_else [x] = ‛True’
 
   action [a] = ‛«a»’
