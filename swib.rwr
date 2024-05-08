@@ -1,8 +1,14 @@
 swib {
-  main [spaces rule+] = ‛«rule»’
+  main [spaces firstRule moreRule*] = ‛«firstRule»«moreRule»
+
+import receptor
+_r = receptor.Receptor ()
+⎛«firstRule»⎠ (_r)
+s = _r.pop_return_value ()
+print (s)
+’
   rule [_colon spaces rulename _eq spaces2 pattern+] =‛
-def «rulename» ():(-
-    global _r
+def «rulename» (_r):(-
     _r.push_new_string ()
     _r.begin_breadcrumb ("«rulename»")
     «pattern»_r.end_breadcrumb ("«rulename»")
@@ -14,7 +20,7 @@ def «rulename» ():(-
 
   rulename [name spaces] = ‛«name»’
 
-  rulecall [name spaces] = ‛«name» ()\n_r.append_returned_string ()\n’
+  rulecall [name spaces] = ‛«name» (_r)\n_r.append_returned_string ()\n’
   
   stringMatch [s ws] = ‛_r.need_and_append («s»)\n’
 
@@ -44,5 +50,6 @@ def «rulename» ():(-
   name [firstLetter moreLetter*] = ‛«firstLetter»«moreLetter»’
   firstLetter [c] = ‛«c»’
   moreLetter [c] = ‛«c»’
+
 }
 

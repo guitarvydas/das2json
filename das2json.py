@@ -127,12 +127,8 @@ def NotDquotes (_r):
 
 
 import receptor
-
-def _begin ():
-    _r = receptor.Receptor ()
-    Das2json (_r)
-    return _r.pop_return_value ()
-    
-s = _begin ()
+_r = receptor.Receptor ()
+Das2json (_r)
+s = _r.pop_return_value ()
 print (s)
 

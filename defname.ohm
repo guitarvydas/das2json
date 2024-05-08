@@ -1,0 +1,10 @@
+defname {
+  main = text+
+  text =
+    | defName -- match
+    | any -- other
+  defName = "⎛" spaces "def" spaces name spaces through<closeindent> spaces "⎠"
+  through<s> = (~s any)+  s
+  name = letter alnum* ~alnum
+  closeindent = "-)"
+}

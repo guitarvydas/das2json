@@ -1,5 +1,5 @@
 swib {
-  main = spaces rule+
+  main = spaces rule rule*
   rule = ":" spaces rulename "=" spaces pattern+
   pattern = stringMatch | endop | cond | peekcond | cycle | rulecall
 
@@ -38,7 +38,4 @@ swib {
   name = firstLetter moreLetter*
   firstLetter = letter | "_"
   moreLetter = digit | firstLetter
-
-
 }
-

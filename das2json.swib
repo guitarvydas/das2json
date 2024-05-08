@@ -6,7 +6,6 @@
   [
     | ">": Content "</" Stuff ">"
     | "/>": 
-    | *: Stuff
   ]
 
 : Content =
@@ -22,11 +21,10 @@
 : Attributes =
   <<<
     [*
-      | "style=": . String
       | ">": _break
       | "/>": _break
       | _end: _break
-      | *: .
+      | *: Stuff
     ]
   >>>
 
@@ -47,7 +45,6 @@
       | " ": .
       | "\t": .
       | "\n": .
-      | _end: _break
       | *: _break
     ]
   >>>

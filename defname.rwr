@@ -1,0 +1,9 @@
+defname {
+  main [x+] = ‛«x»’
+  text_match [x] = ‛«x»’
+  text_other [x] = ‛«x»’
+  defName  [lb spaces1 _def spaces2 name spaces3 misc spaces4 rb] = ‛«name»’
+  through [misc s] = ‛’
+  name [letter alnum*] = ‛«letter»«alnum»’
+  closeindent [rb] = ‛’
+}

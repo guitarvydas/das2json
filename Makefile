@@ -19,8 +19,8 @@ _STD_ = ${_0D_}/std
     ${_STD_}/run.py
 
 D2J=${das2jsondir}/das2json
-#SRC=das2json.swib
-SRC=test.swib
+SRC=das2json.swib
+#SRC=test.swib
 
 dev: run
 
