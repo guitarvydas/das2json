@@ -1,14 +1,14 @@
-: Das2json =
+: Das2json ^=
   XML Spaces _end
 
-: XML =
+: XML ^=
   Spaces "<" Stuff
   [
     | ">": Content "</" Stuff ">"
     | "/>": 
   ]
 
-: Content =
+: Content ^=
   <<<
     Spaces
     [*
@@ -18,7 +18,7 @@
     ]
   >>>
 
-: Attributes =
+: Attributes ^=
   <<<
     [*
       | ">": _break
@@ -28,7 +28,7 @@
     ]
   >>>
 
-: Stuff =
+: Stuff ^=
   <<<
     [*
       | ">": _break
@@ -39,7 +39,7 @@
     ]
   >>>
 
-: Spaces =
+: Spaces ^=
   <<<
     [*
       | " ": .
@@ -49,14 +49,14 @@
     ]
   >>>
 
-: String =
+: String ^=
   "\"" NotDquotes "\""
 
-: NotDquotes =
+: NotDquotes ^=
   <<<
     [*
       | "\"": _break
       | *: .
     ]
   >>>
-  
+

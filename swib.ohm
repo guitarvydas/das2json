@@ -1,6 +1,7 @@
 swib {
   main = spaces rule rule*
-  rule = ":" spaces rulename "=" spaces pattern+
+  rule =
+    | ":" spaces rulename "^=" spaces pattern+ -- return_value
   pattern = stringMatch | endop | cond | peekcond | cycle | rulecall
 
   endop = "_end" spaces

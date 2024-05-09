@@ -28,7 +28,7 @@ dev:
 
 run:
 	make -s compileswib >das2json.py
-	python3 das2json.py <test.drawio
+	python3 das2json.py <test.drawio # das2json.py parses test.drawio and emits .json to stdout
 
 compileswib: _.py das2json.drawio.json transpile.drawio.json
 	python3 _.py ${_00_} ${_0D_} ${SRC} main das2json.drawio.json transpile.drawio.json
