@@ -13,6 +13,13 @@ def «rulename» (_r):(-
     _r.begin_breadcrumb ("«rulename»")
     «pattern»_r.end_breadcrumb ("«rulename»")
     return _r.return_string_pop ()-)\n’
+
+  rule_rewrite_value [_colon spaces rulename _ret_at spaces2 pattern+] =‛
+def «rulename» (_r):(-
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("«rulename»")
+    «pattern»_r.end_breadcrumb ("«rulename»")
+    return _r.return_string_pop ()-)\n’
   
   pattern [p] = ‛«p»’
 
