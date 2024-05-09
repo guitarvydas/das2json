@@ -8,7 +8,7 @@ def Das2json (_r):
     _r.append_returned_string ()
     _r.eof ()
     _r.end_breadcrumb ("Das2json")
-    return _r.return_string_pop ()
+    return Das2json__action__ (_r)
 
 def XML (_r):
     _r.push_new_string ()
@@ -150,6 +150,9 @@ def NotDquotes (_r):
             pass
         
     _r.end_breadcrumb ("NotDquotes")
+    return _r.return_string_pop ()
+
+def Das2json__action__ (_r):
     return _r.return_string_pop ()
 
 

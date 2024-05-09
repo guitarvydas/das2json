@@ -1,5 +1,5 @@
 swib {
-  main [spaces firstRule moreRule*] = ‛«firstRule»«moreRule»
+  main [spaces firstRule moreRule* actions+] = ‛«firstRule»«moreRule»«actions»
 
 import receptor
 _r = receptor.Receptor ()
@@ -19,7 +19,7 @@ def «rulename» (_r):(-
     _r.push_new_string ()
     _r.begin_breadcrumb ("«rulename»")
     «pattern»_r.end_breadcrumb ("«rulename»")
-    return _r.return_string_pop ()-)\n’
+    return «rulename»__action__ (_r)-)\n’
   
   pattern [p] = ‛«p»’
 
@@ -57,6 +57,11 @@ def «rulename» (_r):(-
   name [firstLetter moreLetter*] = ‛«firstLetter»«moreLetter»’
   firstLetter [c] = ‛«c»’
   moreLetter [c] = ‛«c»’
+
+  defaction [_at ws name _eq ws2 actions+ ws3] = ‛
+def «name»__action__ (_r):(-«actions»-)\n’
+
+  action_return_value [_ _ws] = ‛\nreturn _r.return_string_pop ()’
 
 }
 

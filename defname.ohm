@@ -3,7 +3,7 @@ defname {
   text =
     | defName -- match
     | any -- other
-  defName = "⎛" spaces "def" spaces name spaces through<closeindent> spaces "⎠"
+  defName = "⎛" spaces "def" spaces name " (" spaces through<"⎠">
   through<s> = (~s any)+  s
   name = letter alnum* ~alnum
   closeindent = "-)"
