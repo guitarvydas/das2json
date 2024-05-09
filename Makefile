@@ -24,7 +24,11 @@ SRC=das2json.swib
 
 dev: 
 	@./clr
-	make compileswib
+	make run
+
+run:
+	make -s compileswib >das2json.py
+	python3 das2json.py <test.drawio
 
 compileswib: _.py das2json.drawio.json transpile.drawio.json
 	python3 _.py ${_00_} ${_0D_} ${SRC} main das2json.drawio.json transpile.drawio.json
@@ -45,9 +49,6 @@ clean:
 install-js-requires:
 	npm install yargs prompt-sync
 
-manual-das2json:
-	python3 das2json.py <test.drawio
+hand-written-das2json:
+	python3 hand-written-das2json.py <test.drawio
 
-regression:
-	make -s compileswib >regression.py
-	python3 regression.py <test.drawio
