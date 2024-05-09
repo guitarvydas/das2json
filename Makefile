@@ -24,9 +24,9 @@ SRC=das2json.swib
 
 dev: 
 	@./clr
-	make run
+	make compileswib
 
-run: _.py das2json.drawio.json transpile.drawio.json
+compileswib: _.py das2json.drawio.json transpile.drawio.json
 	python3 _.py ${_00_} ${_0D_} ${SRC} main das2json.drawio.json transpile.drawio.json
 
 _.py : main.py ${0D}
@@ -49,5 +49,5 @@ manual-das2json:
 	python3 das2json.py <test.drawio
 
 regression:
-	make -s run >regression.py
+	make -s compileswib >regression.py
 	python3 regression.py <test.drawio
