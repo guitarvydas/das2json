@@ -153,11 +153,12 @@ def NotDquotes (_r):
     return _r.return_string_pop ()
 
 def Das2json__action__ (_r):
-    return _r.return_string_pop ()
+    pass
 
 
 import receptor
 _r = receptor.Receptor ()
+_r.return_push_sentinel ()
 Das2json (_r)
 s = _r.pop_return_value ()
 print (s)

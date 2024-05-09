@@ -3,6 +3,7 @@ swib {
 
 import receptor
 _r = receptor.Receptor ()
+_r.return_push_sentinel ()
 ⎛«firstRule»⎠ (_r)
 s = _r.pop_return_value ()
 print (s)
@@ -62,6 +63,7 @@ def «rulename» (_r):(-
 def «name»__action__ (_r):(-«actions»-)\n’
 
   action_return_value [_ _ws] = ‛\nreturn _r.return_string_pop ()’
+  action_ignore_value [_ _ws] = ‛\npass’
 
 }
 

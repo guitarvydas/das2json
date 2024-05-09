@@ -60,4 +60,4 @@
     ]
   >>>
 
-@ Das2json = _return_value
+@ Das2json = _ignore_value

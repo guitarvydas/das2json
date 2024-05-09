@@ -47,4 +47,5 @@ swib {
 
   action =
     | "_return_value" spaces -- return_value
+    | "_ignore_value" spaces -- ignore_value
 }
