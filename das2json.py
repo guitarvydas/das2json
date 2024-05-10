@@ -44,6 +44,10 @@ def Content (_r):
         elif _r.peek ("</"):
             break
             pass
+        elif _r.peek ("<mxGeometry "):
+            mxGeometry (_r)
+            _r.append_returned_string ()
+            pass
         elif _r.peek ("<"):
             XML (_r)
             _r.append_returned_string ()
@@ -55,6 +59,14 @@ def Content (_r):
         
     _r.end_breadcrumb ("Content")
     return _r.return_string_pop ()
+
+def mxGeometry (_r):
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("mxGeometry")
+    XML (_r)
+    _r.append_returned_string ()
+    _r.end_breadcrumb ("mxGeometry")
+    return mxGeometry__action__ (_r)
 
 def Attributes (_r):
     _r.push_new_string ()
@@ -153,12 +165,14 @@ def NotDquotes (_r):
     return _r.return_string_pop ()
 
 def Das2json__action__ (_r):
-    pass
+    return _r.return_string_pop ()
+
+def mxGeometry__action__ (_r):
+    return _r.return_ignore_pop ()
 
 
 import receptor
 _r = receptor.Receptor ()
-_r.return_push_sentinel ()
 Das2json (_r)
 s = _r.pop_return_value ()
 print (s)

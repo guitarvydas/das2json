@@ -98,8 +98,9 @@ class Receptor:
             r = self.string_stack.pop ()
             self.return_stack.append (r)
 
-    def return_push_sentinel (self):
-            self.return_stack.append ("<empty>")
+    def return_ignore_pop (self):
+            r = self.string_stack.pop ()
+            self.return_stack.append ("")
 
     def begin_breadcrumb (self, name):
         self.breadcrumb_wip_depth += 1

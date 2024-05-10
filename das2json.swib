@@ -13,10 +13,13 @@
     Spaces
     [*
       | "</": _break
+      | "<mxGeometry ":  mxGeometry
       | "<": XML
       | *: Stuff
     ]
   >>>
+
+: mxGeometry @= XML
 
 : Attributes ^=
   <<<
@@ -60,4 +63,5 @@
     ]
   >>>
 
-@ Das2json = _ignore_value
+@ Das2json = _return_value
+@ mxGeometry = _ignore_value
