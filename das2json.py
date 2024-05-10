@@ -213,6 +213,15 @@ def NotDquotes (_r):
     _r.end_breadcrumb ("NotDquotes")
     return _r.return_string_pop ()
 
+def EndMxCell (_r):
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("EndMxCell")
+    _r.need_and_append ("</mxCell>")
+    Spaces (_r)
+    _r.append_returned_string ()
+    _r.end_breadcrumb ("EndMxCell")
+    return EndMxCell__action__ (_r)
+
 def Das2json__action__ (_r):
     return _r.return_string_pop ()
 

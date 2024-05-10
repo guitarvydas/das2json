@@ -81,6 +81,8 @@
     ]
   >>>
 
+: EndMxCell @= "</mxCell>" Spaces
+
 @ Das2json = _return_value
 @ mxGeometry = _ignore_value
 @ Style = _ignore_value

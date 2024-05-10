@@ -181,22 +181,22 @@ class Receptor:
     def error (self, s):
         b = self.breadcrumb_wip_stack [-1]
         c = self.instream.current_char ()
-        c = make_printable (c)
-        s = make_printable (s)
+        c = self.make_printable (c)
+        s = self.make_printable (s)
         print (f'\x1B[101mReceptor error at input position {self.instream.current_input_position ()} wanted "{s}" got "{c}" (rule {b.name} beginning at {b.position})"\x1B[0m')
         sys.exit (1)
 
-def make_printable (c):        
-    if c == EOF:
-        c = "_end"
-    elif c == "\n":
-        c = "_newline"
-    elif c == "\t":
-        c = "_tab"
-    elif c == " ":
-        c = "_space"
-    else:
-        pass
-    return c
+    def make_printable (self, c):
+        if c == self.instream.endchar ():
+            c = "_end"
+        elif c == "\n":
+            c = "_newline"
+        elif c == "\t":
+            c = "_tab"
+        elif c == " ":
+            c = "_space"
+        else:
+            pass
+        return c
             
 
