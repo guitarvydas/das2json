@@ -3,7 +3,7 @@
   XML Spaces _end
 
 : XML ^=
-  Spaces "<" Name Stuff
+  Spaces "<" Name Attributes
   [
     | ">": Content "</" Stuff ">"
     | "/>": 
@@ -29,7 +29,7 @@
       | ">": _break
       | "/>": _break
       | _end: _break
-      | *: Stuff
+      | *: .
     ]
   >>>
 
@@ -38,7 +38,7 @@
 : Name ^=
   <<<
     [*
-      | " ": _break
+      | " ":   _break
       | "\t": _break
       | "\n": _break
       | ">": _break

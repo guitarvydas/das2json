@@ -19,7 +19,7 @@ def XML (_r):
     _r.need_and_append ("<")
     Name (_r)
     _r.append_returned_string ()
-    Stuff (_r)
+    Attributes (_r)
     _r.append_returned_string ()
     if False:
         pass
@@ -91,8 +91,7 @@ def Attributes (_r):
             break
             pass
         elif True:
-            Stuff (_r)
-            _r.append_returned_string ()
+            _r.accept_and_append ()
             pass
         
     _r.end_breadcrumb ("Attributes")
