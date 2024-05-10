@@ -112,6 +112,9 @@ class Receptor:
         self.breadcrumb_stack.append (b)
         self.breadcrumb_wip_depth -= 1
 
+    def trace (self, s):
+        print (f'\x1B[101m{self.breadcrumb_wip_stack [-1].name} depth={self.breadcrumb_wip_stack [-1].depth} pos={self.breadcrumb_wip_stack [-1].position} {s}\x1B[0m')
+
     def append (self, s):
         self.string_stack [-1] = self.string_stack [-1] + s
         

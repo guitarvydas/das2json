@@ -7,7 +7,7 @@ swib {
   defaction =
     | "@" spaces rulename "=" spaces action+ spaces
 
-  pattern = stringMatch | endop | cond | peekcond | cycle | rulecall
+  pattern = stringMatch | endop | cond | peekcond | cycle | trace | rulecall
 
   endop = "_end" spaces
 
@@ -48,4 +48,6 @@ swib {
   action =
     | "_return_value" spaces -- return_value
     | "_ignore_value" spaces -- ignore_value
+
+  trace = "_trace" spaces string spaces
 }

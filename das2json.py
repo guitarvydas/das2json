@@ -2,6 +2,7 @@
 def Das2json (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("Das2json")
+    _r.trace ("@0")
     XML (_r)
     _r.append_returned_string ()
     Spaces (_r)
@@ -16,6 +17,8 @@ def XML (_r):
     Spaces (_r)
     _r.append_returned_string ()
     _r.need_and_append ("<")
+    Name (_r)
+    _r.append_returned_string ()
     Stuff (_r)
     _r.append_returned_string ()
     if False:
@@ -74,6 +77,10 @@ def Attributes (_r):
     while True:
         if False:
             pass
+        elif _r.peek ("style="):
+            Style (_r)
+            _r.append_returned_string ()
+            pass
         elif _r.peek (">"):
             break
             pass
@@ -89,6 +96,49 @@ def Attributes (_r):
             pass
         
     _r.end_breadcrumb ("Attributes")
+    return _r.return_string_pop ()
+
+def Style (_r):
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("Style")
+    _r.need_and_append ("style=")
+    String (_r)
+    _r.append_returned_string ()
+    _r.end_breadcrumb ("Style")
+    return Style__action__ (_r)
+
+def Name (_r):
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("Name")
+    while True:
+        if False:
+            pass
+        elif _r.peek (" "):
+            break
+            pass
+        elif _r.peek ("\t"):
+            break
+            pass
+        elif _r.peek ("\n"):
+            break
+            pass
+        elif _r.peek (">"):
+            break
+            pass
+        elif _r.peek ("<"):
+            break
+            pass
+        elif _r.peek ("/>"):
+            break
+            pass
+        elif _r.eof ():
+            break
+            pass
+        elif True:
+            _r.accept_and_append ()
+            pass
+        
+    _r.end_breadcrumb ("Name")
     return _r.return_string_pop ()
 
 def Stuff (_r):
@@ -168,6 +218,9 @@ def Das2json__action__ (_r):
     return _r.return_string_pop ()
 
 def mxGeometry__action__ (_r):
+    return _r.return_ignore_pop ()
+
+def Style__action__ (_r):
     return _r.return_ignore_pop ()
 
 

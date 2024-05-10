@@ -64,5 +64,6 @@ def «name»__action__ (_r):(-«actions»-)\n’
   action_return_value [_ _ws] = ‛\nreturn _r.return_string_pop ()’
   action_ignore_value [_ _ws] = ‛\nreturn _r.return_ignore_pop ()’
 
+  trace [_trace ws1 s ws2] = ‛_r.trace («s»)\n’
 }
 

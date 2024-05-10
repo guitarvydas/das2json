@@ -1,8 +1,9 @@
 : Das2json @=
+  _trace "@0"
   XML Spaces _end
 
 : XML ^=
-  Spaces "<" Stuff
+  Spaces "<" Name Stuff
   [
     | ">": Content "</" Stuff ">"
     | "/>": 
@@ -24,10 +25,27 @@
 : Attributes ^=
   <<<
     [*
+      | "style=": Style
       | ">": _break
       | "/>": _break
       | _end: _break
       | *: Stuff
+    ]
+  >>>
+
+: Style @= "style=" String
+
+: Name ^=
+  <<<
+    [*
+      | " ": _break
+      | "\t": _break
+      | "\n": _break
+      | ">": _break
+      | "<": _break
+      | "/>": _break
+      | _end: _break
+      | *: .
     ]
   >>>
 
@@ -65,3 +83,4 @@
 
 @ Das2json = _return_value
 @ mxGeometry = _ignore_value
+@ Style = _ignore_value
