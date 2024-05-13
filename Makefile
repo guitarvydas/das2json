@@ -28,6 +28,7 @@ dev:
 
 run:
 	make -s compileswib >das2json.py
+	@echo 'if strange errors occur, then, grep "arrow has no target" das2json.py'
 	python3 das2json.py <test.drawio # das2json.py parses test.drawio and emits .json to stdout
 
 compileswib: _.py das2json.drawio.json transpile.drawio.json
@@ -43,7 +44,7 @@ transpile.drawio.json: $(_STD_)/transpile.drawio
 	$(D2J) $(_STD_)/transpile.drawio
 
 clean:
-	rm -rf *.json
+	rm -rf *.json das2json.py
 	rm -rf *~
 
 install-js-requires:
