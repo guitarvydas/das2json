@@ -58,7 +58,6 @@ class CharacterStream:
     def accept (self):
         r = self.cache_toString ()
         self.clear ()
-        #print (f'CharacterStream.accept "{r}"')
         return r
 
     def current_char (self):
@@ -99,17 +98,22 @@ class Receptor:
             r = self.string_stack.pop ()
             self.return_stack.append (r)
 
+    def return_ignore_pop (self):
+            r = self.string_stack.pop ()
+            self.return_stack.append ("")
+
     def begin_breadcrumb (self, name):
         self.breadcrumb_wip_depth += 1
         b = Breadcrumb (name, self.breadcrumb_wip_depth, self.instream.current_input_position ())
         self.breadcrumb_wip_stack.append (b)
-        # print (f'\x1B[43mbegin {b.name} depth={b.depth} position={b.position}\x1B[0m')
         
     def end_breadcrumb (self, name):
         b = self.breadcrumb_wip_stack.pop ()
         self.breadcrumb_stack.append (b)
         self.breadcrumb_wip_depth -= 1
-        # print (f'\x1B[47mend {b.name} depth={b.depth} position={b.position}\x1B[0m')
+
+    def trace (self, s):
+        print (f'\x1B[102m{self.breadcrumb_wip_stack [-1].name} depth={self.breadcrumb_wip_stack [-1].depth} pos={self.breadcrumb_wip_stack [-1].position} c="{self.instream.current_char ()}" {s}\x1B[0m')
 
     def append (self, s):
         self.string_stack [-1] = self.string_stack [-1] + s
@@ -177,22 +181,22 @@ class Receptor:
     def error (self, s):
         b = self.breadcrumb_wip_stack [-1]
         c = self.instream.current_char ()
-        c = make_printable (c)
-        s = make_printable (s)
+        c = self.make_printable (c)
+        s = self.make_printable (s)
         print (f'\x1B[101mReceptor error at input position {self.instream.current_input_position ()} wanted "{s}" got "{c}" (rule {b.name} beginning at {b.position})"\x1B[0m')
         sys.exit (1)
 
-def make_printable (c):        
-    if c == EOF:
-        c = "_end"
-    elif c == "\n":
-        c = "_newline"
-    elif c == "\t":
-        c = "_tab"
-    elif c == " ":
-        c = "_space"
-    else:
-        pass
-    return c
+    def make_printable (self, c):
+        if c == self.instream.endchar ():
+            c = "_end"
+        elif c == "\n":
+            c = "_newline"
+        elif c == "\t":
+            c = "_tab"
+        elif c == " ":
+            c = "_space"
+        else:
+            pass
+        return c
             
 
