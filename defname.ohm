@@ -6,5 +6,4 @@ defname {
   defName = "⎛" spaces "def" spaces name " (" spaces through<"⎠">
   through<s> = (~s any)+  s
   name = letter alnum* ~alnum
-  closeindent = "-)"
 }
