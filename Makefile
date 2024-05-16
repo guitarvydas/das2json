@@ -20,22 +20,31 @@ _STD_ = ${_0D_}/std
 
 D2J=${das2jsondir}/das2json
 SRC=das2json.swib
-#SRC=test.swib
 
-dev: 
-	@./clr
-	make run
 
-run:
-	make -s compileswib >das2json.py
+#########
+
+# run das2json.py to convert test.drawio into a .json file containing only semantic info
+run: das2json.py
+	./clr
 	@echo 'if strange errors occur, then, grep "arrow has no target" das2json.py'
-	python3 das2json.py <test.drawio # das2json.py parses test.drawio and emits .json to stdout
+	python3 das2json.py <test.drawio >temp.json # das2json.py parses test.drawio and emits .json to stdout
+	@./cleanup.bash temp.json
 
-compileswib: _.py das2json.drawio.json transpile.drawio.json
-	python3 _.py ${_00_} ${_0D_} ${SRC} main das2json.drawio.json transpile.drawio.json
 
-_.py : main.py ${0D}
-	cat ${0D} main.py >_.py
+#########
+
+# builds das2json.py from diagram (das2json.drawio)
+das2json.py:
+	make -s compileswib >das2json.py
+
+
+# diagram -> das2json.py uses bootstrapping py0D
+compileswib: py0d.py das2json.drawio.json transpile.drawio.json
+	python3 py0d.py ${_00_} ${_0D_} ${SRC} main das2json.drawio.json transpile.drawio.json
+
+py0d.py : main.py ${0D}
+	cat ${0D} main.py >py0d.py
 
 das2json.drawio.json: das2json.drawio
 	$(D2J) das2json.drawio
@@ -43,13 +52,18 @@ das2json.drawio.json: das2json.drawio
 transpile.drawio.json: $(_STD_)/transpile.drawio
 	$(D2J) $(_STD_)/transpile.drawio
 
+### end build das2json.py
+
+#########
+
 clean:
 	rm -rf *.json das2json.py
 	rm -rf *~
 
+
+#########
+
+# to install required libs, once
 install-js-requires:
 	npm install yargs prompt-sync
-
-hand-written-das2json:
-	python3 hand-written-das2json.py <test.drawio
 

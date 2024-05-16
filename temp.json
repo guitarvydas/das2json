@@ -1,0 +1,628 @@
+[102mDas2json depth=1 pos=1 c="<" @0[0m
+<mxfile host="Electron" modified="2024-05-03T11:06:53.106Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="fydFu3Oc6tPYNS2zLmSv" version="24.2.5" type="device" pages="6">
+  <diagram name="main" id="m0zTKrYATkNEm8Ja8VeW">
+    <mxGraphModel dx="1100" dy="1774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vDygsiKEvxKdtxCckLj3-15" value="Scheme to ppy"  parent="1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-16" value=""  parent="vDygsiKEvxKdtxCckLj3-15" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-17" value=""  parent="vDygsiKEvxKdtxCckLj3-15" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-18" value="✗"  parent="vDygsiKEvxKdtxCckLj3-15" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-19" value="Cleanup"  parent="1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-20" value=""  parent="vDygsiKEvxKdtxCckLj3-19" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-21" value=""  parent="vDygsiKEvxKdtxCckLj3-19" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-22" value="✗"  parent="vDygsiKEvxKdtxCckLj3-19" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-23" value="Bracket Words"  parent="1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-24" value=""  parent="vDygsiKEvxKdtxCckLj3-23" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-25" value=""  parent="vDygsiKEvxKdtxCckLj3-23" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-26" value="✗"  parent="vDygsiKEvxKdtxCckLj3-23" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-27" value="Escape Whitespace"  parent="1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-28" value=""  parent="vDygsiKEvxKdtxCckLj3-27" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-29" value=""  parent="vDygsiKEvxKdtxCckLj3-27" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-30" value="✗"  parent="vDygsiKEvxKdtxCckLj3-27" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-31" value="Read Text File"  parent="1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-32" value=""  parent="vDygsiKEvxKdtxCckLj3-31" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-33" value=""  parent="vDygsiKEvxKdtxCckLj3-31" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-34" value="✗"  parent="vDygsiKEvxKdtxCckLj3-31" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-35" value=""  parent="1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-36" value="✗"  parent="1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-37" value=""  parent="1" source="vDygsiKEvxKdtxCckLj3-21" target="vDygsiKEvxKdtxCckLj3-35" edge="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-40" value=""  parent="1" source="vDygsiKEvxKdtxCckLj3-29" target="vDygsiKEvxKdtxCckLj3-24" edge="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-41" value=""  parent="1" source="vDygsiKEvxKdtxCckLj3-33" target="vDygsiKEvxKdtxCckLj3-28" edge="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-42" value=""  parent="1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-43" value=""  parent="1" source="vDygsiKEvxKdtxCckLj3-42" target="vDygsiKEvxKdtxCckLj3-32" edge="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-44" value=""  parent="1" source="vDygsiKEvxKdtxCckLj3-22" target="vDygsiKEvxKdtxCckLj3-36" edge="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-45" value=""  parent="1" source="vDygsiKEvxKdtxCckLj3-18" target="vDygsiKEvxKdtxCckLj3-36" edge="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-46" value=""  parent="1" source="vDygsiKEvxKdtxCckLj3-26" target="vDygsiKEvxKdtxCckLj3-36" edge="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-47" value=""  parent="1" source="vDygsiKEvxKdtxCckLj3-30" target="vDygsiKEvxKdtxCckLj3-36" edge="1">
+          
+        </mxCell>
+        <mxCell id="vDygsiKEvxKdtxCckLj3-48" value=""  parent="1" source="vDygsiKEvxKdtxCckLj3-34" target="vDygsiKEvxKdtxCckLj3-36" edge="1">
+          
+        </mxCell>
+        <mxCell id="X_GBVSUsx7Oz_7UFjK6D-1" value="Expand Quote Shortcut"  parent="1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="X_GBVSUsx7Oz_7UFjK6D-2" value=""  parent="X_GBVSUsx7Oz_7UFjK6D-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="X_GBVSUsx7Oz_7UFjK6D-3" value=""  parent="X_GBVSUsx7Oz_7UFjK6D-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="X_GBVSUsx7Oz_7UFjK6D-4" value="✗"  parent="X_GBVSUsx7Oz_7UFjK6D-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="X_GBVSUsx7Oz_7UFjK6D-9"  parent="1" source="vDygsiKEvxKdtxCckLj3-25" target="X_GBVSUsx7Oz_7UFjK6D-2" edge="1">
+          
+        </mxCell>
+        <mxCell id="X_GBVSUsx7Oz_7UFjK6D-12"  parent="1" source="X_GBVSUsx7Oz_7UFjK6D-4" target="vDygsiKEvxKdtxCckLj3-36" edge="1">
+          
+        </mxCell>
+        <mxCell id="uFmTx413GLXAMMs4zxwi-1"  parent="1" source="X_GBVSUsx7Oz_7UFjK6D-3" target="vDygsiKEvxKdtxCckLj3-16" edge="1">
+          
+        </mxCell>
+        <mxCell id="OtukvClZ967XnoqjYrNu-1"  parent="1" source="vDygsiKEvxKdtxCckLj3-17" target="vDygsiKEvxKdtxCckLj3-20" edge="1">
+          
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Escape Whitespace" id="6ydanZl1UjnAQBLJmaP4">
+    <mxGraphModel dx="1100" dy="674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="ROPV56MymoUKp6Qeij12-0" />
+        <mxCell id="ROPV56MymoUKp6Qeij12-1" parent="ROPV56MymoUKp6Qeij12-0" />
+        <mxCell id="ROPV56MymoUKp6Qeij12-9" value="Transpile"  parent="ROPV56MymoUKp6Qeij12-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-10" value="ohmfn"  parent="ROPV56MymoUKp6Qeij12-9" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-11" value=""  parent="ROPV56MymoUKp6Qeij12-9" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-12" value="✗"  parent="ROPV56MymoUKp6Qeij12-9" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-13" value="rwrfn"  parent="ROPV56MymoUKp6Qeij12-9" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-14" value="input"  parent="ROPV56MymoUKp6Qeij12-9" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-15" value="grammar name"  parent="ROPV56MymoUKp6Qeij12-9" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-16" value="rwrsupportfn"  parent="ROPV56MymoUKp6Qeij12-9" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-17" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="ROPV56MymoUKp6Qeij12-11" target="jjGiX0iyrEnUr1fx_ue5-1" edge="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-19" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="ROPV56MymoUKp6Qeij12-12" target="jjGiX0iyrEnUr1fx_ue5-2" edge="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-20" value="&#39;Escapes"  parent="ROPV56MymoUKp6Qeij12-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-21" value=""  parent="ROPV56MymoUKp6Qeij12-20" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-22" value=""  parent="ROPV56MymoUKp6Qeij12-20" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-23" value="&#39;escapessupport.js"  parent="ROPV56MymoUKp6Qeij12-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-24" value=""  parent="ROPV56MymoUKp6Qeij12-23" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-25" value=""  parent="ROPV56MymoUKp6Qeij12-23" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-26" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="ROPV56MymoUKp6Qeij12-24" target="ROPV56MymoUKp6Qeij12-16" edge="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-27" value="&#39;escapes.ohm"  parent="ROPV56MymoUKp6Qeij12-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-28" value=""  parent="ROPV56MymoUKp6Qeij12-27" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-29" value=""  parent="ROPV56MymoUKp6Qeij12-27" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-30" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="ROPV56MymoUKp6Qeij12-28" target="ROPV56MymoUKp6Qeij12-10" edge="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-31" value="&#39;escapes.rwr"  parent="ROPV56MymoUKp6Qeij12-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-32" value=""  parent="ROPV56MymoUKp6Qeij12-31" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-33" value=""  parent="ROPV56MymoUKp6Qeij12-31" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-34" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="ROPV56MymoUKp6Qeij12-32" target="ROPV56MymoUKp6Qeij12-13" edge="1">
+          
+        </mxCell>
+        <mxCell id="ROPV56MymoUKp6Qeij12-35" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="ROPV56MymoUKp6Qeij12-21" target="ROPV56MymoUKp6Qeij12-15" edge="1">
+          
+        </mxCell>
+        <mxCell id="jjGiX0iyrEnUr1fx_ue5-0" value=""  parent="ROPV56MymoUKp6Qeij12-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="jjGiX0iyrEnUr1fx_ue5-1" value=""  parent="ROPV56MymoUKp6Qeij12-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="jjGiX0iyrEnUr1fx_ue5-2" value="✗"  parent="ROPV56MymoUKp6Qeij12-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="6d90HVRfbV5Q0dqjc3UU-0" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="jjGiX0iyrEnUr1fx_ue5-0" target="ROPV56MymoUKp6Qeij12-22" edge="1">
+          
+        </mxCell>
+        <mxCell id="6d90HVRfbV5Q0dqjc3UU-1" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="jjGiX0iyrEnUr1fx_ue5-0" target="ROPV56MymoUKp6Qeij12-29" edge="1">
+          
+        </mxCell>
+        <mxCell id="6d90HVRfbV5Q0dqjc3UU-2" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="jjGiX0iyrEnUr1fx_ue5-0" target="ROPV56MymoUKp6Qeij12-33" edge="1">
+          
+        </mxCell>
+        <mxCell id="6d90HVRfbV5Q0dqjc3UU-3" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="jjGiX0iyrEnUr1fx_ue5-0" target="ROPV56MymoUKp6Qeij12-25" edge="1">
+          
+        </mxCell>
+        <mxCell id="6d90HVRfbV5Q0dqjc3UU-4" value=""  parent="ROPV56MymoUKp6Qeij12-1" source="jjGiX0iyrEnUr1fx_ue5-0" target="ROPV56MymoUKp6Qeij12-14" edge="1">
+          
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Bracket Words" id="7XjC7SdziC9OTur3mQwd">
+    <mxGraphModel dx="1190" dy="448" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="pWHliONvT7s2EfyaKsGM-0" />
+        <mxCell id="pWHliONvT7s2EfyaKsGM-1" parent="pWHliONvT7s2EfyaKsGM-0" />
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-0" value="Transpile"  parent="pWHliONvT7s2EfyaKsGM-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-1" value="ohmfn"  parent="ukOkq4sIKDTlSHbERdFO-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-2" value=""  parent="ukOkq4sIKDTlSHbERdFO-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-3" value="✗"  parent="ukOkq4sIKDTlSHbERdFO-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-4" value="rwrfn"  parent="ukOkq4sIKDTlSHbERdFO-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-5" value="input"  parent="ukOkq4sIKDTlSHbERdFO-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-6" value="grammar name"  parent="ukOkq4sIKDTlSHbERdFO-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-7" value="rwrsupportfn"  parent="ukOkq4sIKDTlSHbERdFO-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-8" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-2" target="ukOkq4sIKDTlSHbERdFO-27" edge="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-9" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-3" target="ukOkq4sIKDTlSHbERdFO-28" edge="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-10" value="&#39;words"  parent="pWHliONvT7s2EfyaKsGM-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-11" value=""  parent="ukOkq4sIKDTlSHbERdFO-10" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-12" value=""  parent="ukOkq4sIKDTlSHbERdFO-10" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-13" value="&#39;null.js"  parent="pWHliONvT7s2EfyaKsGM-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-14" value=""  parent="ukOkq4sIKDTlSHbERdFO-13" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-15" value=""  parent="ukOkq4sIKDTlSHbERdFO-13" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-16" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-14" target="ukOkq4sIKDTlSHbERdFO-7" edge="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-17" value="&#39;words.ohm"  parent="pWHliONvT7s2EfyaKsGM-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-18" value=""  parent="ukOkq4sIKDTlSHbERdFO-17" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-19" value=""  parent="ukOkq4sIKDTlSHbERdFO-17" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-20" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-18" target="ukOkq4sIKDTlSHbERdFO-1" edge="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-21" value="&#39;words.rwr"  parent="pWHliONvT7s2EfyaKsGM-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-22" value=""  parent="ukOkq4sIKDTlSHbERdFO-21" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-23" value=""  parent="ukOkq4sIKDTlSHbERdFO-21" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-24" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-22" target="ukOkq4sIKDTlSHbERdFO-4" edge="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-25" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-11" target="ukOkq4sIKDTlSHbERdFO-6" edge="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-26" value=""  parent="pWHliONvT7s2EfyaKsGM-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-27" value=""  parent="pWHliONvT7s2EfyaKsGM-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-28" value="✗"  parent="pWHliONvT7s2EfyaKsGM-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-29" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-26" target="ukOkq4sIKDTlSHbERdFO-12" edge="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-30" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-26" target="ukOkq4sIKDTlSHbERdFO-19" edge="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-31" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-26" target="ukOkq4sIKDTlSHbERdFO-23" edge="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-32" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-26" target="ukOkq4sIKDTlSHbERdFO-15" edge="1">
+          
+        </mxCell>
+        <mxCell id="ukOkq4sIKDTlSHbERdFO-33" value=""  parent="pWHliONvT7s2EfyaKsGM-1" source="ukOkq4sIKDTlSHbERdFO-26" target="ukOkq4sIKDTlSHbERdFO-5" edge="1">
+          
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Expand Quote Shortcut" id="Q9ZeFF3nignUZB8ou6O5">
+    <mxGraphModel dx="1190" dy="448" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-0" />
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-1" parent="8FzC31mVr7ZlQoAuE2if-0" />
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-2" value="Transpile"  parent="8FzC31mVr7ZlQoAuE2if-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-3" value="ohmfn"  parent="8FzC31mVr7ZlQoAuE2if-2" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-4" value=""  parent="8FzC31mVr7ZlQoAuE2if-2" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-5" value="✗"  parent="8FzC31mVr7ZlQoAuE2if-2" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-6" value="rwrfn"  parent="8FzC31mVr7ZlQoAuE2if-2" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-7" value="input"  parent="8FzC31mVr7ZlQoAuE2if-2" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-8" value="grammar name"  parent="8FzC31mVr7ZlQoAuE2if-2" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-9" value="rwrsupportfn"  parent="8FzC31mVr7ZlQoAuE2if-2" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-10" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-4" target="8FzC31mVr7ZlQoAuE2if-29" edge="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-11" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-5" target="8FzC31mVr7ZlQoAuE2if-30" edge="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-12" value="&#39;quotes"  parent="8FzC31mVr7ZlQoAuE2if-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-13" value=""  parent="8FzC31mVr7ZlQoAuE2if-12" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-14" value=""  parent="8FzC31mVr7ZlQoAuE2if-12" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-15" value="&#39;null.js"  parent="8FzC31mVr7ZlQoAuE2if-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-16" value=""  parent="8FzC31mVr7ZlQoAuE2if-15" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-17" value=""  parent="8FzC31mVr7ZlQoAuE2if-15" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-18" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-16" target="8FzC31mVr7ZlQoAuE2if-9" edge="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-19" value="&#39;quotes.ohm"  parent="8FzC31mVr7ZlQoAuE2if-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-20" value=""  parent="8FzC31mVr7ZlQoAuE2if-19" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-21" value=""  parent="8FzC31mVr7ZlQoAuE2if-19" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-22" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-20" target="8FzC31mVr7ZlQoAuE2if-3" edge="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-23" value="&#39;quotes.rwr"  parent="8FzC31mVr7ZlQoAuE2if-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-24" value=""  parent="8FzC31mVr7ZlQoAuE2if-23" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-25" value=""  parent="8FzC31mVr7ZlQoAuE2if-23" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-26" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-24" target="8FzC31mVr7ZlQoAuE2if-6" edge="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-27" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-13" target="8FzC31mVr7ZlQoAuE2if-8" edge="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-28" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-29" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-30" value="✗"  parent="8FzC31mVr7ZlQoAuE2if-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-31" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-28" target="8FzC31mVr7ZlQoAuE2if-14" edge="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-32" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-28" target="8FzC31mVr7ZlQoAuE2if-21" edge="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-33" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-28" target="8FzC31mVr7ZlQoAuE2if-25" edge="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-34" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-28" target="8FzC31mVr7ZlQoAuE2if-17" edge="1">
+          
+        </mxCell>
+        <mxCell id="8FzC31mVr7ZlQoAuE2if-35" value=""  parent="8FzC31mVr7ZlQoAuE2if-1" source="8FzC31mVr7ZlQoAuE2if-28" target="8FzC31mVr7ZlQoAuE2if-7" edge="1">
+          
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Scheme to ppy" id="TY1bqIpglC3IVhGaqzZm">
+    <mxGraphModel dx="1190" dy="448" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="Y0OyRnPT7S_v4gDyQBb1-0" />
+        <mxCell id="Y0OyRnPT7S_v4gDyQBb1-1" parent="Y0OyRnPT7S_v4gDyQBb1-0" />
+        <mxCell id="tEcO9DKEnbY_C96QV74L-0" value="Transpile"  parent="Y0OyRnPT7S_v4gDyQBb1-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-1" value="ohmfn"  parent="tEcO9DKEnbY_C96QV74L-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-2" value=""  parent="tEcO9DKEnbY_C96QV74L-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-3" value="✗"  parent="tEcO9DKEnbY_C96QV74L-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-4" value="rwrfn"  parent="tEcO9DKEnbY_C96QV74L-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-5" value="input"  parent="tEcO9DKEnbY_C96QV74L-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-6" value="grammar name"  parent="tEcO9DKEnbY_C96QV74L-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-7" value="rwrsupportfn"  parent="tEcO9DKEnbY_C96QV74L-0" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-8" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-2" target="tEcO9DKEnbY_C96QV74L-27" edge="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-9" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-3" target="tEcO9DKEnbY_C96QV74L-28" edge="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-10" value="&#39;scm2ppy"  parent="Y0OyRnPT7S_v4gDyQBb1-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-11" value=""  parent="tEcO9DKEnbY_C96QV74L-10" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-12" value=""  parent="tEcO9DKEnbY_C96QV74L-10" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-13" value="&#39;null.js"  parent="Y0OyRnPT7S_v4gDyQBb1-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-14" value=""  parent="tEcO9DKEnbY_C96QV74L-13" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-15" value=""  parent="tEcO9DKEnbY_C96QV74L-13" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-16" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-14" target="tEcO9DKEnbY_C96QV74L-7" edge="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-17" value="&#39;scm2ppy.ohm"  parent="Y0OyRnPT7S_v4gDyQBb1-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-18" value=""  parent="tEcO9DKEnbY_C96QV74L-17" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-19" value=""  parent="tEcO9DKEnbY_C96QV74L-17" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-20" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-18" target="tEcO9DKEnbY_C96QV74L-1" edge="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-21" value="&#39;scm2ppy.rwr"  parent="Y0OyRnPT7S_v4gDyQBb1-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-22" value=""  parent="tEcO9DKEnbY_C96QV74L-21" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-23" value=""  parent="tEcO9DKEnbY_C96QV74L-21" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-24" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-22" target="tEcO9DKEnbY_C96QV74L-4" edge="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-25" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-11" target="tEcO9DKEnbY_C96QV74L-6" edge="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-26" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-27" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-28" value="✗"  parent="Y0OyRnPT7S_v4gDyQBb1-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-29" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-26" target="tEcO9DKEnbY_C96QV74L-12" edge="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-30" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-26" target="tEcO9DKEnbY_C96QV74L-19" edge="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-31" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-26" target="tEcO9DKEnbY_C96QV74L-23" edge="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-32" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-26" target="tEcO9DKEnbY_C96QV74L-15" edge="1">
+          
+        </mxCell>
+        <mxCell id="tEcO9DKEnbY_C96QV74L-33" value=""  parent="Y0OyRnPT7S_v4gDyQBb1-1" source="tEcO9DKEnbY_C96QV74L-26" target="tEcO9DKEnbY_C96QV74L-5" edge="1">
+          
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Cleanup" id="dPHDHjKnq0mKhaKZD1du">
+    <mxGraphModel dx="1190" dy="674" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="f0EJ1tlMhtAkIpv3Z4Xw-0" />
+        <mxCell id="f0EJ1tlMhtAkIpv3Z4Xw-1" parent="f0EJ1tlMhtAkIpv3Z4Xw-0" />
+        <mxCell id="f0EJ1tlMhtAkIpv3Z4Xw-2" value=""  parent="f0EJ1tlMhtAkIpv3Z4Xw-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="f0EJ1tlMhtAkIpv3Z4Xw-3" value=""  parent="f0EJ1tlMhtAkIpv3Z4Xw-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="f0EJ1tlMhtAkIpv3Z4Xw-4" value="✗"  parent="f0EJ1tlMhtAkIpv3Z4Xw-1" vertex="1">
+          
+        </mxCell>
+        <mxCell id="WLAu9fd7T4OLcg0MX8Fv-0" value="$ node indenter.js"  vertex="1" parent="f0EJ1tlMhtAkIpv3Z4Xw-1">
+          
+        </mxCell>
+        <mxCell id="WLAu9fd7T4OLcg0MX8Fv-1" value=""  vertex="1" parent="WLAu9fd7T4OLcg0MX8Fv-0">
+          
+        </mxCell>
+        <mxCell id="WLAu9fd7T4OLcg0MX8Fv-2" value=""  vertex="1" parent="WLAu9fd7T4OLcg0MX8Fv-0">
+          
+        </mxCell>
+        <mxCell id="WLAu9fd7T4OLcg0MX8Fv-3" value="✗"  vertex="1" parent="WLAu9fd7T4OLcg0MX8Fv-0">
+          
+        </mxCell>
+        <mxCell id="WLAu9fd7T4OLcg0MX8Fv-6"  edge="1" parent="f0EJ1tlMhtAkIpv3Z4Xw-1" source="WLAu9fd7T4OLcg0MX8Fv-3" target="f0EJ1tlMhtAkIpv3Z4Xw-4">
+          
+        </mxCell>
+        <mxCell id="WLAu9fd7T4OLcg0MX8Fv-7"  edge="1" parent="f0EJ1tlMhtAkIpv3Z4Xw-1" source="f0EJ1tlMhtAkIpv3Z4Xw-2" target="WLAu9fd7T4OLcg0MX8Fv-1">
+          
+        </mxCell>
+        <mxCell id="9Eh8jflXU3zcjGzuvxGw-0" value="Decode"  vertex="1" parent="f0EJ1tlMhtAkIpv3Z4Xw-1">
+          
+        </mxCell>
+        <mxCell id="9Eh8jflXU3zcjGzuvxGw-1" value=""  vertex="1" parent="9Eh8jflXU3zcjGzuvxGw-0">
+          
+        </mxCell>
+        <mxCell id="9Eh8jflXU3zcjGzuvxGw-2" value=""  vertex="1" parent="9Eh8jflXU3zcjGzuvxGw-0">
+          
+        </mxCell>
+        <mxCell id="9Eh8jflXU3zcjGzuvxGw-3" value="✗"  vertex="1" parent="9Eh8jflXU3zcjGzuvxGw-0">
+          
+        </mxCell>
+        <mxCell id="9Eh8jflXU3zcjGzuvxGw-4"  edge="1" parent="f0EJ1tlMhtAkIpv3Z4Xw-1" source="9Eh8jflXU3zcjGzuvxGw-3" target="f0EJ1tlMhtAkIpv3Z4Xw-4">
+          
+        </mxCell>
+        <mxCell id="9Eh8jflXU3zcjGzuvxGw-5"  edge="1" parent="f0EJ1tlMhtAkIpv3Z4Xw-1" source="9Eh8jflXU3zcjGzuvxGw-2" target="f0EJ1tlMhtAkIpv3Z4Xw-3">
+          
+        </mxCell>
+        <mxCell id="9Eh8jflXU3zcjGzuvxGw-6"  edge="1" parent="f0EJ1tlMhtAkIpv3Z4Xw-1" source="WLAu9fd7T4OLcg0MX8Fv-2" target="9Eh8jflXU3zcjGzuvxGw-1">
+          
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+
