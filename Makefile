@@ -29,8 +29,7 @@ run: das2json.py
 	./clr
 	@echo 'if strange errors occur, then, grep "arrow has no target" das2json.py'
 	python3 das2json.py <test.drawio >temp.json # das2json.py parses test.drawio and emits .json to stdout
-	@./cleanup.bash temp.json
-
+	cat temp.json
 
 #########
 
