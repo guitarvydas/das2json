@@ -1,0 +1,5 @@
+denoise {
+  main = text+
+  text =
+    | any -- other
+}
