@@ -1,4 +1,4 @@
 denoise {
   main [x+] = ‛«x»’
-  text_other [x] = ‛.’
+  text_other [x] = ‛«x»’
 }
