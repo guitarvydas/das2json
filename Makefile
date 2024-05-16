@@ -26,10 +26,12 @@ dev:
 	@./clr
 	make run
 
-run:
-	make -s compileswib >das2json.py
+run: das2json.py
 	@echo 'if strange errors occur, then, grep "arrow has no target" das2json.py'
 	python3 das2json.py <test.drawio # das2json.py parses test.drawio and emits .json to stdout
+
+das2json.py:
+	make -s compileswib >das2json.py
 
 compileswib: _.py das2json.drawio.json transpile.drawio.json
 	python3 _.py ${_00_} ${_0D_} ${SRC} main das2json.drawio.json transpile.drawio.json
@@ -47,9 +49,8 @@ clean:
 	rm -rf *.json das2json.py
 	rm -rf *~
 
+
+# to install required libs, once
 install-js-requires:
 	npm install yargs prompt-sync
-
-hand-written-das2json:
-	python3 hand-written-das2json.py <test.drawio
 
