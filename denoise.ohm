@@ -1,6 +1,0 @@
-denoise {
-  main = text+
-  text =
-    | "</mxCell>" -- celltail
-    | any -- other
-}

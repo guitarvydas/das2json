@@ -3,11 +3,16 @@
   XML Spaces _end
 
 : XML ^=
+  _trace "@0"
   Spaces "<" Name Attributes
   [
-    | ">": Content "</" Stuff ">"
+    | ">": Content ElementTail
     | "/>": 
   ]
+
+: ElementTail @=
+  _trace "@0"
+  Spaces "</" Stuff ">"
 
 : Content ^=
   <<<
@@ -86,3 +91,4 @@
 @ Das2json = _return_value
 @ mxGeometry = _ignore_value
 @ Style = _ignore_value
+@ ElementTail = _ignore_value

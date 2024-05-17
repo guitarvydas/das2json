@@ -1,5 +1,0 @@
-denoise {
-  main [x+] = ‛«x»’
-  text_other [x] = ‛«x»’
-  text_celltail [x] = ‛$$$’
-}

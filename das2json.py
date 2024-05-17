@@ -14,6 +14,7 @@ def Das2json (_r):
 def XML (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("XML")
+    _r.trace ("@0")
     Spaces (_r)
     _r.append_returned_string ()
     _r.need_and_append ("<")
@@ -26,15 +27,26 @@ def XML (_r):
     elif _r.maybe_append (">"):
         Content (_r)
         _r.append_returned_string ()
-        _r.need_and_append ("</")
-        Stuff (_r)
+        ElementTail (_r)
         _r.append_returned_string ()
-        _r.need_and_append (">")
         pass
     elif _r.maybe_append ("/>"):
         pass
     _r.end_breadcrumb ("XML")
     return _r.return_string_pop ()
+
+def ElementTail (_r):
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("ElementTail")
+    _r.trace ("@0")
+    Spaces (_r)
+    _r.append_returned_string ()
+    _r.need_and_append ("</")
+    Stuff (_r)
+    _r.append_returned_string ()
+    _r.need_and_append (">")
+    _r.end_breadcrumb ("ElementTail")
+    return ElementTail__action__ (_r)
 
 def Content (_r):
     _r.push_new_string ()
@@ -229,6 +241,9 @@ def mxGeometry__action__ (_r):
     return _r.return_ignore_pop ()
 
 def Style__action__ (_r):
+    return _r.return_ignore_pop ()
+
+def ElementTail__action__ (_r):
     return _r.return_ignore_pop ()
 
 
