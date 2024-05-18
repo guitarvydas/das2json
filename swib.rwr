@@ -1,5 +1,5 @@
 swib {
-  main [spaces firstRule moreRule* actions+] = ‛«firstRule»«moreRule»«actions»
+  main [ws1 lb ws2 filename ws3 rb spaces firstRule moreRule* actions*] = ‛# «filename»\n«firstRule»«moreRule»«actions»
 
 import receptor
 _r = receptor.Receptor ()
@@ -24,6 +24,8 @@ def «rulename» (_r):(-
   pattern [p] = ‛«p»’
 
   endop [_end spaces] = ‛_r.eof ()\n’
+
+  filename [c+] = ‛«c»’
 
   rulename [name spaces] = ‛«name»’
 
