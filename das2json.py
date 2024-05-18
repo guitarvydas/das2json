@@ -14,7 +14,6 @@ def Das2json (_r):
 def XML (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("XML")
-    _r.trace ("@0")
     Spaces (_r)
     _r.append_returned_string ()
     _r.need_and_append ("<")
@@ -38,7 +37,6 @@ def XML (_r):
 def ElementTail (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("ElementTail")
-    _r.trace ("@0")
     Spaces (_r)
     _r.append_returned_string ()
     _r.need_and_append ("</")

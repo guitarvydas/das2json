@@ -3,7 +3,6 @@
   XML Spaces _end
 
 : XML ^=
-  _trace "@0"
   Spaces "<" Name Attributes
   [
     | ">": Content ElementTail
@@ -11,7 +10,6 @@
   ]
 
 : ElementTail @=
-  _trace "@0"
   Spaces "</" Stuff ">"
 
 : Content ^=
