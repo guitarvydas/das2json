@@ -1,0 +1,40 @@
+[
+    {
+        "file": "das2json-swib.drawio",
+        "name": "main",
+        "children": [
+            {
+                "name": "Das2Json",
+                "id": 3
+            }
+        ],
+        "connections": [
+            {
+                "dir": 0,
+                "source": {
+                    "name": "",
+                    "id": 0
+                },
+                "source_port": "",
+                "target": {
+                    "name": "Das2Json",
+                    "id": 3
+                },
+                "target_port": ""
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Das2Json",
+                    "id": 3
+                },
+                "source_port": "",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": ""
+            }
+        ]
+    }
+]

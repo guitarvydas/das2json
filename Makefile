@@ -1,5 +1,5 @@
 all:
-	./all.bash
+	./convert_drawing_to_json.bash
 
 convert_drawing_to_json: das2json.py
 	./convert_drawing_to_json.bash

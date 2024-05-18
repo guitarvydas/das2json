@@ -1,7 +1,6 @@
 
 #####
 
-import sys
 
 class InCharacter:
     def __init__ (self, c='', position=0):
@@ -19,28 +18,29 @@ class CharacterStream:
     # when pattern matching is successful, we grab (accept) the string in the cache and reset the cache
     # when pattern matching is unsuccessful, we simply rewind the stream to the front and try again
     
-    def __init__ (self):
-        self.stdin_position = 0
+    def __init__ (self, instream):
+        self.position = 0
+        self.instream = instream
         self.clear ()
 
     def getc (self):
         # ensure that the next character is in the cache
         # if the cache is not empty and the index is in bounds, then the character is already in place
-        # else, get a character from stdin and append it to the cache
+        # else, get a character from instream and append it to the cache
         # for convenience EOF is a character and is defined above
         if len (self.cache) == 0:
-            c = sys.stdin.read (1)
+            c = self.instream.read (1)
             if 1 > len (c):
                 c = self.endchar ()
-            self.stdin_position += 1
-            self.cache = [InCharacter (c=c, position=self.stdin_position)]
+            self.position += 1
+            self.cache = [InCharacter (c=c, position=self.position)]
             self.cache_index = 0
         elif len (self.cache) == (self.cache_index + 1):
-            c = sys.stdin.read (1)
+            c = self.instream.read (1)
             if 1 > len (c):
                 c = self.endchar ()
-            self.stdin_position += 1
-            self.cache.append (InCharacter (c=c, position=self.stdin_position))
+            self.position += 1
+            self.cache.append (InCharacter (c=c, position=self.position))
             self.cache_index += 1
         elif self.cache [self.cache_index] != self.endchar ():
             self.cache_index += 1
@@ -64,7 +64,7 @@ class CharacterStream:
         return self.cache [self.cache_index].c
 
     def current_input_position (self):
-        return self.stdin_position
+        return self.position
 
     def cache_toString (self):
         s = ""
@@ -83,8 +83,8 @@ class Receptor:
     #  deals with the returned string (typically by adding it to its own string). The caller must delete the returned value
     #  from the return stack. Note that the caller can further parse the returned string, if it so wishes.
 
-    def __init__ (self):
-        self.instream = CharacterStream ()
+    def __init__ (self, instream):
+        self.instream = CharacterStream (instream)
         self.string_stack = []
         self.return_stack = []
         self.breadcrumb_stack = []

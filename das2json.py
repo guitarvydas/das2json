@@ -248,7 +248,9 @@ def ElementTail__action__ (_r):
 
 
 import receptor
-_r = receptor.Receptor ()
+import sys
+
+_r = receptor.Receptor (sys.stdin)
 Das2json (_r)
 s = _r.pop_return_value ()
 print (s)
