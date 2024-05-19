@@ -1,0 +1,80 @@
+push "Das2json" onto rule stack
+trace
+
+def Das2json (m):
+    m.rule_stack.push ("Das2json")
+    m.string_stack.push ("")
+    m.token_stream.trace ()
+    XML ()
+    Spaces ()
+    m.expect_end ()
+    Das2json_action (m)
+
+def XML (m):
+    m.rule_stack.push ("XML")
+    m.string_stack.push ("")
+    Spaces ()
+    m.expect ("<")
+    Name ()
+    Attributes ()
+    if False:
+        pass
+    elif m.peek (">"):
+        m.accept ()
+        Content ()
+        ElementTail ()
+    elif m.peek ("/>"):
+        m.accept ()
+    else:
+        m.fail ()
+    m.return_stack.push (m.string_stack.pop ())
+    m.return ()
+
+def ElementTail (m):
+    m.rule_stack.push ("ElementTail")
+    m.string_stack.push ("")
+    Spaces ()
+    m.expect ("</")
+    Stuff ()
+    m.expect (">")
+    ElementTail_action (m)
+    
+def Content (m):
+    m.begin_cycle ()
+      Spaces ()
+      if False:
+          pass
+      elif m.peek ("</"):
+          m.break ()
+      elif m.peek ("<mxGeometry "):
+          m.break ()
+      elif m.peek ("<"):
+          m.break ()
+      else:
+          Stuff ()
+    m.end_cycle ()
+    m.return_stack.push (m.string_stack.pop ())
+    m.return ()
+
+def mxGeometry (m):
+    XML ()
+    XML_action (m)
+
+def Attributes (m):
+    m.begin_cycle ()
+      if False:
+          pass
+      elif m.peek ("style="):
+          Style (m)
+      elif m.peek (">"):
+          m.break ()
+      elif m.peek ("/>"):
+          m.break ()
+      elif m.expect_end ():
+          m.break ()
+      else:
+          m.accept ()
+    m.end_cycle ()
+    m.return_stack.push (m.string_stack.pop ())
+    m.return ()
+    

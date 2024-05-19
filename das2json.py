@@ -250,6 +250,8 @@ def ElementTail__action__ (_r):
 import receptor
 import sys
 
+swib = make_swib (sys.stdin, Das2json)
+
 _r = receptor.Receptor (sys.stdin)
 Das2json (_r)
 s = _r.pop_return_value ()
