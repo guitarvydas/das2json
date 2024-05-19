@@ -249,7 +249,11 @@ def ElementTail__action__ (_r):
 
 import receptor
 import sys
-_r = receptor.Receptor (sys.stdin)
+import py0d as zd
+class Place_Holder:
+    def __init__ (self):
+        self.name = "place-holder-name"
+_r = receptor.Receptor (sys.stdin, zd.make_leaf (zd.gensym ("swib"), Place_Holder (), None, "place-holder handler"))
 Das2json (_r)
 s = _r.pop_return_value ()
 print (s)

@@ -83,14 +83,15 @@ class Receptor:
     #  deals with the returned string (typically by adding it to its own string). The caller must delete the returned value
     #  from the return stack. Note that the caller can further parse the returned string, if it so wishes.
 
-    def __init__ (self, instream):
+    def __init__ (self, instream, eh):
         self.instream = CharacterStream (instream)
         self.string_stack = []
         self.return_stack = []
         self.breadcrumb_stack = []
         self.breadcrumb_wip_stack = []
         self.breadcrumb_wip_depth = 0
-        
+        self.eh = eh
+
     def push_new_string (self):
         self.string_stack.append ("")
         
@@ -116,7 +117,7 @@ class Receptor:
         print (f'\x1B[102m{self.breadcrumb_wip_stack [-1].name} depth={self.breadcrumb_wip_stack [-1].depth} pos={self.breadcrumb_wip_stack [-1].position} c="{self.instream.current_char ()}" {s}\x1B[0m')
 
     def call (self, f):
-        f (self) # for future use ...
+        f (self) # for future consideration ...
         
     def append (self, s):
         self.string_stack [-1] = self.string_stack [-1] + s
