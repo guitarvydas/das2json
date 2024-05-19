@@ -115,6 +115,9 @@ class Receptor:
     def trace (self, s):
         print (f'\x1B[102m{self.breadcrumb_wip_stack [-1].name} depth={self.breadcrumb_wip_stack [-1].depth} pos={self.breadcrumb_wip_stack [-1].position} c="{self.instream.current_char ()}" {s}\x1B[0m')
 
+    def call (self, f):
+        f (self) # for future use ...
+        
     def append (self, s):
         self.string_stack [-1] = self.string_stack [-1] + s
         

@@ -5,9 +5,9 @@ def Das2json (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("Das2json")
     _r.trace ("@0")
-    XML (_r)
+    _r.call (XML)
     _r.append_returned_string ()
-    Spaces (_r)
+    _r.call (Spaces)
     _r.append_returned_string ()
     _r.eof ()
     _r.end_breadcrumb ("Das2json")
@@ -16,19 +16,19 @@ def Das2json (_r):
 def XML (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("XML")
-    Spaces (_r)
+    _r.call (Spaces)
     _r.append_returned_string ()
     _r.need_and_append ("<")
-    Name (_r)
+    _r.call (Name)
     _r.append_returned_string ()
-    Attributes (_r)
+    _r.call (Attributes)
     _r.append_returned_string ()
     if False:
         pass
     elif _r.maybe_append (">"):
-        Content (_r)
+        _r.call (Content)
         _r.append_returned_string ()
-        ElementTail (_r)
+        _r.call (ElementTail)
         _r.append_returned_string ()
         pass
     elif _r.maybe_append ("/>"):
@@ -39,10 +39,10 @@ def XML (_r):
 def ElementTail (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("ElementTail")
-    Spaces (_r)
+    _r.call (Spaces)
     _r.append_returned_string ()
     _r.need_and_append ("</")
-    Stuff (_r)
+    _r.call (Stuff)
     _r.append_returned_string ()
     _r.need_and_append (">")
     _r.end_breadcrumb ("ElementTail")
@@ -52,7 +52,7 @@ def Content (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("Content")
     while True:
-        Spaces (_r)
+        _r.call (Spaces)
         _r.append_returned_string ()
         if False:
             pass
@@ -60,15 +60,15 @@ def Content (_r):
             break
             pass
         elif _r.peek ("<mxGeometry "):
-            mxGeometry (_r)
+            _r.call (mxGeometry)
             _r.append_returned_string ()
             pass
         elif _r.peek ("<"):
-            XML (_r)
+            _r.call (XML)
             _r.append_returned_string ()
             pass
         elif True:
-            Stuff (_r)
+            _r.call (Stuff)
             _r.append_returned_string ()
             pass
         
@@ -78,7 +78,7 @@ def Content (_r):
 def mxGeometry (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("mxGeometry")
-    XML (_r)
+    _r.call (XML)
     _r.append_returned_string ()
     _r.end_breadcrumb ("mxGeometry")
     return mxGeometry__action__ (_r)
@@ -90,7 +90,7 @@ def Attributes (_r):
         if False:
             pass
         elif _r.peek ("style="):
-            Style (_r)
+            _r.call (Style)
             _r.append_returned_string ()
             pass
         elif _r.peek (">"):
@@ -113,7 +113,7 @@ def Style (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("Style")
     _r.need_and_append ("style=")
-    String (_r)
+    _r.call (String)
     _r.append_returned_string ()
     _r.end_breadcrumb ("Style")
     return Style__action__ (_r)
@@ -203,7 +203,7 @@ def String (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("String")
     _r.need_and_append ("\"")
-    NotDquotes (_r)
+    _r.call (NotDquotes)
     _r.append_returned_string ()
     _r.need_and_append ("\"")
     _r.end_breadcrumb ("String")
@@ -229,7 +229,7 @@ def EndMxCell (_r):
     _r.push_new_string ()
     _r.begin_breadcrumb ("EndMxCell")
     _r.need_and_append ("</mxCell>")
-    Spaces (_r)
+    _r.call (Spaces)
     _r.append_returned_string ()
     _r.end_breadcrumb ("EndMxCell")
     return EndMxCell__action__ (_r)
