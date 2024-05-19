@@ -2,7 +2,8 @@ swib {
   main [ws1 lb ws2 filename ws3 rb spaces firstRule moreRule* actions*] = ‛# «filename»\n«firstRule»«moreRule»«actions»
 
 import receptor
-_r = receptor.Receptor ()
+import sys
+_r = receptor.Receptor (sys.stdin)
 ⎛«firstRule»⎠ (_r)
 s = _r.pop_return_value ()
 print (s)
