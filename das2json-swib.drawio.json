@@ -12,7 +12,7 @@
                 "id": 11
             },
             {
-                "name": "Das2Json",
+                "name": "Sampler",
                 "id": 20
             }
         ],
@@ -51,7 +51,7 @@
                 },
                 "source_port": "req",
                 "target": {
-                    "name": "Das2Json",
+                    "name": "Sampler",
                     "id": 20
                 },
                 "target_port": "req"
@@ -59,7 +59,7 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "Das2Json",
+                    "name": "Sampler",
                     "id": 20
                 },
                 "source_port": "",
@@ -77,7 +77,7 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "Das2Json",
+                    "name": "Sampler",
                     "id": 20
                 },
                 "target_port": ""
@@ -85,7 +85,7 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "Das2Json",
+                    "name": "Sampler",
                     "id": 20
                 },
                 "source_port": "req",
@@ -103,7 +103,7 @@
                 },
                 "source_port": "eof",
                 "target": {
-                    "name": "Das2Json",
+                    "name": "Sampler",
                     "id": 20
                 },
                 "target_port": "eof"
@@ -111,7 +111,7 @@
             {
                 "dir": 1,
                 "source": {
-                    "name": "Das2Json",
+                    "name": "Sampler",
                     "id": 20
                 },
                 "source_port": "eof",
@@ -151,7 +151,7 @@
     },
     {
         "file": "das2json-swib.drawio",
-        "name": "Das2Json",
+        "name": "Sampler",
         "children": [
 
         ],

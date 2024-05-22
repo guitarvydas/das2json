@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-05-20T15:57:00.159Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.4.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="P-LaNpmhAND9Mr7A1KFp" version="24.4.0" type="device" pages="2">
+<mxfile host="Electron" modified="2024-05-20T19:06:56.950Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.4.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="Ndb4WB-C2-Jb82Jj9R6-" version="24.4.0" type="device" pages="2">
   <diagram name="main" id="E4cMiIE-ownNmwpYTak5">
     <mxGraphModel dx="1100" dy="543" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -68,7 +68,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="0_egswEI91i9wpKsQxG1-1" value="Das2Json" style="rounded=1;whiteSpace=wrap;container=1;recursiveResize=0;verticalAlign=top;arcSize=6;fontStyle=1;autosize=0;points=[];absoluteArcSize=1;shadow=1;strokeColor=#001DBC;fillColor=#0050ef;fontFamily=Helvetica;fontSize=11;fontColor=#ffffff;gradientDirection=west;" parent="1" vertex="1">
+        <mxCell id="0_egswEI91i9wpKsQxG1-1" value="Sampler" style="rounded=1;whiteSpace=wrap;container=1;recursiveResize=0;verticalAlign=top;arcSize=6;fontStyle=1;autosize=0;points=[];absoluteArcSize=1;shadow=1;strokeColor=#001DBC;fillColor=#0050ef;fontFamily=Helvetica;fontSize=11;fontColor=#ffffff;gradientDirection=west;" parent="1" vertex="1">
           <mxGeometry x="280" y="40" width="120" height="150" as="geometry">
             <mxRectangle x="-98" y="-1230" width="99" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -122,7 +122,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="tKUAVPDpHVoPhTyLRxK3" name="Das2Json">
+  <diagram id="tKUAVPDpHVoPhTyLRxK3" name="Sampler">
     <mxGraphModel dx="1100" dy="543" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
