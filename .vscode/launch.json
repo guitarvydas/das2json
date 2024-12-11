@@ -11,7 +11,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "args": [".","0D/python","das2json.swib","main","das2json.drawio.json","transpile.drawio.json"]
+            "args": [".",".","das2json.sp","main","sp2py.drawio.json"]
         }
     ]
 }

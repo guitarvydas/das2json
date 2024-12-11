@@ -1,20 +1,6 @@
 all:
 	@echo 'ensure that formatted text option in draw.io is disabled everywhere'
-	./0d/das2json/das2json das2json-swib.drawio
-	python3 main.py . 0D/python test.txt main das2json-swib.drawio.json
-
-
-hold:
-	./all.bash
-
-convert_drawing_to_json: das2json.py
-	./convert_drawing_to_json.bash
-
-das2json.py: py0d.bash
-	./transpile_swib_to_python.bash
-
-py0d.bash :
-	./make_py0d.bash
+	python3 choreographer.py
 
 clean:
 	rm -rf *.json das2json.py
@@ -27,3 +13,6 @@ clean:
 install-js-requires:
 	npm install yargs prompt-sync
 
+# python3 -m venv ./sp
+# source sp/bin/activate #activate "sp" Python environment
+# pip3 install websockets
