@@ -117,22 +117,6 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="gUbixbGeK4dIbGKekYBh-1" value="?A" style="rounded=1;whiteSpace=wrap;html=1;sketch=0;container=1;recursiveResize=0;verticalAlign=bottom;arcSize=6;fontStyle=0;autosize=0;points=[];absoluteArcSize=1;shadow=0;strokeColor=#d79b00;fillColor=#FFFFFF;fontFamily=Helvetica;fontSize=11;dashed=1;opacity=30;align=right;textOpacity=30;gradientColor=#EA6B66;fontColor=default;" vertex="1" parent="1">
-          <mxGeometry x="610" y="230" width="40" height="50" as="geometry">
-            <mxRectangle x="-98" y="-1230" width="99" height="26" as="alternateBounds" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="gUbixbGeK4dIbGKekYBh-2" value="" style="rounded=1;whiteSpace=wrap;html=1;sketch=0;points=[[0,0.5,0,0,0],[1,0.5,0,0,0]];arcSize=50;fontFamily=Helvetica;fontSize=11;fontColor=default;dashed=1;textOpacity=50;opacity=30;fontStyle=0" vertex="1" parent="gUbixbGeK4dIbGKekYBh-1">
-          <mxGeometry x="-12" y="12.5" width="39.25" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="gUbixbGeK4dIbGKekYBh-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="liJ2R29Ckf3XTnLC57Mi-24" target="gUbixbGeK4dIbGKekYBh-2">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="550" y="80" />
-              <mxPoint x="550" y="255" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

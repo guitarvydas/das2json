@@ -294,7 +294,7 @@ class Place_Holder:
         self.name = "place-holder-name"
 
 # main...
-_r = receptor.Receptor (sys.stdin, zd.make_leaf (zd.gensym ("sp"), Place_Holder (), None, "place-holder handler"))
+_r = receptor.Receptor (sys.stdin, zd.make_leaf (zd.gensymbol ("sp"), Place_Holder (), None, "place-holder handler"))
 Das2json (_r)
 s = _r.pop_return_value ()
 print (s)
