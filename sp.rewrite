@@ -17,14 +17,16 @@ print (s)
 def «rulename» (_r):«line»⤷
     _r.push_new_string ()
     _r.begin_breadcrumb ("«rulename»")
-    «pattern»_r.end_breadcrumb ("«rulename»")
+    «pattern»
+    _r.end_breadcrumb ("«rulename»")
     return _r.return_string_pop ()⤶\n’
 
   rule_rewrite_value [_colon spaces rulename _ret_at line? spaces2 pattern+] =‛
 def «rulename» (_r):«line»⤷
     _r.push_new_string ()
     _r.begin_breadcrumb ("«rulename»")
-    «pattern»_r.end_breadcrumb ("«rulename»")
+    «pattern»
+    _r.end_breadcrumb ("«rulename»")
     return «rulename»__action__ (_r)⤶\n’
 
   rule_empty [line? ws] = ‛’
@@ -48,14 +50,14 @@ def «rulename» (_r):«line»⤷
   notdq_escaped [_bs c] = ‛«_bs»«c»’
   notdq_raw [c] = ‛«c»’
 
-  cond [lb line1? spaces1 condClause+ rb line2? spaces2] = ‛if False:⤷\npass⤶\n«condClause»’
-  condClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:⤷\n«action»pass⤶\n’
+  cond [lb line1? spaces1 condClause+ rb line2? spaces2] = ‛\nif False:⤷\npass⤶\n«condClause»’
+  condClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:⤷\n«action»\npass⤶\n’
   condMatch_string [x] = ‛_r.maybe_append («x»)’
   condMatch_endop [x] = ‛_r.eof ()’
   condMatch_else [x] = ‛True’
 
-  peekcond [lb line1? spaces1 condClause+ rb line2? spaces2] = ‛if False:⤷\npass⤶\n«condClause»’
-  peekCondClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:⤷\n«action»pass⤶\n’
+  peekcond [lb line1? spaces1 condClause+ rb line2? spaces2] = ‛\nif False:⤷\npass⤶\n«condClause»’
+  peekCondClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:⤷\n«action»\npass⤶\n’
   peekCondMatch_string [x] = ‛_r.peek («x»)’
   peekCondMatch_endop [x] = ‛_r.eof ()’
   peekCondMatch_else [x] = ‛True’
@@ -64,7 +66,7 @@ def «rulename» (_r):«line»⤷
   break [_break line? spaces] = ‛break«line»\n’
   acceptAndAppend [_dot line? spaces] = ‛_r.accept_and_append ()«line»\n’
 
-  cycle [lb line1? spaces1 pattern+ rb line2? spaces2] = ‛while True:«line1»⤷\n«pattern»⤶«line2»\n’
+  cycle [lb line1? spaces1 pattern+ rb line2? spaces2] = ‛\nwhile True:«line1»⤷\n«pattern»⤶«line2»\n’
 
   keyword [k] = ‛«k»’
   kw [lb s rb] = ‛«lb»«s»«rb»’

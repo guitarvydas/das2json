@@ -1,4 +1,4 @@
-defname {
+% rewrite defname {
   main [x+] = ‛«x»’
   text_match [x] = ‛«x»’
   text_other [x] = ‛«x»’
