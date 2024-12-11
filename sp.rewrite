@@ -3,10 +3,12 @@
   
 import receptor
 import sys
-import py0d as zd
+import kernel as zd
 class Place_Holder:⤷
     def __init__ (self):⤷
     	self.name = "place-holder-name"⤶⤶
+
+# main...
 _r = receptor.Receptor (sys.stdin, zd.make_leaf (zd.gensym ("sp"), Place_Holder (), None, "place-holder handler"))
 ⎛«firstRule»⎠ (_r)
 s = _r.pop_return_value ()

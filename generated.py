@@ -288,26 +288,13 @@ def Style__action__ (_r):
 
 import receptor
 import sys
-import py0d as zd
+import kernel as zd
 class Place_Holder:
     def __init__ (self):
         self.name = "place-holder-name"
+
+# main...
 _r = receptor.Receptor (sys.stdin, zd.make_leaf (zd.gensym ("sp"), Place_Holder (), None, "place-holder handler"))
-⎛
-def Das2json (_r):                                          #line 1
-    _r.push_new_string ()
-    _r.begin_breadcrumb ("Das2json")
-    _r.trace ("@0")                                         #line 2
-    _r.call (XML)
-    _r.append_returned_string ()
-    _r.call (Spaces)
-    _r.append_returned_string ()
-    _r.eof ()                                               #line 3
-                                                            #line 4
-    _r.end_breadcrumb ("Das2json")
-    return Das2json__action__ (_r)
-⎠ (_r)
+Das2json (_r)
 s = _r.pop_return_value ()
 print (s)
-[palette, env] = initialize ()
-start (palette, env)

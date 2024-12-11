@@ -3,7 +3,9 @@ defname {
   text =
     | defName -- match
     | any -- other
-  defName = "⎛" spaces "def" spaces name " (" spaces through<"⎠">
+  defName = "⎛" spaces "def" spaces name " (" through<"⎠">
   through<s> = (~s any)+  s
-  name = letter alnum* ~alnum
+  name = "❲" firstLetter moreLetter* "❳"
+  firstLetter = letter | "_"
+  moreLetter = digit | firstLetter
 }
