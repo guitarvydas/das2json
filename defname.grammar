@@ -1,0 +1,11 @@
+defname {
+  main = text+
+  text =
+    | defName -- match
+    | any -- other
+  defName = "⎛" spaces "def" spaces name " (" through<"⎠">
+  through<s> = (~s any)+  s
+  name = "❲" firstLetter moreLetter* "❳"
+  firstLetter = letter | "_"
+  moreLetter = digit | firstLetter
+}

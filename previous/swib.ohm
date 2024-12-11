@@ -1,5 +1,6 @@
 swib {
-  main = spaces rule rule* defaction*
+  main = spaces "⊢" spaces filename spaces "⊣" spaces rule rule* defaction*
+
   rule =
     | ":" spaces rulename "^=" spaces pattern+ -- return_value
     | ":" spaces rulename "@=" spaces pattern+ -- rewrite_value
@@ -10,6 +11,8 @@ swib {
   pattern = stringMatch | endop | cond | peekcond | cycle | trace | rulecall
 
   endop = "_end" spaces
+
+  filename = (~" " ~"⊣" any)+
 
   rulename = name spaces
 

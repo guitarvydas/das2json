@@ -1,0 +1,10 @@
+...
+
+: XML ^=
+  Spaces "<" Name Attributes
+  [
+    | ">": Content "</" Stuff ">"
+    | "/>": 
+  ]
+
+...

@@ -1,0 +1,88 @@
+% rewrite sp {
+  main [ws1 firstRule moreRule* actions*] = ‛«firstRule»«moreRule»«actions»
+  
+import receptor
+import sys
+import kernel as zd
+class Place_Holder:⤷
+    def __init__ (self):⤷
+    	self.name = "place-holder-name"⤶⤶
+
+# main...
+_r = receptor.Receptor (sys.stdin, zd.make_leaf (zd.gensymbol ("sp"), Place_Holder (), None, "place-holder handler"))
+⎛«firstRule»⎠ (_r)
+s = _r.pop_return_value ()
+print (s)
+’
+
+  rule_return_value [_colon spaces rulename _ret_eq line? spaces2 pattern+] =‛
+def «rulename» (_r):«line»⤷
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("«rulename»")
+    «pattern»
+    _r.end_breadcrumb ("«rulename»")
+    return _r.return_string_pop ()⤶\n’
+
+  rule_rewrite_value [_colon spaces rulename _ret_at line? spaces2 pattern+] =‛
+def «rulename» (_r):«line»⤷
+    _r.push_new_string ()
+    _r.begin_breadcrumb ("«rulename»")
+    «pattern»
+    _r.end_breadcrumb ("«rulename»")
+    return «rulename»__action__ (_r)⤶\n’
+
+  rule_empty [line? ws] = ‛’
+  
+  pattern_pattern [p line? ws] = ‛«p»«line»’
+  pattern_empty [line ws] = ‛’
+  pattern1 [p] = ‛«p»’
+
+  endop [_end line? spaces] = ‛_r.eof ()«line»\n’
+
+  filename [c+] = ‛«c»’
+
+  rulename [name spaces] = ‛«name»’
+
+  rulecall [name spaces] = ‛_r.call («name»)\n_r.append_returned_string ()\n’
+  
+  stringMatch [s ws] = ‛_r.need_and_append («s»)\n’
+
+  string [dq1 notdq* dq2] = ‛"«notdq»"’
+  dq [q] = ‛«q»’
+  notdq_escaped [_bs c] = ‛«_bs»«c»’
+  notdq_raw [c] = ‛«c»’
+
+  cond [lb line1? spaces1 condClause+ rb line2? spaces2] = ‛\nif False:⤷\npass⤶\n«condClause»’
+  condClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:⤷\n«action»\npass⤶\n’
+  condMatch_string [x] = ‛_r.maybe_append («x»)’
+  condMatch_endop [x] = ‛_r.eof ()’
+  condMatch_else [x] = ‛True’
+
+  peekcond [lb line1? spaces1 condClause+ rb line2? spaces2] = ‛\nif False:⤷\npass⤶\n«condClause»’
+  peekCondClause [_bar spaces1 condMatch _colon spaces2 action*] = ‛elif «condMatch»:⤷\n«action»\npass⤶\n’
+  peekCondMatch_string [x] = ‛_r.peek («x»)’
+  peekCondMatch_endop [x] = ‛_r.eof ()’
+  peekCondMatch_else [x] = ‛True’
+
+  action [a] = ‛«a»’
+  break [_break line? spaces] = ‛break«line»\n’
+  acceptAndAppend [_dot line? spaces] = ‛_r.accept_and_append ()«line»\n’
+
+  cycle [lb line1? spaces1 pattern+ rb line2? spaces2] = ‛\nwhile True:«line1»⤷\n«pattern»⤶«line2»\n’
+
+  keyword [k] = ‛«k»’
+  kw [lb s rb] = ‛«lb»«s»«rb»’
+  name [lb firstLetter moreLetter* rb] = ‛«lb»«firstLetter»«moreLetter»«rb»’
+  firstLetter [c] = ‛«c»’
+  moreLetter [c] = ‛«c»’
+
+  defaction [_at ws name _eq line? ws2 actions+ ws3] = ‛
+def «name»__action__ (_r):«line»⤷«actions»⤶\n’
+
+  action_return_value [_ _ws line? _ws2] = ‛\nreturn _r.return_string_pop ()«line»’
+  action_ignore_value [_ _ws line? _ws2] = ‛\nreturn _r.return_ignore_pop ()«line»’
+
+  trace [_trace ws1 s line? ws2] = ‛_r.trace («s»)«line»\n’
+  line [lb cs* rb] = ‛#line «cs»’
+}
+

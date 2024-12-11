@@ -1,0 +1,73 @@
+sp {
+  main = spaces rule rule* defaction*
+
+  rule =
+    | ":" spaces rulename "^=" line? spaces pattern+ -- return_value
+    | ":" spaces rulename "@=" line? spaces pattern+ -- rewrite_value
+    | line spaces -- empty
+
+  defaction =
+    | "@" spaces rulename "=" line? spaces action+ spaces
+
+  pattern =
+    | pattern1 line? spaces -- pattern
+    | line spaces -- empty
+    
+  pattern1 = stringMatch | endop | cond | peekcond | cycle | trace | rulecall
+
+  endop = kw<"_end"> line? spaces
+
+  filename = (~" " ~"⊣" any)+
+
+  rulename = name spaces
+
+  rulecall = name spaces
+
+  stringMatch = string spaces
+  
+  string = dq notdq* dq
+  dq = "\""
+  notdq =
+    | "\\" any -- escaped
+    | ~dq any -- raw
+
+  cond = "[" line? spaces condClause+ "]" line? spaces
+  peekcond = "[*" line? spaces peekCondClause+ "]" line? spaces
+  peekCondClause = "|" spaces peekCondMatch ":" spaces matchaction*
+  condClause = "|" spaces condMatch ":" spaces matchaction*
+  condMatch =
+    | string -- string
+    | endop -- endop
+    | "*" -- else
+  peekCondMatch =
+    | string -- string
+    | endop -- endop
+    | "*" -- else
+  matchaction = break | acceptAndAppend | pattern
+  break = kw<"_break"> line? spaces
+  acceptAndAppend = "." line? spaces
+  
+  cycle = "<<<" line? spaces pattern+ ">>>" line? spaces
+
+  keyword = (
+      kw<"_trace">
+    | kw<"_break">
+    | kw<"_return_value">
+    | kw<"_ignore_value">
+    | kw<"_end">
+    )
+
+  kw<s> = "❲" s "❳"
+
+  name = ~keyword "❲" firstLetter moreLetter* "❳"
+  firstLetter = letter | "_"
+  moreLetter = digit | firstLetter
+
+  action =
+    | kw<"_return_value"> spaces line? spaces -- return_value
+    | kw<"_ignore_value"> spaces line? spaces  -- ignore_value
+
+  trace = kw<"_trace"> spaces string line? spaces
+  line = "⎩" (~"⎩" ~"⎭" any)* "⎭"
+
+}
