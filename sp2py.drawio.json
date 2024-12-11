@@ -12,10 +12,6 @@
                 "id": 6
             },
             {
-                "name": "?A",
-                "id": 10
-            },
-            {
                 "name": "Exhale Python",
                 "id": 11
             },
@@ -78,30 +74,17 @@
                 "target_port": ""
             },
             {
-                "dir": 1,
-                "source": {
-                    "name": "SP to Python",
-                    "id": 17
-                },
-                "source_port": "",
-                "target": {
-                    "name": "?A",
-                    "id": 10
-                },
-                "target_port": ""
-            },
-            {
                 "dir": 2,
                 "source": {
                     "name": "Exhale Python",
                     "id": 11
                 },
-                "source_port": "\u2717",
+                "source_port": "",
                 "target": {
                     "name": "",
                     "id": 0
                 },
-                "target_port": "\u2717"
+                "target_port": ""
             },
             {
                 "dir": 2,
@@ -121,19 +104,6 @@
                 "source": {
                     "name": "Exhale Python",
                     "id": 11
-                },
-                "source_port": "",
-                "target": {
-                    "name": "",
-                    "id": 0
-                },
-                "target_port": ""
-            },
-            {
-                "dir": 2,
-                "source": {
-                    "name": "Extract Start Rule",
-                    "id": 3
                 },
                 "source_port": "\u2717",
                 "target": {
@@ -147,6 +117,19 @@
                 "source": {
                     "name": "Inhale",
                     "id": 6
+                },
+                "source_port": "\u2717",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "\u2717"
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Extract Start Rule",
+                    "id": 3
                 },
                 "source_port": "\u2717",
                 "target": {
