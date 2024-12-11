@@ -12,7 +12,7 @@ this code is stored in `generated.py` and can be used to parse some test XMl, sa
 At this stage, the result should be an identity transformation - the output should look like the input.
 
 # YouTube
-see the video ???
+see the video https://youtu.be/oeZQmWPFHbI
 
 # Repository
 
@@ -20,4 +20,4 @@ https://github.com/guitarvydas/das2json
 
 # Bibliography
 
-see the substack article ???
+see the substack article https://open.substack.com/pub/programmingsimplicity/p/building-a-dsl-references-and-video?r=1egdky&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true
