@@ -878,10 +878,16 @@ def shell_out_handler (eh,msg):                             #line 474
     stdout =  None                                          #line 479
     stderr =  None                                          #line 480
 
-    ret = subprocess.run (  cmd,   input= s.encode('utf-8'), capture_output=True)
-    rc = ret.returncode
-    stdout = ret.stdout.decode('utf-8')
-    stderr = ret.stderr.decode('utf-8')
+    try:
+        ret = subprocess.run ( cmd, input= s, text=True, capture_output=True)
+        rc = ret.returncode
+        stdout = ret.stdout.strip ()
+        stderr = ret.stderr.strip ()
+    except Exception as e:
+        ret = None
+        rc = 1
+        stdout = ''
+        stderr = str(e)
                                                             #line 481
     if  rc!= 0:                                             #line 482
         send_string ( eh, "✗", stderr, msg)                 #line 483

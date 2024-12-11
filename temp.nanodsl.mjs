@@ -35,32 +35,23 @@ function exit_rule (name) {
 }
 
 const grammar = String.raw`
-internalize {
+pydecode {
   text = char+
   char =
-    | nl -- nl
-    | "“" stringchar* "”" -- string
-    | "⌈" commentchar* "⌉" -- comment
-    | "❲" wordchar+ "❳" -- word
-    | id -- ident
-    | ~"❲" ~"❳" any -- any
-
-  stringchar =
-    | "“" stringchar+ "”" -- rec
-    | ~"“" ~"”" any -- other
-
-  commentchar =
-    | "⌈" commentchar+ "⌉" -- rec
-    | ~"⌈" ~"⌉" any -- other
-
-  wordchar =
-    | "❲" wordchar+ "❳" -- rec
-    | ~"❲" ~"❳" any -- other
-
-  id = (letter | "_") (letter | digit | "_")*
-  dq = "\""
-  nl = "\n"
+    | "“" (~"“" ~"”" any)* "”"  -- string
+    | "⌈" (~"⌈" ~"⌉" any)* "⌉"  -- comment
+    | "⎝" (~"⎝" ~"⎠" any)* "⎠"  -- errormessage
+    | "⎩" (~"⎩" ~"⎭" any)* "⎭"  -- line
+    | "❲"                       -- ulb
+    | "%E2%9D%B2"               -- encodedulb
+    | "❳"                       -- urb
+    | "%E2%9D%B3"               -- encodedurb
+    | "%20"                     -- space
+    | "%09"                     -- tab
+    | "%0A"                     -- newline
+    | any                       -- other
 }
+
 `;
 
 let args = {};
@@ -72,6 +63,36 @@ function memoArg (name, accessorString) {
 };
 function fetchArg (name) {
     return args [name];
+}
+
+function encodews (s) { return encodequotes (encodeURIComponent (s)); }
+
+function encodequotes (s) { 
+    let rs = s.replace (/"/g, '%22').replace (/'/g, '%27');
+    return rs;
+}
+
+let linenumber = 0;
+function getlineinc () {
+    linenumber += 1;
+    return `${linenumber}`;
+}
+
+function part (s, i) {
+    let lis = s.split ("⫶");
+    let len = lis.length - 1
+    let r = []
+    let ix = Number (i);
+    for (; ix < len ; ix += 3) {
+	r.push (`${lis [ix]}`);
+    }
+    return `${r.join ('')}`;
+}
+
+function enspace (arr) {
+    // create space-separated args for exec
+    return arr;
+    //return arr.join (" ");
 }
 
 let parameters = {};
@@ -91,85 +112,71 @@ function getParameter (name) {
 
 let _rewrite = {
 
-text : function (c,) {
+text : function (chars,) {
 enter_rule ("text");
-    set_return (`${c.rwr ().join ('')}`);
+    set_return (`${chars.rwr ().join ('')}`);
 return exit_rule ("text");
-},
-char_nl : function (s,) {
-enter_rule ("char_nl");
-    set_return (`⎩${getlineinc ()}⎭\n`);
-return exit_rule ("char_nl");
 },
 char_string : function (lq,cs,rq,) {
 enter_rule ("char_string");
-    set_return (`“${encodews (`${cs.rwr ().join ('')}`,)}”`);
+    set_return (`"${cs.rwr ().join ('')}"`);
 return exit_rule ("char_string");
 },
 char_comment : function (lb,cs,rb,) {
 enter_rule ("char_comment");
-    set_return (`⌈${encodews (`${cs.rwr ().join ('')}`,)}⌉`);
+    set_return (`#${cs.rwr ().join ('')}`);
 return exit_rule ("char_comment");
 },
-char_word : function (lb,cs,rb,) {
-enter_rule ("char_word");
-    set_return (`❲${encodews (`${cs.rwr ().join ('')}`,)}❳`);
-return exit_rule ("char_word");
+char_errormessage : function (lb,cs,rb,) {
+enter_rule ("char_errormessage");
+    set_return (` >>> ${cs.rwr ().join ('')} <<< `);
+return exit_rule ("char_errormessage");
 },
-char_ident : function (s,) {
-enter_rule ("char_ident");
-    set_return (`❲${encodews (`${s.rwr ()}`,)}❳`);
-return exit_rule ("char_ident");
+char_line : function (lb,cs,rb,) {
+enter_rule ("char_line");
+    set_return (`#line ${cs.rwr ().join ('')}`);
+return exit_rule ("char_line");
 },
-char_any : function (c,) {
-enter_rule ("char_any");
-    set_return (`${c.rwr ()}`);
-return exit_rule ("char_any");
-},
-stringchar_rec : function (lb,cs,rb,) {
-enter_rule ("stringchar_rec");
-    set_return (`${lb.rwr ()}${cs.rwr ().join ('')}${rb.rwr ()}`);
-return exit_rule ("stringchar_rec");
-},
-stringchar_other : function (c,) {
-enter_rule ("stringchar_other");
-    set_return (`${c.rwr ()}`);
-return exit_rule ("stringchar_other");
-},
-commentchar_rec : function (lb,cs,rb,) {
-enter_rule ("commentchar_rec");
-    set_return (`${lb.rwr ()}${cs.rwr ().join ('')}${rb.rwr ()}`);
-return exit_rule ("commentchar_rec");
-},
-commentchar_other : function (c,) {
-enter_rule ("commentchar_other");
-    set_return (`${c.rwr ()}`);
-return exit_rule ("commentchar_other");
-},
-wordchar_rec : function (lb,cs,rb,) {
-enter_rule ("wordchar_rec");
-    set_return (`${lb.rwr ()}${cs.rwr ().join ('')}${rb.rwr ()}`);
-return exit_rule ("wordchar_rec");
-},
-wordchar_other : function (c,) {
-enter_rule ("wordchar_other");
-    set_return (`${c.rwr ()}`);
-return exit_rule ("wordchar_other");
-},
-id : function (firstc,morecs,) {
-enter_rule ("id");
-    set_return (`${firstc.rwr ()}${morecs.rwr ().join ('')}`);
-return exit_rule ("id");
-},
-dq : function (c,) {
-enter_rule ("dq");
-    set_return (`${c.rwr ()}`);
-return exit_rule ("dq");
-},
-nl : function (c,) {
-enter_rule ("nl");
+char_ulb : function (c,) {
+enter_rule ("char_ulb");
     set_return (``);
-return exit_rule ("nl");
+return exit_rule ("char_ulb");
+},
+char_encodedulb : function (c,) {
+enter_rule ("char_encodedulb");
+    set_return (`_L`);
+return exit_rule ("char_encodedulb");
+},
+char_urb : function (c,) {
+enter_rule ("char_urb");
+    set_return (``);
+return exit_rule ("char_urb");
+},
+char_encodedurb : function (c,) {
+enter_rule ("char_encodedurb");
+    set_return (`R_`);
+return exit_rule ("char_encodedurb");
+},
+char_space : function (c,) {
+enter_rule ("char_space");
+    set_return (`_`);
+return exit_rule ("char_space");
+},
+char_tab : function (c,) {
+enter_rule ("char_tab");
+    set_return (`	`);
+return exit_rule ("char_tab");
+},
+char_newline : function (c,) {
+enter_rule ("char_newline");
+    set_return (`
+`);
+return exit_rule ("char_newline");
+},
+char_other : function (c,) {
+enter_rule ("char_other");
+    set_return (`${c.rwr ()}`);
+return exit_rule ("char_other");
 },
 _terminal: function () { return this.sourceString; },
 _iter: function (...children) { return children.map(c => c.rwr ()); }

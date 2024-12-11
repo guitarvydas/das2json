@@ -115,7 +115,7 @@
         "name": "Inhale",
         "children": [
             {
-                "name": "$ ./ndsl internalize.grammar internalize.rewrite yysupport.js",
+                "name": "$ ./ndsl internalize.grammar internalize.rewrite support.mjs",
                 "id": 5
             },
             {
@@ -145,7 +145,7 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "$ ./ndsl internalize.grammar internalize.rewrite yysupport.js",
+                    "name": "$ ./ndsl internalize.grammar internalize.rewrite support.mjs",
                     "id": 5
                 },
                 "target_port": ""
@@ -153,7 +153,7 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "$ ./ndsl internalize.grammar internalize.rewrite yysupport.js",
+                    "name": "$ ./ndsl internalize.grammar internalize.rewrite support.mjs",
                     "id": 5
                 },
                 "source_port": "\u2717",
@@ -166,7 +166,7 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "$ ./ndsl internalize.grammar internalize.rewrite yysupport.js",
+                    "name": "$ ./ndsl internalize.grammar internalize.rewrite support.mjs",
                     "id": 5
                 },
                 "source_port": "",
@@ -183,7 +183,7 @@
         "name": "SP to Python",
         "children": [
             {
-                "name": "$ ./ndsl sp.grammar sp.rewrite",
+                "name": "$ ./ndsl sp.grammar sp.rewrite support.mjs",
                 "id": 5
             }
         ],
@@ -196,7 +196,7 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "$ ./ndsl sp.grammar sp.rewrite",
+                    "name": "$ ./ndsl sp.grammar sp.rewrite support.mjs",
                     "id": 5
                 },
                 "target_port": ""
@@ -204,7 +204,7 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "$ ./ndsl sp.grammar sp.rewrite",
+                    "name": "$ ./ndsl sp.grammar sp.rewrite support.mjs",
                     "id": 5
                 },
                 "source_port": "",
@@ -217,7 +217,7 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "$ ./ndsl sp.grammar sp.rewrite",
+                    "name": "$ ./ndsl sp.grammar sp.rewrite support.mjs",
                     "id": 5
                 },
                 "source_port": "\u2717",
@@ -285,7 +285,7 @@
         "name": "Decode For Python",
         "children": [
             {
-                "name": "$ ./ndsl pydecode.grammar pydecode.rewrite",
+                "name": "$ ./ndsl pydecode.grammar pydecode.rewrite support.mjs",
                 "id": 5
             }
         ],
@@ -298,7 +298,7 @@
                 },
                 "source_port": "",
                 "target": {
-                    "name": "$ ./ndsl pydecode.grammar pydecode.rewrite",
+                    "name": "$ ./ndsl pydecode.grammar pydecode.rewrite support.mjs",
                     "id": 5
                 },
                 "target_port": ""
@@ -306,7 +306,7 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "$ ./ndsl pydecode.grammar pydecode.rewrite",
+                    "name": "$ ./ndsl pydecode.grammar pydecode.rewrite support.mjs",
                     "id": 5
                 },
                 "source_port": "",
@@ -319,7 +319,7 @@
             {
                 "dir": 2,
                 "source": {
-                    "name": "$ ./ndsl pydecode.grammar pydecode.rewrite",
+                    "name": "$ ./ndsl pydecode.grammar pydecode.rewrite support.mjs",
                     "id": 5
                 },
                 "source_port": "\u2717",
@@ -483,6 +483,57 @@
                 "source": {
                     "name": "Python Indenter",
                     "id": 3
+                },
+                "source_port": "\u2717",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": "\u2717"
+            }
+        ]
+    },
+    {
+        "file": "sp2py.drawio",
+        "name": "Read Text File",
+        "children": [
+            {
+                "name": "Low Level Read Text File",
+                "id": 7
+            }
+        ],
+        "connections": [
+            {
+                "dir": 0,
+                "source": {
+                    "name": "",
+                    "id": 0
+                },
+                "source_port": "",
+                "target": {
+                    "name": "Low Level Read Text File",
+                    "id": 7
+                },
+                "target_port": ""
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Low Level Read Text File",
+                    "id": 7
+                },
+                "source_port": "",
+                "target": {
+                    "name": "",
+                    "id": 0
+                },
+                "target_port": ""
+            },
+            {
+                "dir": 2,
+                "source": {
+                    "name": "Low Level Read Text File",
+                    "id": 7
                 },
                 "source_port": "\u2717",
                 "target": {

@@ -1,5 +1,5 @@
-swib.grammar
-swib.rewrite
+sp.grammar
+sp.rewrite
 defname.grammar
 defname.rewrite
 rebuild.bash

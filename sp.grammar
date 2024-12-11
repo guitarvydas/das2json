@@ -1,16 +1,21 @@
-swib {
-  main = spaces "⊢" spaces filename spaces "⊣" spaces rule rule* defaction*
+sp {
+  main = spaces rule rule* defaction*
 
   rule =
-    | ":" spaces rulename "^=" spaces pattern+ -- return_value
-    | ":" spaces rulename "@=" spaces pattern+ -- rewrite_value
+    | ":" spaces rulename "^=" line? spaces pattern+ -- return_value
+    | ":" spaces rulename "@=" line? spaces pattern+ -- rewrite_value
+    | line spaces -- empty
 
   defaction =
-    | "@" spaces rulename "=" spaces action+ spaces
+    | "@" spaces rulename "=" line? spaces action+ spaces
 
-  pattern = stringMatch | endop | cond | peekcond | cycle | trace | rulecall
+  pattern =
+    | pattern1 line? spaces -- pattern
+    | line spaces -- empty
+    
+  pattern1 = stringMatch | endop | cond | peekcond | cycle | trace | rulecall
 
-  endop = "_end" spaces
+  endop = kw<"_end"> line? spaces
 
   filename = (~" " ~"⊣" any)+
 
@@ -26,8 +31,8 @@ swib {
     | "\\" any -- escaped
     | ~dq any -- raw
 
-  cond = "[" spaces condClause+ "]" spaces
-  peekcond = "[*" spaces peekCondClause+ "]" spaces
+  cond = "[" line? spaces condClause+ "]" line? spaces
+  peekcond = "[*" line? spaces peekCondClause+ "]" line? spaces
   peekCondClause = "|" spaces peekCondMatch ":" spaces matchaction*
   condClause = "|" spaces condMatch ":" spaces matchaction*
   condMatch =
@@ -39,18 +44,30 @@ swib {
     | endop -- endop
     | "*" -- else
   matchaction = break | acceptAndAppend | pattern
-  break = "_break" spaces
-  acceptAndAppend = "." spaces
+  break = kw<"_break"> line? spaces
+  acceptAndAppend = "." line? spaces
+  
+  cycle = "<<<" line? spaces pattern+ ">>>" line? spaces
 
-  cycle = "<<<" spaces pattern+ ">>>" spaces
+  keyword = (
+      kw<"_trace">
+    | kw<"_break">
+    | kw<"_return_value">
+    | kw<"_ignore_value">
+    | kw<"_end">
+    )
 
-  name = firstLetter moreLetter*
+  kw<s> = "❲" s "❳"
+
+  name = ~keyword "❲" firstLetter moreLetter* "❳"
   firstLetter = letter | "_"
   moreLetter = digit | firstLetter
 
   action =
-    | "_return_value" spaces -- return_value
-    | "_ignore_value" spaces -- ignore_value
+    | kw<"_return_value"> spaces line? spaces -- return_value
+    | kw<"_ignore_value"> spaces line? spaces  -- ignore_value
 
-  trace = "_trace" spaces string spaces
+  trace = kw<"_trace"> spaces string line? spaces
+  line = "⎩" (~"⎩" ~"⎭" any)* "⎭"
+
 }
