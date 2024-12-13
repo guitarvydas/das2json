@@ -11,10 +11,7 @@ function indenter (str) {
     return result;
 }
 
- let indentation = [];
- // we emit code using bracketed notation → and ← which is compatible
- // lisp pretty-printing, which allows easier debugging of the transpiled code
- // then, for Python, we convert the bracketing into indentation...
+let indentation = [];
 function indent1 (s) {
     let opens = (s.match (/⤷/g) || []).length;
     let closes = (s.match (/⤶/g) || []).length;

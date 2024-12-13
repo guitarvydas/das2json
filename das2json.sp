@@ -1,5 +1,4 @@
 : Das2json @=
-  _trace "@0"
   XML Spaces _end
 
 : XML ^=

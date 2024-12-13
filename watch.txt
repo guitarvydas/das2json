@@ -3,4 +3,4 @@ sp.rewrite
 defname.grammar
 defname.rewrite
 rebuild.bash
-sp.drawio
+sp2py.drawio
