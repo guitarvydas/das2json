@@ -1,0 +1,221 @@
+{
+  "main": {
+    "id": "dc2af68aa5e33f0f",
+    "type": "split",
+    "children": [
+      {
+        "id": "4a631445acca26ae",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6dc63a92f40f050a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "7fb1d9bc095586b3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0D projects overview.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "aad0e655689b0d74",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.11"
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ffe6b7819f5da383",
+    "type": "split",
+    "children": [
+      {
+        "id": "8fade0be8abc3887",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "efd6d4277be5e349",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a43fab1e02c4e268",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ec596ef8eef3089d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d30ee6ffd79be8ac",
+    "type": "split",
+    "children": [
+      {
+        "id": "67d61d4a98e2d5ce",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "64e72ed4f4e4da10",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "0D projects overview.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4c77a3efecd8af5f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "0D projects overview.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5f5a19e1c5688ed7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "a0b6b8b174009dd1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "0D projects overview.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "aad0e655689b0d74",
+  "lastOpenFiles": [
+    "python/py0D.py",
+    "python/Makefile~",
+    "python/Makefile",
+    "python/test/arith0d-main.drawio.svg",
+    "python/doc/attic/routing-2024-03-27-1503.svg",
+    "python/doc/attic/routing-2024-03-27-1503.png",
+    "python/doc/attic/routing-2024-03-27-1503.excalidraw",
+    "python/doc/attic",
+    "python/doc/untitled folder",
+    "python/doc/routing-2024-03-27-1503-2024-04-03.excalidraw",
+    "python/doc/routing-2024-03-27-1503-2024-04-03.png",
+    "python/doc/routing-2024-03-27-1503-2034-04-04.svg",
+    "python/#0d.py#",
+    "rt/0d.rt",
+    "rt/#0d.rt#",
+    "rt",
+    "python/test/agency/assets/dracula.png",
+    "python/test/agency/examples/README.md",
+    "python/test/agency/README.md",
+    "python/doc/TRACE.md",
+    "python/test/TRACE.md",
+    "python/doc/routing-2024-03-27-1503.svg",
+    "python/doc/routing-2024-03-27-1503.png",
+    "python/doc/COMPONENTS.md",
+    "python/test/routing-2024-03-27-1503.png",
+    "python/COMPONENTS.md",
+    "python/test/routing-2024-03-27-1503.svg",
+    "python/test/README.md",
+    "simple0d4/0D/python/play/readjson.md",
+    "simple0d4/0D/python/README.md",
+    "simple0d4/0D/odin/README.md",
+    "simple0d4/0D/doc/ExampleIncludeCode.md",
+    "simple0d4/0D/das2json/README.md",
+    "simple0d4/0D/README.md",
+    "simple0d4/0D/0D projects overview.md",
+    "python/play/readjson.md",
+    "python/README.md",
+    "python/odin/README.md",
+    "odin/README.md",
+    "das2json/README.md",
+    "das2json/README.md.md",
+    "das2json/Untitled.md",
+    "README.md",
+    "0D projects overview.md",
+    "doc/ExampleIncludeCode.md",
+    "doc/EXAMPLE.md"
+  ]
+}

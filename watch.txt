@@ -1,6 +1,0 @@
-sp.grammar
-sp.rewrite
-defname.grammar
-defname.rewrite
-rebuild.bash
-sp2py.drawio

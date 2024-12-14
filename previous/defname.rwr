@@ -1,8 +1,0 @@
-defname {
-  main [x+] = ‛«x»’
-  text_match [x] = ‛«x»’
-  text_other [x] = ‛«x»’
-  defName  [lb spaces1 _def spaces2 name lb2 spaces3 misc] = ‛«name»’
-  through [misc s] = ‛’
-  name [letter alnum*] = ‛«letter»«alnum»’
-}
