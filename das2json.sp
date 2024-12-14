@@ -1,4 +1,4 @@
-: Das2json @=
+: Das2json ^=
   XML Spaces _end
 
 : XML ^=
@@ -80,8 +80,7 @@
     ]
   >>>
 
-: EndMxCell @= "</mxCell>" Spaces
+: EndMxCell ^= "</mxCell>" Spaces
 
-@ Das2json = _return_value
 @ mxGeometry = _ignore_value
 @ Style = _ignore_value

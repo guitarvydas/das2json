@@ -8,7 +8,7 @@ def Das2json (_r):                                          #line 1
     _r.eof ()                                               #line 2
                                                             #line 3
     _r.end_breadcrumb ("Das2json")
-    return Das2json__action__ (_r)
+    return _r.return_string_pop ()
 
 def XML (_r):                                               #line 4
     _r.push_new_string ()
@@ -273,16 +273,13 @@ def EndMxCell (_r):
     _r.append_returned_string ()
                                                             #line 83
     _r.end_breadcrumb ("EndMxCell")
-    return EndMxCell__action__ (_r)
-
-def Das2json__action__ (_r):
-    return _r.return_string_pop ()                          #line 85
+    return _r.return_string_pop ()
 
 def mxGeometry__action__ (_r):
-    return _r.return_ignore_pop ()                          #line 86
+    return _r.return_ignore_pop ()                          #line 85
 
 def Style__action__ (_r):
-    return _r.return_ignore_pop ()                          #line 87
+    return _r.return_ignore_pop ()                          #line 86
 
 
 import receptor
