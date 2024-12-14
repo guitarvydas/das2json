@@ -26,50 +26,61 @@ def XML (_r):                                               #line 4
     elif _r.maybe_append (">"):
         _r.call (Content)
         _r.append_returned_string ()
-        _r.need_and_append ("</")
-        _r.call (Stuff)
-        _r.append_returned_string ()
-        _r.need_and_append (">")
                                                             #line 7
+        if False:
+            pass
+        elif _r.peek ("</mxCell>"):
+            _r.call (EndMxCell)
+            _r.append_returned_string ()
+                                                            #line 9
+            pass
+        elif True:
+            _r.need_and_append ("</")
+            _r.call (Stuff)
+            _r.append_returned_string ()
+            _r.need_and_append (">")
+                                                            #line 10
+            pass
+
         pass
     elif _r.maybe_append ("/>"):
 
         pass
-                                                            #line 10
+                                                            #line 14
     _r.end_breadcrumb ("XML")
     return _r.return_string_pop ()
 
-def Content (_r):                                           #line 11
+def Content (_r):                                           #line 15
     _r.push_new_string ()
     _r.begin_breadcrumb ("Content")
 
-    while True:                                             #line 12
+    while True:                                             #line 16
         _r.call (Spaces)
         _r.append_returned_string ()
-                                                            #line 13
+                                                            #line 17
         if False:
             pass
         elif _r.peek ("</"):
-            break                                           #line 15
+            break                                           #line 19
 
             pass
         elif _r.peek ("<mxGeometry "):
             _r.call (mxGeometry)
             _r.append_returned_string ()
-                                                            #line 16
+                                                            #line 20
             pass
         elif _r.peek ("<"):
             _r.call (XML)
             _r.append_returned_string ()
-                                                            #line 17
+                                                            #line 21
             pass
         elif True:
             _r.call (Stuff)
             _r.append_returned_string ()
-                                                            #line 18
+                                                            #line 22
             pass
-                                                            #line 20
-                                                            #line 21
+                                                            #line 24
+                                                            #line 25
     _r.end_breadcrumb ("Content")
     return _r.return_string_pop ()
 
@@ -78,41 +89,41 @@ def mxGeometry (_r):
     _r.begin_breadcrumb ("mxGeometry")
     _r.call (XML)
     _r.append_returned_string ()
-                                                            #line 22
+                                                            #line 26
     _r.end_breadcrumb ("mxGeometry")
     return mxGeometry__action__ (_r)
 
-def Attributes (_r):                                        #line 24
+def Attributes (_r):                                        #line 28
     _r.push_new_string ()
     _r.begin_breadcrumb ("Attributes")
 
-    while True:                                             #line 25
+    while True:                                             #line 29
 
         if False:
             pass
         elif _r.peek ("style="):
             _r.call (Style)
             _r.append_returned_string ()
-                                                            #line 27
+                                                            #line 31
             pass
         elif _r.peek (">"):
-            break                                           #line 28
+            break                                           #line 32
 
             pass
         elif _r.peek ("/>"):
-            break                                           #line 29
+            break                                           #line 33
 
             pass
         elif _r.eof ():
-            break                                           #line 30
+            break                                           #line 34
 
             pass
         elif True:
-            _r.accept_and_append ()                         #line 31
+            _r.accept_and_append ()                         #line 35
 
             pass
-                                                            #line 33
-                                                            #line 34
+                                                            #line 37
+                                                            #line 38
     _r.end_breadcrumb ("Attributes")
     return _r.return_string_pop ()
 
@@ -122,146 +133,146 @@ def Style (_r):
     _r.need_and_append ("style=")
     _r.call (String)
     _r.append_returned_string ()
-                                                            #line 35
+                                                            #line 39
     _r.end_breadcrumb ("Style")
     return Style__action__ (_r)
 
-def Name (_r):                                              #line 37
+def Name (_r):                                              #line 41
     _r.push_new_string ()
     _r.begin_breadcrumb ("Name")
 
-    while True:                                             #line 38
+    while True:                                             #line 42
 
         if False:
             pass
         elif _r.peek (" "):
-            break                                           #line 40
-
-            pass
-        elif _r.peek ("\t"):
-            break                                           #line 41
-
-            pass
-        elif _r.peek ("\n"):
-            break                                           #line 42
-
-            pass
-        elif _r.peek (">"):
-            break                                           #line 43
-
-            pass
-        elif _r.peek ("<"):
             break                                           #line 44
 
             pass
-        elif _r.peek ("/>"):
+        elif _r.peek ("\t"):
             break                                           #line 45
 
             pass
-        elif _r.eof ():
+        elif _r.peek ("\n"):
             break                                           #line 46
 
             pass
-        elif True:
-            _r.accept_and_append ()                         #line 47
+        elif _r.peek (">"):
+            break                                           #line 47
 
             pass
-                                                            #line 49
-                                                            #line 50
+        elif _r.peek ("<"):
+            break                                           #line 48
+
+            pass
+        elif _r.peek ("/>"):
+            break                                           #line 49
+
+            pass
+        elif _r.eof ():
+            break                                           #line 50
+
+            pass
+        elif True:
+            _r.accept_and_append ()                         #line 51
+
+            pass
+                                                            #line 53
+                                                            #line 54
     _r.end_breadcrumb ("Name")
     return _r.return_string_pop ()
 
-def Stuff (_r):                                             #line 51
+def Stuff (_r):                                             #line 55
     _r.push_new_string ()
     _r.begin_breadcrumb ("Stuff")
 
-    while True:                                             #line 52
+    while True:                                             #line 56
 
         if False:
             pass
         elif _r.peek (">"):
-            break                                           #line 54
+            break                                           #line 58
 
             pass
         elif _r.peek ("<"):
-            break                                           #line 55
+            break                                           #line 59
 
             pass
         elif _r.peek ("/>"):
-            break                                           #line 56
+            break                                           #line 60
 
             pass
         elif _r.eof ():
-            break                                           #line 57
+            break                                           #line 61
 
             pass
         elif True:
-            _r.accept_and_append ()                         #line 58
+            _r.accept_and_append ()                         #line 62
 
             pass
-                                                            #line 60
-                                                            #line 61
+                                                            #line 64
+                                                            #line 65
     _r.end_breadcrumb ("Stuff")
     return _r.return_string_pop ()
 
-def Spaces (_r):                                            #line 62
+def Spaces (_r):                                            #line 66
     _r.push_new_string ()
     _r.begin_breadcrumb ("Spaces")
 
-    while True:                                             #line 63
+    while True:                                             #line 67
 
         if False:
             pass
         elif _r.peek (" "):
-            _r.accept_and_append ()                         #line 65
+            _r.accept_and_append ()                         #line 69
 
             pass
         elif _r.peek ("\t"):
-            _r.accept_and_append ()                         #line 66
+            _r.accept_and_append ()                         #line 70
 
             pass
         elif _r.peek ("\n"):
-            _r.accept_and_append ()                         #line 67
+            _r.accept_and_append ()                         #line 71
 
             pass
         elif True:
-            break                                           #line 68
+            break                                           #line 72
 
             pass
-                                                            #line 70
-                                                            #line 71
+                                                            #line 74
+                                                            #line 75
     _r.end_breadcrumb ("Spaces")
     return _r.return_string_pop ()
 
-def String (_r):                                            #line 72
+def String (_r):                                            #line 76
     _r.push_new_string ()
     _r.begin_breadcrumb ("String")
     _r.need_and_append ("\"")
     _r.call (NotDquotes)
     _r.append_returned_string ()
     _r.need_and_append ("\"")
-                                                            #line 73
+                                                            #line 77
     _r.end_breadcrumb ("String")
     return _r.return_string_pop ()
 
-def NotDquotes (_r):                                        #line 75
+def NotDquotes (_r):                                        #line 79
     _r.push_new_string ()
     _r.begin_breadcrumb ("NotDquotes")
 
-    while True:                                             #line 76
+    while True:                                             #line 80
 
         if False:
             pass
         elif _r.peek ("\""):
-            break                                           #line 78
+            break                                           #line 82
 
             pass
         elif True:
-            _r.accept_and_append ()                         #line 79
+            _r.accept_and_append ()                         #line 83
 
             pass
-                                                            #line 81
-                                                            #line 82
+                                                            #line 85
+                                                            #line 86
     _r.end_breadcrumb ("NotDquotes")
     return _r.return_string_pop ()
 
@@ -271,15 +282,18 @@ def EndMxCell (_r):
     _r.need_and_append ("</mxCell>")
     _r.call (Spaces)
     _r.append_returned_string ()
-                                                            #line 83
+                                                            #line 87
     _r.end_breadcrumb ("EndMxCell")
-    return _r.return_string_pop ()
+    return EndMxCell__action__ (_r)
 
 def mxGeometry__action__ (_r):
-    return _r.return_ignore_pop ()                          #line 85
+    return _r.return_ignore_pop ()                          #line 89
 
 def Style__action__ (_r):
-    return _r.return_ignore_pop ()                          #line 86
+    return _r.return_ignore_pop ()                          #line 90
+
+def EndMxCell__action__ (_r):
+    return _r.return_ignore_pop ()                          #line 91
 
 
 import receptor

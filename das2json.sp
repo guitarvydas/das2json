@@ -4,7 +4,11 @@
 : XML ^=
   Spaces "<" Name Attributes
   [
-    | ">": Content "</" Stuff ">"
+    | ">": Content
+        [*
+	    | "</mxCell>": EndMxCell
+	    | *: "</" Stuff ">"
+	]
     | "/>": 
   ]
 
@@ -80,7 +84,8 @@
     ]
   >>>
 
-: EndMxCell ^= "</mxCell>" Spaces
+: EndMxCell @= "</mxCell>" Spaces
 
 @ mxGeometry = _ignore_value
 @ Style = _ignore_value
+@ EndMxCell = _ignore_value
